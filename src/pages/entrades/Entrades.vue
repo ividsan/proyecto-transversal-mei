@@ -1,10 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { computed, ref } from "vue"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const qtyCompleta = ref("0")
 const qtyUnDia = ref("0")
 const qtyCompletaMerch = ref("0")
+
+const totalEuros = computed(() => {
+  const completa = Number(qtyCompleta.value) || 0
+  const unDia = Number(qtyUnDia.value) || 0
+  const completaMerch = Number(qtyCompletaMerch.value) || 0
+
+  return completa * 80 + unDia * 30 + completaMerch * 100
+})
+
+const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 </script>
 
 <template>
@@ -67,6 +77,12 @@ const qtyCompletaMerch = ref("0")
         <div class="entrades-card-price">100€</div>
       </article>
     </section>
+
+    <aside class="entrades-total" aria-label="Resum de compra">
+      <span class="entrades-total-label">TOTAL</span>
+      <span class="entrades-total-value">{{ totalLabel }}</span>
+      <button class="entrades-total-cta" type="button">CONTINUAR</button>
+    </aside>
   </main>
 </template>
 
@@ -74,7 +90,7 @@ const qtyCompletaMerch = ref("0")
 .entrades {
   min-height: 100vh;
   background-color: #222323;
-  padding: 24px 20px 0;
+  padding: 56px 20px 0;
 }
 
 .entrades-title {
@@ -159,5 +175,46 @@ const qtyCompletaMerch = ref("0")
   font-size: 50px;
   line-height: 0.9;
   letter-spacing: -0.04em;
+}
+
+.entrades-total {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  color: #222323;
+  padding: 26px 28px;
+  min-width: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+.entrades-total-label {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.entrades-total-value {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.entrades-total-cta {
+  border: 0;
+  background: transparent;
+  color: #222323;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.entrades-total-cta:hover {
+  text-decoration: underline;
 }
 </style>

@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { computed } from "vue"
+import { RouterLink, RouterView, useRoute } from "vue-router"
+
+const route = useRoute()
+const isLightHeader = computed(() => route.path === "/contacte")
 </script>
 
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'site-header--light': isLightHeader }">
     <RouterLink class="site-logo" to="/" aria-label="ESCLAT - Inicio">
       <img class="site-logo-img" src="/imagenes/logo-esclat-blanco.png" alt="ESCLAT" />
     </RouterLink>
@@ -78,5 +82,17 @@ import { RouterLink, RouterView } from 'vue-router';
 
 .site-nav-link.is-active {
   font-weight: 700;
+}
+
+.site-header.site-header--light {
+  background-color: #ffffff;
+}
+
+.site-header.site-header--light .site-nav-link {
+  color: #222323;
+}
+
+.site-header.site-header--light .site-logo-img {
+  filter: invert(1);
 }
 </style>
