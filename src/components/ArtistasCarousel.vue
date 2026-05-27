@@ -1,0 +1,256 @@
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+
+interface Artist {
+  slug: string;
+  name: string;
+  image: string;
+}
+
+const artists: Artist[] = [
+  { slug: "amaia", name: "Amaia", image: "/artistesHome/amaiaEditada.png" },
+  { slug: "mushkaa", name: "Mushkaa", image: "/artistesHome/mushkaEditada.png" },
+  { slug: "judeline", name: "Judeline", image: "/artistesHome/judelineEditada.png" },
+  { slug: "els-catarres", name: "Els Catarres", image: "/artistesHome/catarresEditada.png" },
+  { slug: "carolina-durante", name: "Carolina Durante", image: "/artistesHome/carolinaduranteEditada.png" },
+  { slug: "julieta", name: "Julieta", image: "/artistesHome/julietaEditada.png" },
+  { slug: "la-elite", name: "La Élite", image: "/artistesHome/eliteEditada.png" },
+  { slug: "jimena-amarillo", name: "Jimena Amarillo", image: "/artistesHome/jimenaamArilloEditada.png" },
+  { slug: "zetak", name: "Zetak", image: "/artistesHome/zetakEditada.png" },
+  { slug: "la-gossa-sorda", name: "La Gossa Sorda", image: "/artistesHome/gossaSordaEditada.png" },
+  { slug: "sandra-monfort", name: "Sandra Monfort", image: "/artistesHome/sandraMonfortEditada.png" },
+  { slug: "fades", name: "Fades", image: "/artistesHome/fadesEditada.png" },
+  { slug: "allerqiques-al-pollen", name: "Al.lèrqiques al pol.len", image: "/artistesHome/alergiquesAlPolenEditada.png" },
+  { slug: "mala-gestion", name: "Mala Gestión", image: "/artistesHome/malagestionEditada.png" },
+];
+
+const router = useRouter();
+
+function navigateToDetail(slug: string) {
+  router.push({ name: "artista-detalle", params: { slug } });
+}
+</script>
+
+<template>
+  <section class="artists-carousel-section" aria-label="Carrusel de Artistas">
+    <div class="artists-carousel-header">
+      <div class="artists-heading-row">
+        <h2 class="artists-carousel-title">CONEÌX ALS ARTISTES</h2>
+        <span class="artists-title-bar" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div
+            v-for="artist in artists"
+            :key="artist.slug"
+            class="carousel-item"
+            role="button"
+            tabindex="0"
+            @click="navigateToDetail(artist.slug)"
+            @keyup.enter="navigateToDetail(artist.slug)"
+            :aria-label="`Veure detalls de ${artist.name}`"
+          >
+            <img
+              :src="artist.image"
+              :alt="`Artista ${artist.name}`"
+              class="artist-image"
+              loading="lazy"
+            />
+            <p class="artist-name">{{ artist.name }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.artists-carousel-section {
+  width: 100%;
+  padding: 80px 24px;
+  background: #222323;
+  color: #f5f1ea;
+}
+
+.artists-carousel-header {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+}
+
+.artists-heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  width: 100%;
+}
+
+.artists-carousel-title {
+  margin: 0;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(2.2rem, 3vw, 2.5rem);
+  font-weight: 400;
+  font-stretch: semi-expanded;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f7f3eb;
+}
+
+.artists-title-bar {
+  width: clamp(150px, 22vw, 240px);
+  height: 2em;
+  background: #f7f3eb;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.carousel-container {
+  flex: 1;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+
+  /* Hide scrollbar for webkit browsers */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  min-width: min-content;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+.artist-image {
+  width: 360px;
+  height: 360px;
+  object-fit: cover;
+  background: #111111;
+  border: 1px solid #444444;
+}
+
+.artist-name {
+  margin: 0;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-stretch: semi-expanded;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f7f3eb;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 360px;
+}
+
+.carousel-button {
+  display: none;
+}
+
+.carousel-button:hover {
+  display: none;
+}
+
+.carousel-button:active {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .artists-carousel-section {
+    padding: 60px 16px;
+  }
+
+  .artists-carousel-header {
+    margin-bottom: 40px;
+  }
+
+  .carousel-wrapper {
+    gap: 12px;
+  }
+
+  .carousel-item {
+    width: 200px;
+    height: 200px;
+    gap: 8px;
+  }
+
+  .artist-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .artist-name {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artists-carousel-section {
+    padding: 40px 12px;
+  }
+
+  .carousel-wrapper {
+    gap: 8px;
+  }
+
+  .carousel-track {
+    gap: 12px;
+  }
+
+  .carousel-item {
+    width: 140px;
+    height: 140px;
+    gap: 6px;
+  }
+
+  .artist-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .artist-name {
+    width: 140px;
+    font-size: 0.7rem;
+  }
+}
+</style>

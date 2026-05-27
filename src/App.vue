@@ -3,7 +3,7 @@ import { computed } from "vue"
 import { RouterLink, RouterView, useRoute } from "vue-router"
 
 const route = useRoute()
-const isLightHeader = computed(() => route.path === "/contacte")
+const isLightHeader = computed(() => route.name === "contacte" || route.name === "artista-detalle")
 </script>
 
 <template>

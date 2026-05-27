@@ -3,6 +3,7 @@ import Entrades from "@/pages/entrades/Entrades.vue";
 import QueSom from "@/pages/que-som/QueSom.vue";
 import Programacio from "@/pages/programacio/Programacio.vue";
 import Contacte from "@/pages/contacte/Contacte.vue";
+import ArtistaDetalle from "@/pages/ArtistaDetalle.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 export const router = createRouter({
@@ -34,6 +35,12 @@ export const router = createRouter({
       path: "/programacio",
       name: "programacio",
       component: Programacio,
+    },
+    {
+      path: "/artista/:slug",
+      name: "artista-detalle",
+      component: ArtistaDetalle,
+      props: true,
     },
     {
       path: "/entrades",

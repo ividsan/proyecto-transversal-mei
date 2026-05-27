@@ -1,5 +1,6 @@
 ﻿<script lang="ts" setup>
 import LogoEsclat from "@/components/logoEsclat.vue";
+import ArtistasCarousel from "@/components/ArtistasCarousel.vue";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const targetDate = new Date("2026-10-23T00:00:00+02:00");
@@ -153,13 +154,13 @@ onBeforeUnmount(() => {
         </p>
       </div>
     </section>
-  </main>
+    <ArtistasCarousel />  </main>
 </template>
 
 <style scoped>
 .home {
   position: relative;
-  min-height: 550vh;
+  min-height: 600vh;
   background: #222323;
   padding-top: 1300px;
   color: #f5f1ea;
@@ -221,7 +222,7 @@ onBeforeUnmount(() => {
 
 .about-section {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
   padding: 140px 24px 80px;
@@ -239,7 +240,7 @@ onBeforeUnmount(() => {
   margin: 0;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-size: clamp(2.2rem, 3vw, 2.5rem);
   font-weight: 400;
   font-stretch: semi-expanded;
   letter-spacing: 0.05em;
@@ -324,7 +325,10 @@ onBeforeUnmount(() => {
   
   .about-copy {
     font-size: 1.15rem;
+    
   }
+
+  
 }
 </style>
 
