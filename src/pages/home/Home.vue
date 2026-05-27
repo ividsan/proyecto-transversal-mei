@@ -1,4 +1,5 @@
 ﻿<script lang="ts" setup>
+import LogoEsclat from "@/components/logoEsclat.vue";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const targetDate = new Date("2026-10-23T00:00:00+02:00");
@@ -44,6 +45,9 @@ onBeforeUnmount(() => {
 
 <template>
   <main class="home">
+    
+    <LogoEsclat estilus="home-logo" />
+
     <section class="countdown-strip" aria-label="Cuenta atras para el 23 de octubre de 2026">
       <span class="countdown-label">QUEDEN</span>
       <span class="countdown-value">{{ countdown.days }} DÍES</span>
@@ -78,10 +82,19 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .home {
-  min-height: 100vh;
+  min-height: 550vh;
   background: #222323;
   padding-top: 630px;
   color: #f5f1ea;
+}
+
+.home-logo {
+  position: absolute;
+  top: -800px;
+  left: 50%;
+  width: min(100rem, 200vw);
+  height: auto;
+  transform: translateX(-50%);
 }
 
 .countdown-strip {
