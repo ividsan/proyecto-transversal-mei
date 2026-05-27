@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed } from "vue"
 import { RouterLink, RouterView, useRoute } from "vue-router"
 
@@ -12,8 +12,8 @@ const isLightHeader = computed(() => route.path === "/contacte")
       <img class="site-logo-img" src="/imagenes/logo-esclat-blanco.png" alt="ESCLAT" />
     </RouterLink>
 
-    <nav class="site-nav" aria-label="Navegación principal">
-      <RouterLink class="site-nav-link site-nav-link--left" to="/que-som" exact-active-class="is-active">
+    <nav class="site-nav" aria-label="NavegaciÃ³n principal">
+      <RouterLink class="site-nav-link site-nav-link--left" :to="{ path: '/', hash: '#que-som' }" exact-active-class="is-active">
         QUÉ SOM
       </RouterLink>
       <RouterLink class="site-nav-link" to="/programacio" exact-active-class="is-active">PROGRAMACIÓ</RouterLink>
@@ -96,3 +96,4 @@ const isLightHeader = computed(() => route.path === "/contacte")
   filter: invert(1);
 }
 </style>
+
