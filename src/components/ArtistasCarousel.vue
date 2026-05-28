@@ -1,28 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-
-interface Artist {
-  slug: string;
-  name: string;
-  image: string;
-}
-
-const artists: Artist[] = [
-  { slug: "amaia", name: "Amaia", image: "/artistesHome/amaiaEditada.png" },
-  { slug: "mushkaa", name: "Mushkaa", image: "/artistesHome/mushkaEditada.png" },
-  { slug: "judeline", name: "Judeline", image: "/artistesHome/judelineEditada.png" },
-  { slug: "els-catarres", name: "Els Catarres", image: "/artistesHome/catarresEditada.png" },
-  { slug: "carolina-durante", name: "Carolina Durante", image: "/artistesHome/carolinaduranteEditada.png" },
-  { slug: "julieta", name: "Julieta", image: "/artistesHome/julietaEditada.png" },
-  { slug: "la-elite", name: "La Élite", image: "/artistesHome/eliteEditada.png" },
-  { slug: "jimena-amarillo", name: "Jimena Amarillo", image: "/artistesHome/jimenaamArilloEditada.png" },
-  { slug: "zetak", name: "Zetak", image: "/artistesHome/zetakEditada.png" },
-  { slug: "la-gossa-sorda", name: "La Gossa Sorda", image: "/artistesHome/gossaSordaEditada.png" },
-  { slug: "sandra-monfort", name: "Sandra Monfort", image: "/artistesHome/sandraMonfortEditada.png" },
-  { slug: "fades", name: "Fades", image: "/artistesHome/fadesEditada.png" },
-  { slug: "allerqiques-al-pollen", name: "Al.lèrqiques al pol.len", image: "/artistesHome/alergiquesAlPolenEditada.png" },
-  { slug: "mala-gestion", name: "Mala Gestión", image: "/artistesHome/malagestionEditada.png" },
-];
+import { artists } from "@/data/artists";
 
 const router = useRouter();
 
@@ -35,7 +13,7 @@ function navigateToDetail(slug: string) {
   <section class="artists-carousel-section" aria-label="Carrusel de Artistas">
     <div class="artists-carousel-header">
       <div class="artists-heading-row">
-        <h2 class="artists-carousel-title">CONEÌX ALS ARTISTES</h2>
+        <h2 class="artists-carousel-title">CONEIX ALS ARTISTES</h2>
         <span class="artists-title-bar" aria-hidden="true"></span>
       </div>
     </div>
@@ -126,8 +104,6 @@ function navigateToDetail(slug: string) {
   overflow-x: auto;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-
-  /* Hide scrollbar for webkit browsers */
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -183,14 +159,8 @@ function navigateToDetail(slug: string) {
   width: 320px;
 }
 
-.carousel-button {
-  display: none;
-}
-
-.carousel-button:hover {
-  display: none;
-}
-
+.carousel-button,
+.carousel-button:hover,
 .carousel-button:active {
   display: none;
 }
