@@ -1,6 +1,7 @@
-﻿<script lang="ts" setup>
+<script lang="ts" setup>
 import LogoEsclat from "@/components/logoEsclat.vue";
 import ArtistasCarousel from "@/components/ArtistasCarousel.vue";
+import HomeWordsBanner from "@/components/HomeWordsBanner.vue";
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 const targetDate = new Date("2026-10-23T00:00:00+02:00");
@@ -119,10 +120,7 @@ onBeforeUnmount(() => {
       @touchstart.passive="handleTouchStart"
       @touchend.passive="handleTouchEnd"
     >
-      <img
-        class="home-carousel-image"
-        :src="activeImage" alt="Cartell artista ESCLAT"
-      />
+      <img class="home-carousel-image" :src="activeImage" alt="Cartell artista ESCLAT" />
     </section>
 
     <section class="countdown-strip" aria-label="Cuenta atras para el 23 de octubre de 2026">
@@ -141,9 +139,9 @@ onBeforeUnmount(() => {
       <div class="about-copy">
         <p>
           Esclat naix del desig de recuperar el sentiment de comunitat i de pertinença a
-          través del soroll compartit. Més que un festival de música, és un open espai on concerts,
-          tallers, xarrades i activitats conviuen per crear connexions reals entre persones i
-          compartir emocions, idees i experiències.
+          través del soroll compartit. Més que un festival de música, és un open espai on
+          concerts, tallers, xarrades i activitats conviuen per crear connexions reals entre
+          persones i compartir emocions, idees i experiències.
         </p>
 
         <p>
@@ -154,7 +152,10 @@ onBeforeUnmount(() => {
         </p>
       </div>
     </section>
-    <ArtistasCarousel />  </main>
+
+    <ArtistasCarousel />
+    <HomeWordsBanner />
+  </main>
 </template>
 
 <style scoped>
@@ -195,7 +196,6 @@ onBeforeUnmount(() => {
 }
 
 .countdown-strip {
-  
   width: 100%;
   height: 112px;
   display: flex;
@@ -323,15 +323,9 @@ onBeforeUnmount(() => {
     height: 18px;
     margin-top: 2px;
   }
-  
+
   .about-copy {
     font-size: 1.15rem;
-    
   }
-
-  
 }
 </style>
-
-
-
