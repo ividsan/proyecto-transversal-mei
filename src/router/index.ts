@@ -3,6 +3,7 @@ import Entrades from "@/pages/entrades/Entrades.vue";
 import QueSom from "@/pages/que-som/QueSom.vue";
 import Programacio from "@/pages/programacio/Programacio.vue";
 import Contacte from "@/pages/contacte/Contacte.vue";
+import Merch from "@/pages/merch/Merch.vue";
 import ArtistaDetalle from "@/pages/ArtistaDetalle.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -51,6 +52,11 @@ export const router = createRouter({
       path: "/contacte",
       name: "contacte",
       component: Contacte,
+    },
+    {
+      path: "/merch",
+      name: "merch",
+      component: Merch,
     },
     {
       path: "/:patchMatch(.*)",

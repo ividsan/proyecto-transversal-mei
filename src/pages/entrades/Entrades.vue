@@ -89,30 +89,32 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 <style scoped>
 .entrades {
   min-height: 100vh;
-  background-color: #222323;
-  padding: 56px 20px 0;
+  background-color: #000000;
+  padding: 64px clamp(24px, 5vw, 72px) 120px;
 }
 
 .entrades-title {
   color: #ffffff;
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 400;
   letter-spacing: 0.02em;
   text-align: center;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 .entrades-cards {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  gap: 44px;
+  width: min(100%, 1320px);
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
 }
 
 .entrades-card {
-  width: 380px;
-  height: 360px;
+  min-height: 390px;
   background: #ffffff;
-  padding: 18px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -123,9 +125,9 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   right: 0;
   bottom: 0;
   width: auto;
-  background-color: #222323;
-  padding: 16px 18px;
-  min-width: 210px;
+  background-color: #000000;
+  padding: 18px 20px;
+  min-width: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,7 +138,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   width: auto !important;
   justify-content: center;
   gap: 8px !important;
-  font-size: 50px;
+  font-size: 56px;
   line-height: 0.9;
   color: #ffffff;
   border: 0 !important;
@@ -153,38 +155,41 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 }
 
 .entrades-card-header {
-  color: #222323;
-  font-size: 28px;
+  color: #000000;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 0.02em;
   margin-top: 12px;
+  line-height: 1.08;
 }
 
 .entrades-card-text {
-  margin-top: 14px;
-  color: #222323;
+  margin-top: 18px;
+  color: #000000;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.35;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .entrades-card-price {
   margin-top: auto;
-  padding-top: 14px;
-  color: #222323;
-  font-size: 50px;
+  padding-top: 18px;
+  color: #000000;
+  font-size: 56px;
   line-height: 0.9;
   letter-spacing: -0.04em;
 }
 
 .entrades-total {
   position: fixed;
-  right: 0;
+  left: 50%;
+  right: auto;
   bottom: 0;
+  transform: translateX(-50%);
   background: #ffffff;
-  color: #222323;
+  color: #000000;
   padding: 26px 28px;
-  min-width: 620px;
+  width: min(calc(100% - 48px), 720px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -192,13 +197,13 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 }
 
 .entrades-total-label {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .entrades-total-value {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
@@ -206,8 +211,8 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 .entrades-total-cta {
   border: 0;
   background: transparent;
-  color: #222323;
-  font-size: 30px;
+  color: #000000;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: 0.02em;
   cursor: pointer;
@@ -216,5 +221,47 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 .entrades-total-cta:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 1050px) {
+  .entrades-cards {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+  }
+}
+
+@media (max-width: 640px) {
+  .entrades {
+    padding: 42px 20px 140px;
+  }
+
+  .entrades-title {
+    font-size: 34px;
+  }
+
+  .entrades-card {
+    min-height: 360px;
+  }
+
+  .entrades-card-header {
+    font-size: 26px;
+  }
+
+  .entrades-card-text {
+    font-size: 16px;
+  }
+
+  .entrades-total {
+    width: 100%;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .entrades-total-label,
+  .entrades-total-value,
+  .entrades-total-cta {
+    font-size: 26px;
+  }
 }
 </style>

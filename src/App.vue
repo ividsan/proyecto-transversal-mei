@@ -3,7 +3,7 @@ import { computed } from "vue"
 import { RouterLink, RouterView, useRoute } from "vue-router"
 
 const route = useRoute()
-const isLightHeader = computed(() => route.name === "contacte" || route.name === "artista-detalle")
+const isLightHeader = computed(() => route.name === "contacte" || route.name === "merch" || route.name === "artista-detalle")
 </script>
 
 <template>
@@ -18,6 +18,7 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
       </RouterLink>
       <RouterLink class="site-nav-link" to="/programacio" exact-active-class="is-active">PROGRAMACIÓ</RouterLink>
       <RouterLink class="site-nav-link" to="/entrades" exact-active-class="is-active">ENTRADES</RouterLink>
+      <RouterLink class="site-nav-link" to="/merch" exact-active-class="is-active">MERCH</RouterLink>
       <RouterLink class="site-nav-link site-nav-link--right" to="/contacte" exact-active-class="is-active">
         CONTACTE
       </RouterLink>
@@ -31,7 +32,9 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
 
 <style scoped>
 .site-header {
-  background-color: #222323;
+  position: relative;
+  z-index: 100;
+  background-color: #000000;
   padding: 16px 20px;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -53,7 +56,7 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
 
 .site-nav {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
   column-gap: 12px;
 }
@@ -89,7 +92,7 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
 }
 
 .site-header.site-header--light .site-nav-link {
-  color: #222323;
+  color: #000000;
 }
 
 .site-header.site-header--light .site-logo-img {

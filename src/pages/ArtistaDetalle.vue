@@ -68,7 +68,7 @@ const isMushkaa = computed(() => slug.value === "mushkaa");
 
             <RouterLink
               to="/"
-              class="inline-flex h-11 items-center justify-center border border-black bg-white px-6 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-slate-100"
+              class="inline-flex h-11 items-center justify-center border border-black bg-white px-6 text-sm font-semibold uppercase tracking-[0.2em] text-black transition hover:bg-black hover:text-white"
             >
               Tornar
             </RouterLink>
@@ -82,7 +82,7 @@ const isMushkaa = computed(() => slug.value === "mushkaa");
           <p class="mt-4 text-2xl font-semibold text-black">Aquesta pàgina està reservada per a Mushkaa.</p>
           <RouterLink
             to="/"
-            class="mt-8 inline-flex border border-black bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black hover:bg-slate-100"
+            class="mt-8 inline-flex border border-black bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-black hover:bg-black hover:text-white"
           >
             Tornar a l'inici
           </RouterLink>

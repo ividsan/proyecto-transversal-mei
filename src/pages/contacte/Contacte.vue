@@ -118,15 +118,15 @@
 .page {
   min-height: 100vh;
   background-color: #ffffff;
-  padding: 24px 20px 0;
+  padding: 36px clamp(24px, 5vw, 72px) 56px;
 }
 
 .layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  max-width: 1200px;
-  margin: 0;
+  gap: clamp(40px, 6vw, 92px);
+  width: min(100%, 1320px);
+  margin: 0 auto;
 }
 
 .col-right {
@@ -134,32 +134,32 @@
 }
 
 .title {
-  color: #222323;
-  font-size: 36px;
+  color: #000000;
+  font-size: 44px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .email {
   margin-top: 10px;
-  color: #222323;
-  font-size: 18px;
+  color: #000000;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .contact-form {
-  margin-top: 26px;
+  margin-top: 34px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 480px;
+  gap: 24px;
+  max-width: 560px;
 }
 
 .label {
   display: block;
-  color: #222323;
-  font-size: 16px;
+  color: #000000;
+  font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
@@ -169,27 +169,27 @@
   width: 100%;
   border: 1px solid #000000;
   background: transparent;
-  padding: 10px 12px;
-  font-size: 16px;
-  color: #222323;
+  padding: 13px 14px;
+  font-size: 18px;
+  color: #000000;
   outline: none;
 }
 
 .input--message {
-  height: 140px;
+  height: 170px;
   resize: none;
 }
 
 .community-title {
-  color: #222323;
-  font-size: 40px;
+  color: #000000;
+  font-size: 48px;
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 0.95;
 }
 
 .community {
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 .community-summary {
@@ -202,7 +202,7 @@
 
 .community-box {
   border: 1px solid #000000;
-  padding: 14px 16px 22px;
+  padding: 18px 20px 28px;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -210,10 +210,10 @@
 
 .community-box-text {
   margin: 0;
-  color: #222323;
+  color: #000000;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 16px;
+  line-height: 1.4;
   letter-spacing: 0.01em;
 }
 
@@ -223,8 +223,8 @@
   bottom: 12px;
   width: 18px;
   height: 18px;
-  border-right: 2px solid #222323;
-  border-bottom: 2px solid #222323;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
   transform: rotate(45deg);
   transform-origin: center;
 }
@@ -235,11 +235,11 @@ details[open] .community-chevron {
 }
 
 .community-body {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  max-width: 520px;
+  gap: 22px;
+  max-width: 580px;
 }
 
 .pronouns {
@@ -266,11 +266,11 @@ details[open] .community-chevron {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 72px;
-  padding: 8px 12px;
+  min-width: 84px;
+  padding: 10px 14px;
   border: 1px solid #000000;
-  color: #222323;
-  font-size: 14px;
+  color: #000000;
+  font-size: 16px;
   letter-spacing: 0.02em;
   background: transparent;
   user-select: none;
@@ -287,7 +287,7 @@ details[open] .community-chevron {
 }
 
 .pronoun > input:focus-visible + .pronoun-btn {
-  outline: 2px solid #222323;
+  outline: 2px solid #000000;
   outline-offset: 2px;
 }
 
@@ -302,9 +302,9 @@ details[open] .community-chevron {
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  color: #222323;
+  color: #000000;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 0.02em;
 }
 
@@ -313,9 +313,9 @@ details[open] .community-chevron {
   display: inline-flex;
   gap: 10px;
   align-items: flex-start;
-  color: #222323;
+  color: #000000;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.02em;
 }
 
@@ -324,11 +324,32 @@ details[open] .community-chevron {
   align-self: flex-end;
   border: 1px solid #000000;
   background: transparent;
-  color: #222323;
-  padding: 10px 16px;
-  font-size: 18px;
+  color: #000000;
+  padding: 12px 18px;
+  font-size: 20px;
   font-weight: 400;
   letter-spacing: 0.02em;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 28px 24px 48px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .title,
+  .community-title {
+    font-size: 38px;
+  }
+
+  .contact-form,
+  .community-body {
+    max-width: none;
+  }
 }
 </style>

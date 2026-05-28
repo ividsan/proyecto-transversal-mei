@@ -70,17 +70,17 @@ function navigateToDetail(slug: string) {
 <style scoped>
 .artists-carousel-section {
   width: 100%;
-  padding: 80px 24px;
-  background: #222323;
+  padding: 72px clamp(24px, 5vw, 72px);
+  background: #000000;
   color: #f5f1ea;
 }
 
 .artists-carousel-header {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .artists-heading-row {
@@ -94,7 +94,7 @@ function navigateToDetail(slug: string) {
   margin: 0;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(2.2rem, 3vw, 2.5rem);
+  font-size: clamp(1.9rem, 2.4vw, 2.25rem);
   font-weight: 400;
   font-stretch: semi-expanded;
   letter-spacing: 0.05em;
@@ -103,8 +103,8 @@ function navigateToDetail(slug: string) {
 }
 
 .artists-title-bar {
-  width: clamp(150px, 22vw, 240px);
-  height: 2em;
+  width: clamp(130px, 18vw, 220px);
+  height: 1.75em;
   background: #f7f3eb;
   flex-shrink: 0;
   display: inline-block;
@@ -112,7 +112,7 @@ function navigateToDetail(slug: string) {
 
 .carousel-wrapper {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -145,7 +145,7 @@ function navigateToDetail(slug: string) {
 
 .carousel-item {
   flex: 0 0 auto;
-  width: 360px;
+  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -159,11 +159,11 @@ function navigateToDetail(slug: string) {
 }
 
 .artist-image {
-  width: 360px;
-  height: 360px;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
-  background: #111111;
-  border: 1px solid #444444;
+  background: #000000;
+  border: 1px solid #000000;
 }
 
 .artist-name {
@@ -180,7 +180,7 @@ function navigateToDetail(slug: string) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 360px;
+  width: 320px;
 }
 
 .carousel-button {

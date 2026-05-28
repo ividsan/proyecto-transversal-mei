@@ -7,7 +7,7 @@
 <style scoped>
 .page {
   min-height: 100vh;
-  background-color: #222323;
+  background-color: #000000;
   padding: 24px 20px 0;
 }
 
@@ -18,4 +18,3 @@
   letter-spacing: 0.02em;
 }
 </style>
-

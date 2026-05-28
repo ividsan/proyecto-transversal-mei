@@ -161,25 +161,26 @@ onBeforeUnmount(() => {
 .home {
   position: relative;
   min-height: 600vh;
-  background: #222323;
-  padding-top: 1300px;
+  background: #000000;
+  padding-top: 1120px;
   color: #f5f1ea;
 }
 
 .home-logo {
   position: absolute;
-  top: -800px;
+  top: -690px;
   left: 50%;
-  width: min(100rem, 200vw);
+  width: min(82rem, 142vw);
   height: auto;
   transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .home-carousel {
   position: absolute;
-  top: 340px;
+  top: 300px;
   left: 50%;
-  width: min(115rem, 200vw);
+  width: min(92rem, calc(100vw - 48px));
   display: grid;
   gap: 1rem;
   transform: translateX(-50%);
@@ -196,18 +197,18 @@ onBeforeUnmount(() => {
 .countdown-strip {
   
   width: 100%;
-  height: 130px;
+  height: 112px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(1rem, 4vw, 4rem);
-  padding: 0 1rem;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: 0 clamp(24px, 5vw, 72px);
   background: #ffffff;
-  color: #111111;
+  color: #000000;
   overflow: hidden;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(60px, 2.2vw, 65px);
+  font-size: clamp(38px, 3vw, 52px);
   font-weight: 400;
   font-stretch: semi-expanded;
   letter-spacing: 0.04em;
@@ -222,10 +223,10 @@ onBeforeUnmount(() => {
 
 .about-section {
   width: 100%;
-  max-width: 1500px;
+  max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
-  padding: 140px 24px 80px;
+  padding: 112px clamp(24px, 5vw, 72px) 72px;
   box-sizing: border-box;
 }
 
@@ -240,7 +241,7 @@ onBeforeUnmount(() => {
   margin: 0;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(2.2rem, 3vw, 2.5rem);
+  font-size: clamp(1.9rem, 2.4vw, 2.25rem);
   font-weight: 400;
   font-stretch: semi-expanded;
   letter-spacing: 0.05em;
@@ -249,8 +250,8 @@ onBeforeUnmount(() => {
 }
 
 .about-title-bar {
-  width: clamp(150px, 22vw, 240px);
-  height: 2em;
+  width: clamp(130px, 18vw, 220px);
+  height: 1.75em;
   background: #f7f3eb;
   flex-shrink: 0;
   display: inline-block;
@@ -258,11 +259,11 @@ onBeforeUnmount(() => {
 
 .about-copy {
   width: 100%;
-  margin-top: 36px;
+  margin-top: 32px;
   font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(1.45rem, 2vw, 1.9rem);
-  line-height: 1.16;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.25rem, 1.65vw, 1.6rem);
+  line-height: 1.22;
+  letter-spacing: 0;
   color: #f4efe8;
   text-align: left;
   white-space: normal;
@@ -276,22 +277,22 @@ onBeforeUnmount(() => {
 }
 
 .about-copy p + p {
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 @media (max-width: 820px) {
   .home {
-    padding-top: 1180px;
+    padding-top: 940px;
   }
 
   .home-logo {
-    top: -360px;
-    width: min(52rem, 180vw);
+    top: -300px;
+    width: min(42rem, 150vw);
   }
 
   .home-carousel {
-    top: 300px;
-    width: min(22rem, 86vw);
+    top: 260px;
+    width: min(20rem, 84vw);
     gap: 0.75rem;
   }
 
