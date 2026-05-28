@@ -1,11 +1,11 @@
 export interface Artist {
-  slug: string
-  name: string
-  fullName: string
-  image: string
-  bio: string
-  instagram: string
-  spotify: string
+  slug: string;
+  name: string;
+  fullName: string;
+  image: string;
+  bio: string;
+  instagram: string;
+  spotify: string;
 }
 
 export const artists: Artist[] = [
@@ -15,7 +15,7 @@ export const artists: Artist[] = [
     fullName: "Amaia Romero Arbizu",
     image: "/artistesHome/amaiaEditada.png",
     bio:
-      "Cantant, pianista i compositora navarresa amb un pop delicat, elegant i molt emocional. Va saltar a primera fila després d'Operación Triunfo i ha consolidat una proposta íntima i molt personal.",
+      "Amaia és una de les artistes més especials del pop estatal actual. Amb una sensibilitat única, barreja pop, folk i experimentació sonora en cançons íntimes i emocionals. Els seus directes creen una atmosfera delicada i magnètica que connecta profundament amb el públic.",
     instagram: "@amaia",
     spotify: "Amaia",
   },
@@ -25,7 +25,7 @@ export const artists: Artist[] = [
     fullName: "Irma Farelo i Solé",
     image: "/artistesHome/mushkaEditada.png",
     bio:
-      "Una de les veus més potents de l'escena urbana catalana. Barreja reggaeton, trap, R&B i pop amb lletres sinceres i una energia molt pròpia sobre l'escenari.",
+      "Mushkaa és una de les veus emergents més destacades de l’escena urbana actual. Amb un estil fresc que barreja pop, reggaeton i sons electrònics, les seues cançons connecten amb una nova generació gràcies a lletres sinceres, energia i una personalitat única damunt de l’escenari. Els seus directes destaquen per l’actitud, el ritme i una connexió molt especial amb el públic.",
     instagram: "@mushkaaa___",
     spotify: "Mushkaa",
   },
@@ -35,7 +35,7 @@ export const artists: Artist[] = [
     fullName: "Lara Fernández Castrelo",
     image: "/artistesHome/judelineEditada.png",
     bio:
-      "Cantant i compositora andalusa que combina pop, influències llatines i textures experimentals. La seva proposta destaca per l'atmosfera i una sensibilitat molt contemporània.",
+      "Judeline és una de les artistes més innovadores de la nova escena estatal. Barreja pop, electrònica i influències urbanes amb una identitat sonora molt pròpia. Els seus directes destaquen per l’atmosfera, la força visual i una presència escènica magnètica.",
     instagram: "@judeli.ne",
     spotify: "Judeline",
   },
@@ -45,7 +45,7 @@ export const artists: Artist[] = [
     fullName: "Èric Vergés, Jan Riera Prats i Roser Cruells",
     image: "/artistesHome/catarresEditada.png",
     bio:
-      "Banda catalana de pop-folk amb tornades festives i molta connexió amb el directe. S'han convertit en un dels noms més estimats de l'escena en català.",
+      "Els Catarres són una de les bandes més populars del pop-folk català. Amb cançons festives, emotives i carregades d’energia positiva, han aconseguit crear himnes generacionals que connecten amb públics de totes les edats.",
     instagram: "@elscatarres",
     spotify: "Els Catarres",
   },
@@ -55,7 +55,7 @@ export const artists: Artist[] = [
     fullName: "Diego Ibáñez, Martín Vallhonrat, Juan Pedrayes i Mario del Valle",
     image: "/artistesHome/carolinaduranteEditada.png",
     bio:
-      "Banda madrilenya d'indie rock amb lletres afilades, humor sarcàstic i concerts molt enèrgics. La seva proposta és directa, guitarrera i generacional.",
+      "Carolina Durante s’ha convertit en una de les bandes imprescindibles de l’indie-rock estatal. Amb guitarres potents, actitud irreverent i lletres generacionals, els seus concerts són intensos, enèrgics i plens d’eufòria col·lectiva.",
     instagram: "@carolinadurante_",
     spotify: "Carolina Durante",
   },
@@ -65,7 +65,7 @@ export const artists: Artist[] = [
     fullName: "Julieta Gracián Salas",
     image: "/artistesHome/julietaEditada.png",
     bio:
-      "Una de les veus més destacades del nou pop català. Barreja pop, electrònica i ritmes urbans amb una estètica molt cuidada i una sonoritat expansiva.",
+      "Julieta és una de les figures emergents més destacades del pop català actual. Amb una proposta fresca que combina pop, electrònica i sensibilitat urbana, les seues cançons transmeten llibertat, emoció i molta personalitat.",
     instagram: "@julietagracian",
     spotify: "Julieta",
   },
@@ -75,7 +75,7 @@ export const artists: Artist[] = [
     fullName: "Nil Roig i David Burgués",
     image: "/artistesHome/eliteEditada.png",
     bio:
-      "Duo català de synth-punk amb actitud irreverent, sintetitzadors contundents i molta energia. Les seves cançons respiren ironia, velocitat i esperit de club.",
+      "La Élite combina punk electrònic, actitud provocadora i energia rave en una proposta radical i directa. Els seus concerts són intensos, caòtics i carregats d’una força underground molt característica.",
     instagram: "@laeliteig",
     spotify: "La Élite",
   },
@@ -85,7 +85,7 @@ export const artists: Artist[] = [
     fullName: "Jimena Amarillo Peiró",
     image: "/artistesHome/jimenaamArilloEditada.png",
     bio:
-      "Artista valenciana que s'ha fet forta amb un bedroom pop tendre, directe i molt personal. Les seves lletres connecten amb una generació que busca emoció i honestedat.",
+      "Jimena Amarillo és una de les veus més singulars del pop independent actual. Amb lletres honestes, melodies senzilles i una gran sensibilitat emocional, les seues cançons connecten amb tota una generació.",
     instagram: "@jimenamarillo",
     spotify: "Jimena Amarillo",
   },
@@ -95,7 +95,7 @@ export const artists: Artist[] = [
     fullName: "Pello Reparaz Escala, Leire Colomo, Iban Larreburu i Gorka Pastor",
     image: "/artistesHome/zetakEditada.png",
     bio:
-      "Projecte de pop electrònic en euskera liderat per Pello Reparaz. Uneix identitat, producció moderna i un directe pensat gairebé com una experiència escènica.",
+      "Zetak és un projecte musical basc que combina electrònica, pop i música tradicional en una proposta innovadora i emocionant. Els seus directes destaquen per l’energia, la posada en escena i una connexió molt especial amb el territori i el públic.",
     instagram: "@zetak",
     spotify: "Zetak",
   },
@@ -105,7 +105,7 @@ export const artists: Artist[] = [
     fullName: "Josep Nadal, Àlex Seguí, Cate Giorgi, Salvador Bolufer, Jordi Martí, Arnau Giménez, Mark Dasousa i Héctor Peropadre",
     image: "/artistesHome/gossaSordaEditada.png",
     bio:
-      "Grup valencià de referència que barreja rock, punk, reggae i ritmes mediterranis. Les seves cançons combinen festa, compromís i una forta identitat pròpia.",
+      "La Gossa Sorda és una de les bandes més representatives de l’escena musical valenciana. La seua música barreja rock, ska i música tradicional amb lletres compromeses i una energia festiva i reivindicativa.",
     instagram: "@lagossasorda_oficial",
     spotify: "La Gossa Sorda",
   },
@@ -115,7 +115,7 @@ export const artists: Artist[] = [
     fullName: "Sandra Monfort Oliver",
     image: "/artistesHome/sandraMonfortEditada.png",
     bio:
-      "Artista de Pedreguer que treballa entre la cançó d'arrel, el pop i l'experimentació. La seva música uneix tradició, sensibilitat i una mirada molt actual.",
+      "Sandra Monfort fusiona música tradicional valenciana, electrònica i experimentació sonora en una proposta artística molt personal. Les seues cançons creen universos íntims i rituals carregats d’identitat i sensibilitat contemporània.",
     instagram: "@sandramonfort",
     spotify: "Sandra Monfort",
   },
@@ -125,7 +125,7 @@ export const artists: Artist[] = [
     fullName: "Ferran Pi, Vicenç Calafell i Àngel Exojo",
     image: "/artistesHome/fadesEditada.png",
     bio:
-      "Trio mallorquí queer que fa pop, house i música urbana amb una identitat molt marcada. El seu univers és festiu, reivindicatiu i molt generacional.",
+      "Fades és un projecte emergent de l’escena alternativa catalana que combina pop electrònic, sensibilitat contemporània i una estètica molt personal. Les seues cançons destaquen per l’atmosfera íntima i una sonoritat moderna i emocional.",
     instagram: "@ffades",
     spotify: "Fades",
   },
@@ -135,7 +135,7 @@ export const artists: Artist[] = [
     fullName: "Maria Riba, Ona Salabert, Berta Batiste, Emma Dotres, Marina Rico i Joana Subirats",
     image: "/artistesHome/alergiquesAlPolenEditada.jpg",
     bio:
-      "Projecte de pop en català amb un so directe, juganer i molt melòdic. Les seves cançons combinen frescor, ironia i ganes de pista.",
+      "Al·lèrgiques al pol·len és una banda catalana que combina pop, indie i actitud DIY amb lletres quotidianes i generacionals. Les seues cançons parlen de joventut, amistat i emocions compartides amb una energia fresca i propera. Els directes destaquen per la naturalitat, el bon rotllo i una connexió molt autèntica amb el públic.",
     instagram: "@alergiquesalpolen",
     spotify: "Al·lèrgiques al pol·len",
   },
@@ -145,12 +145,12 @@ export const artists: Artist[] = [
     fullName: "Elías, Héctor, Lucas, Guille, Joan i Pablo",
     image: "/artistesHome/malagestionEditada.png",
     bio:
-      "Banda valenciana amb esperit punk i indie que destaca per la seva actitud crua i les lletres sense filtres. Els seus directes són intensos i molt contagiosos.",
+      "Mala Gestión és una banda emergent de l’escena alternativa que destaca per una proposta fresca, desenfadada i carregada d’energia. Amb influències indie i punk-pop, els seus directes transmeten actitud i espontaneïtat.",
     instagram: "@malagestion",
     spotify: "Mala Gestión",
   },
-]
+];
 
 export function getArtistBySlug(slug: string) {
-  return artists.find((artist) => artist.slug === slug)
+  return artists.find((artist) => artist.slug === slug);
 }
