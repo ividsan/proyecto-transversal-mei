@@ -110,15 +110,19 @@
           </div>
         </details>
       </div>
+
+      <img class="message-pattern" src="/iconos/tramadoArtista.svg" alt="" aria-hidden="true" />
     </section>
   </main>
 </template>
 
 <style scoped>
 .page {
+  position: relative;
   min-height: 100vh;
   background-color: #ffffff;
   padding: 36px clamp(24px, 5vw, 72px) 56px;
+  overflow: hidden;
 }
 
 .layout {
@@ -127,6 +131,8 @@
   gap: clamp(40px, 6vw, 92px);
   width: min(100%, 1320px);
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .col-right {
@@ -180,6 +186,19 @@
   resize: none;
 }
 
+.message-pattern {
+  position: absolute;
+  left: 50%;
+  top: -240px;
+  transform: translateX(-50%);
+  display: block;
+  width: min(170vw, 2200px);
+  max-width: 2200px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .community-title {
   color: #000000;
   font-size: 48px;
@@ -190,10 +209,14 @@
 
 .community {
   margin-top: 24px;
+  position: relative;
+  z-index: 2;
 }
 
 .community-summary {
   list-style: none;
+  position: relative;
+  z-index: 2;
 }
 
 .community-summary::-webkit-details-marker {
@@ -240,6 +263,14 @@ details[open] .community-chevron {
   flex-direction: column;
   gap: 22px;
   max-width: 580px;
+  position: relative;
+  z-index: 2;
+}
+
+.community :deep([data-slot="select-content"]) {
+  background: #ffffff !important;
+  position: relative;
+  z-index: 4;
 }
 
 .pronouns {
@@ -350,6 +381,12 @@ details[open] .community-chevron {
   .contact-form,
   .community-body {
     max-width: none;
+  }
+
+  .message-pattern {
+    top: -160px;
+    width: min(190vw, 1500px);
+    max-width: 1500px;
   }
 }
 </style>

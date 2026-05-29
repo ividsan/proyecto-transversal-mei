@@ -45,7 +45,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
           Accés complet als 3 dies del festival, incloent totes les zones indoor i outdoor. Viu l’experiència completa de
           l’esdeveniment. IVA no inclòs.
         </p>
-        <div class="entrades-card-price">80€</div>
+        <div class="entrades-card-price">0€</div>
       </article>
       <article class="entrades-card">
         <div class="entrades-card-qty" aria-label="Quantitat">
@@ -65,7 +65,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
             </SelectContent>
           </Select>
         </div>
-        <header class="entrades-card-header">ESCLAT | ENTRADA D&apos;UN DIA</header>
+        <header class="entrades-card-header">ESCLAT | ENTRADA COMPLETA + MERCH</header>
         <p class="entrades-card-text">
           Accés al festival durant 1 dia a triar, amb entrada a totes les zones indoor i outdoor del recinte. IVA no
           inclòs.
@@ -90,12 +90,12 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
             </SelectContent>
           </Select>
         </div>
-        <header class="entrades-card-header">ESCLAT | ENTRADA COMPLETA + MERCH</header>
+        <header class="entrades-card-header">ESCLAT | ENTRADA COMPLETA + MERCH + ACCÉS PRIORITARI</header>
         <p class="entrades-card-text">
           Accés complet als 3 dies del festival + pack exclusiu de merchandising oficial. L’experiència més completa per
           a gaudir del festival al màxim. IVA no inclòs.
         </p>
-        <div class="entrades-card-price">100€</div>
+        <div class="entrades-card-price">40€</div>
       </article>
     </section>
 
