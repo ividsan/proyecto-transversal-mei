@@ -28,8 +28,15 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
             <SelectTrigger class="entrades-qty-trigger" aria-label="Quantitat entrada completa">
               <SelectValue placeholder="0" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem v-for="n in 6" :key="n - 1" :value="String(n - 1)">{{ n - 1 }}</SelectItem>
+            <SelectContent class="entrades-select-content !rounded-none !w-full">
+              <SelectItem
+                v-for="n in 6"
+                :key="n - 1"
+                :value="String(n - 1)"
+                class="entrades-select-item !rounded-none"
+              >
+                {{ n - 1 }}
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -46,8 +53,15 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
             <SelectTrigger class="entrades-qty-trigger" aria-label="Quantitat entrada d'un dia">
               <SelectValue placeholder="0" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem v-for="n in 6" :key="n - 1" :value="String(n - 1)">{{ n - 1 }}</SelectItem>
+            <SelectContent class="entrades-select-content !rounded-none !w-full">
+              <SelectItem
+                v-for="n in 6"
+                :key="n - 1"
+                :value="String(n - 1)"
+                class="entrades-select-item !rounded-none"
+              >
+                {{ n - 1 }}
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -64,8 +78,15 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
             <SelectTrigger class="entrades-qty-trigger" aria-label="Quantitat entrada completa + merch">
               <SelectValue placeholder="0" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem v-for="n in 6" :key="n - 1" :value="String(n - 1)">{{ n - 1 }}</SelectItem>
+            <SelectContent class="entrades-select-content !rounded-none !w-full">
+              <SelectItem
+                v-for="n in 6"
+                :key="n - 1"
+                :value="String(n - 1)"
+                class="entrades-select-item !rounded-none"
+              >
+                {{ n - 1 }}
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -88,9 +109,12 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 <style scoped>
 .entrades {
-  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 76px);
   background-color: #000000;
-  padding: 64px clamp(24px, 5vw, 72px) 120px;
+  padding: 64px clamp(24px, 5vw, 72px) 0;
 }
 
 .entrades-title {
@@ -125,8 +149,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   right: 0;
   bottom: 0;
   width: auto;
-  background-color: #000000;
-  padding: 18px 20px;
+  background-color: transparent;
   min-width: 220px;
   display: flex;
   align-items: center;
@@ -135,7 +158,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 .entrades-qty-trigger {
   height: auto !important;
-  width: auto !important;
+  width: 220px !important;
   justify-content: center;
   gap: 8px !important;
   font-size: 56px;
@@ -143,8 +166,10 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   color: #ffffff;
   border: 0 !important;
   box-shadow: none !important;
-  background: transparent !important;
-  padding: 0 !important;
+  background: #000000 !important;
+  padding: 18px 20px !important;
+  box-sizing: border-box;
+  border-radius: 0 !important;
 }
 
 .entrades-qty-trigger :deep(svg) {
@@ -152,6 +177,16 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   opacity: 1 !important;
   width: 30px !important;
   height: 30px !important;
+}
+
+.entrades :deep(.entrades-select-content) {
+  border-radius: 0 !important;
+  width: 220px !important;
+  min-width: 220px !important;
+}
+
+.entrades :deep(.entrades-select-item) {
+  border-radius: 0 !important;
 }
 
 .entrades-card-header {
@@ -181,11 +216,11 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 }
 
 .entrades-total {
-  position: fixed;
-  left: 50%;
+  position: relative;
+  left: auto;
   right: auto;
-  bottom: 0;
-  transform: translateX(-50%);
+  bottom: auto;
+  transform: none;
   background: #ffffff;
   color: #000000;
   padding: 26px 28px;
@@ -194,6 +229,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   align-items: center;
   justify-content: space-between;
   z-index: 50;
+  margin: auto auto 0;
 }
 
 .entrades-total-label {
@@ -232,7 +268,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 @media (max-width: 640px) {
   .entrades {
-    padding: 42px 20px 140px;
+    padding: 42px 20px 0;
   }
 
   .entrades-title {
@@ -256,6 +292,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
     padding: 20px;
     flex-wrap: wrap;
     gap: 12px 20px;
+    margin-top: auto;
   }
 
   .entrades-total-label,
