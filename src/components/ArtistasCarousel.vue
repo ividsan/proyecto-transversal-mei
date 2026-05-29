@@ -31,12 +31,15 @@ function navigateToDetail(slug: string) {
             @keyup.enter="navigateToDetail(artist.slug)"
             :aria-label="`Veure detalls de ${artist.name}`"
           >
-            <img
-              :src="artist.image"
-              :alt="`Artista ${artist.name}`"
-              class="artist-image"
-              loading="lazy"
-            />
+            <div class="artist-image-wrap" aria-hidden="true">
+              <img
+                :src="artist.image"
+                :alt="`Artista ${artist.name}`"
+                class="artist-image"
+                loading="lazy"
+              />
+              <span class="artist-image-overlay"></span>
+            </div>
             <p class="artist-name">{{ artist.name }}</p>
           </div>
         </div>
@@ -127,19 +130,38 @@ function navigateToDetail(slug: string) {
   align-items: flex-start;
   gap: 12px;
   cursor: pointer;
-  transition: transform 0.2s ease-out;
 }
 
 .carousel-item:hover {
-  transform: scale(1.05);
+  transform: none;
+}
+
+.carousel-item:focus,
+.carousel-item:focus-visible,
+.carousel-item:active {
+  transform: none;
+}
+
+.artist-image-wrap {
+  position: relative;
+  width: 320px;
+  height: 320px;
 }
 
 .artist-image {
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   background: #000000;
   border: 1px solid #000000;
+}
+
+.artist-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: background-color 0.2s ease-out;
+  pointer-events: none;
 }
 
 .artist-name {
@@ -157,6 +179,24 @@ function navigateToDetail(slug: string) {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 320px;
+  text-decoration: none;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+  transition: text-decoration-color 0.2s ease-out;
+}
+
+.carousel-item:hover .artist-name,
+.carousel-item:focus .artist-name,
+.carousel-item:focus-visible .artist-name,
+.carousel-item:active .artist-name {
+  text-decoration: underline;
+}
+
+.carousel-item:hover .artist-image-overlay,
+.carousel-item:focus .artist-image-overlay,
+.carousel-item:focus-visible .artist-image-overlay,
+.carousel-item:active .artist-image-overlay {
+  background: rgba(255, 255, 255, 0.24);
 }
 
 .carousel-button,
@@ -184,9 +224,14 @@ function navigateToDetail(slug: string) {
     gap: 8px;
   }
 
-  .artist-image {
+  .artist-image-wrap {
     width: 200px;
     height: 200px;
+  }
+
+  .artist-image {
+    width: 100%;
+    height: 100%;
   }
 
   .artist-name {
@@ -213,9 +258,14 @@ function navigateToDetail(slug: string) {
     gap: 6px;
   }
 
-  .artist-image {
+  .artist-image-wrap {
     width: 140px;
     height: 140px;
+  }
+
+  .artist-image {
+    width: 100%;
+    height: 100%;
   }
 
   .artist-name {
