@@ -1,4 +1,4 @@
-﻿import Home from "@/pages/home/Home.vue";
+import Home from "@/pages/home/Home.vue";
 import Entrades from "@/pages/entrades/Entrades.vue";
 import QueSom from "@/pages/que-som/QueSom.vue";
 import Programacio from "@/pages/programacio/Programacio.vue";

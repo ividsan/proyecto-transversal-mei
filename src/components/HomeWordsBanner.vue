@@ -72,7 +72,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .home-words-section {
   position: relative;
-  height: 220vh;
+  height: 110vh;
   background: #000000;
   overflow: hidden;
 }
@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 820px) {
   .home-words-section {
-    height: 170vh;
+    height: 95vh;
   }
 
   .word-line {

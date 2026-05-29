@@ -26,9 +26,6 @@ const products = Array.from({ length: 6 }, (_, index) => ({
       </article>
     </section>
 
-    <footer class="merch-footer" aria-label="Esclat">
-      <img class="merch-logo" src="/iconos/logo.svg" alt="ESCLAT" />
-    </footer>
   </main>
 </template>
 
@@ -37,7 +34,7 @@ const products = Array.from({ length: 6 }, (_, index) => ({
   min-height: 100vh;
   background: #ffffff;
   color: #000000;
-  padding: 116px clamp(28px, 7vw, 92px) 96px;
+  padding: 116px clamp(28px, 7vw, 92px) 240px;
 }
 
 .merch-hero {
@@ -65,7 +62,7 @@ const products = Array.from({ length: 6 }, (_, index) => ({
 
 .products-grid {
   width: min(100%, 1320px);
-  margin: 120px auto 0;
+  margin: 140px auto 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 160px 18px;
@@ -107,21 +104,10 @@ const products = Array.from({ length: 6 }, (_, index) => ({
   white-space: nowrap;
 }
 
-.merch-footer {
-  width: min(100%, 1040px);
-  margin: 180px auto 0;
-}
-
-.merch-logo {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: brightness(0);
-}
-
 @media (max-width: 900px) {
   .merch-page {
-    padding: 80px 24px 72px;
+    min-height: 120vh;
+    padding: 80px 24px 180px;
   }
 
   .merch-title {
@@ -134,7 +120,7 @@ const products = Array.from({ length: 6 }, (_, index) => ({
   }
 
   .products-grid {
-    margin-top: 72px;
+    margin-top: 84px;
     grid-template-columns: 1fr;
     gap: 72px;
   }
@@ -143,8 +129,5 @@ const products = Array.from({ length: 6 }, (_, index) => ({
     padding-inline: 0;
   }
 
-  .merch-footer {
-    margin-top: 96px;
-  }
 }
 </style>

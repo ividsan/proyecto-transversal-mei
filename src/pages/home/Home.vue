@@ -161,7 +161,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .home {
   position: relative;
-  min-height: 600vh;
+  min-height: 120vh;
   background: #000000;
   padding-top: 1120px;
   color: #f5f1ea;
@@ -222,11 +222,10 @@ onBeforeUnmount(() => {
 }
 
 .about-section {
-  width: 100%;
-  max-width: 1320px;
+  width: min(100%, 1320px);
   margin-left: auto;
   margin-right: auto;
-  padding: 112px clamp(24px, 5vw, 72px) 72px;
+  padding: 112px 0 56px;
   box-sizing: border-box;
 }
 
@@ -234,7 +233,7 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: baseline;
   gap: 14px;
-  width: 100%;
+  width: fit-content;
 }
 
 .about-title {
@@ -265,7 +264,8 @@ onBeforeUnmount(() => {
   line-height: 1.22;
   letter-spacing: 0;
   color: #f4efe8;
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
   white-space: normal;
   word-break: normal;
   overflow-wrap: normal;
@@ -311,7 +311,8 @@ onBeforeUnmount(() => {
   }
 
   .about-section {
-    padding: 40px 24px 56px;
+    width: 100%;
+    padding: 40px 24px 24px;
   }
 
   .about-title {

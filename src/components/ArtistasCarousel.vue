@@ -48,7 +48,7 @@ function navigateToDetail(slug: string) {
 <style scoped>
 .artists-carousel-section {
   width: 100%;
-  padding: 72px clamp(24px, 5vw, 72px);
+  padding: 56px clamp(24px, 5vw, 72px);
   background: #000000;
   color: #f5f1ea;
 }
@@ -58,7 +58,7 @@ function navigateToDetail(slug: string) {
   max-width: 1320px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .artists-heading-row {
@@ -167,11 +167,11 @@ function navigateToDetail(slug: string) {
 
 @media (max-width: 768px) {
   .artists-carousel-section {
-    padding: 60px 16px;
+    padding: 44px 16px;
   }
 
   .artists-carousel-header {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 
   .carousel-wrapper {
@@ -196,7 +196,7 @@ function navigateToDetail(slug: string) {
 
 @media (max-width: 480px) {
   .artists-carousel-section {
-    padding: 40px 12px;
+    padding: 28px 12px;
   }
 
   .carousel-wrapper {
