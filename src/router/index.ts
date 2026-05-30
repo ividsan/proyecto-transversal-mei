@@ -4,6 +4,7 @@ import QueSom from "@/pages/que-som/QueSom.vue";
 import Programacio from "@/pages/programacio/Programacio.vue";
 import Contacte from "@/pages/contacte/Contacte.vue";
 import Merch from "@/pages/merch/Merch.vue";
+import Dubtes from "@/pages/dubtes/Dubtes.vue";
 import ArtistaDetalle from "@/pages/ArtistaDetalle.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -52,6 +53,11 @@ export const router = createRouter({
       path: "/contacte",
       name: "contacte",
       component: Contacte,
+    },
+    {
+      path: "/dubtes",
+      name: "dubtes",
+      component: Dubtes,
     },
     {
       path: "/merch",

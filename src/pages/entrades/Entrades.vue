@@ -99,6 +99,10 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
       </article>
     </section>
 
+    <RouterLink class="entrades-merch-link" to="/merch">
+      MÉS INFORMACIÓ SOBRE EL NOSTRE MERCH
+    </RouterLink>
+
     <aside class="entrades-total" aria-label="Resum de compra">
       <span class="entrades-total-label">TOTAL</span>
       <span class="entrades-total-value">{{ totalLabel }}</span>
@@ -119,12 +123,14 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 .entrades-title {
   color: #ffffff;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 400;
   letter-spacing: 0.02em;
   text-align: center;
-  max-width: 1320px;
+  width: fit-content;
+  max-width: none;
   margin: 0 auto;
+  white-space: nowrap;
 }
 
 .entrades-cards {
@@ -215,6 +221,24 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   letter-spacing: -0.04em;
 }
 
+.entrades-merch-link {
+  width: fit-content;
+  margin: 44px 0 0;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 20px 28px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.entrades-merch-link:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
 .entrades-total {
   position: relative;
   left: auto;
@@ -229,7 +253,8 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   align-items: center;
   justify-content: space-between;
   z-index: 50;
-  margin: auto auto 0;
+  margin: 48px calc(clamp(24px, 5vw, 72px) * -1) 0 auto;
+  margin-bottom: -1px;
 }
 
 .entrades-total-label {
@@ -287,12 +312,19 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
     font-size: 16px;
   }
 
+  .entrades-merch-link {
+    width: 100%;
+    margin-top: 24px;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
   .entrades-total {
     width: 100%;
     padding: 20px;
     flex-wrap: wrap;
     gap: 12px 20px;
-    margin-top: auto;
+    margin: 40px 0 0;
   }
 
   .entrades-total-label,

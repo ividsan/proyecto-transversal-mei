@@ -18,9 +18,9 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
         <RouterLink class="site-nav-link site-nav-link--left" :to="{ path: '/', hash: '#que-som' }" exact-active-class="is-active">
           QUÉ SOM
         </RouterLink>
+        <RouterLink class="site-nav-link" to="/dubtes" exact-active-class="is-active">DUBTES</RouterLink>
         <RouterLink class="site-nav-link" to="/programacio" exact-active-class="is-active">PROGRAMACIÓ</RouterLink>
         <RouterLink class="site-nav-link" to="/entrades" exact-active-class="is-active">ENTRADES</RouterLink>
-        <RouterLink class="site-nav-link" to="/merch" exact-active-class="is-active">MERCH</RouterLink>
         <RouterLink class="site-nav-link site-nav-link--right" to="/contacte" exact-active-class="is-active">
           CONTACTE
         </RouterLink>
@@ -51,7 +51,7 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  column-gap: 16px;
+  column-gap: clamp(28px, 4vw, 56px);
 }
 
 .site-logo {
@@ -67,10 +67,10 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
 }
 
 .site-nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
   align-items: center;
-  column-gap: 12px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .site-nav-link {
@@ -80,15 +80,7 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
   white-space: nowrap;
   font-size: 14px;
   font-weight: 400;
-  justify-self: center;
-}
-
-.site-nav-link--left {
-  justify-self: start;
-}
-
-.site-nav-link--right {
-  justify-self: end;
+  flex: 0 0 auto;
 }
 
 .site-nav-link:hover {
