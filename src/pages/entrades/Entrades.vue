@@ -11,7 +11,7 @@ const totalEuros = computed(() => {
   const unDia = Number(qtyUnDia.value) || 0
   const completaMerch = Number(qtyCompletaMerch.value) || 0
 
-  return completa * 80 + unDia * 30 + completaMerch * 100
+  return completa * 0 + unDia * 30 + completaMerch * 40
 })
 
 const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)

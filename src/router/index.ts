@@ -2,6 +2,7 @@ import Home from "@/pages/home/Home.vue";
 import Entrades from "@/pages/entrades/Entrades.vue";
 import QueSom from "@/pages/que-som/QueSom.vue";
 import Programacio from "@/pages/programacio/Programacio.vue";
+import ProgramacioDetall from "@/pages/programacio/ProgramacioDetall.vue";
 import Contacte from "@/pages/contacte/Contacte.vue";
 import Merch from "@/pages/merch/Merch.vue";
 import Dubtes from "@/pages/dubtes/Dubtes.vue";
@@ -37,6 +38,12 @@ export const router = createRouter({
       path: "/programacio",
       name: "programacio",
       component: Programacio,
+    },
+    {
+      path: "/programacio/:section/:slug",
+      name: "programacio-detall",
+      component: ProgramacioDetall,
+      props: true,
     },
     {
       path: "/artista/:slug",
