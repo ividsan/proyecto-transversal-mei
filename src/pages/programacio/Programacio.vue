@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
-import { RouterLink } from "vue-router"
+import { computed, onMounted, ref, watch } from "vue"
+import { RouterLink, useRoute } from "vue-router"
 import { slugifyProgramacioTitle } from "@/data/programacio"
 
 type ProgramSection = "musica" | "tallers" | "xarrades" | "general"
@@ -16,7 +16,32 @@ const sections = [
   { id: "general", text: "GENERAL" },
 ] as const
 
+const route = useRoute()
 const activeSection = ref<ProgramSection>("musica")
+
+function normalizeSection(value: unknown): ProgramSection | null {
+  return value === "musica" || value === "tallers" || value === "xarrades" || value === "general"
+    ? value
+    : null
+}
+
+function syncSectionFromRoute() {
+  const requestedSection = normalizeSection(route.query.section)
+  if (requestedSection) {
+    activeSection.value = requestedSection
+  }
+}
+
+watch(
+  () => route.query.section,
+  () => {
+    syncSectionFromRoute()
+  },
+)
+
+onMounted(() => {
+  syncSectionFromRoute()
+})
 
 type ProgramTextItem = {
   text: string
