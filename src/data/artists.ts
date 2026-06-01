@@ -134,7 +134,7 @@ export const artists: Artist[] = [
     slug: "allerqiques-al-pollen",
     name: "Al·lèrgiques al pol·len",
     fullName: "Maria Riba, Ona Salabert, Berta Batiste, Emma Dotres, Marina Rico i Joana Subirats",
-    image: "/artistesHome/alergiquesAlPolenEditada.jpg",
+    image: "/artistesHome/alergiquesAlPolenEditada.png",
     bio:
       "Al·lèrgiques al Pol·len és una girl band nascuda al barri de Gràcia de Barcelona l’any 2019. El seu pop-rock fresc combina melodies corejables, lletres quotidianes i una mirada molt generacional que les ha convertit en una de les bandes femenines amb més projecció de l’escena catalana.",
     instagram: "@alergiquesalpolen",
@@ -154,7 +154,7 @@ export const artists: Artist[] = [
     slug: "amaral",
     name: "Amaral",
     fullName: "Eva Amaral i Juan Aguirre",
-    image: "/artistesHome/mushkaEditada.png",
+    image: "/artistesHome/amaralEditada.jpg",
     bio:
       "Amaral és un duet de pop-rock de Saragossa format per Eva Amaral i Juan Aguirre. Amb més de dues dècades de trajectòria, s’han consolidat com una de les bandes més populars de l’escena estatal gràcies a himnes com Sin ti no soy nada, El universo sobre mí o Marta, Sebas, Guille y los demás.",
     instagram: "@amaral.oficial",
@@ -164,7 +164,7 @@ export const artists: Artist[] = [
     slug: "lagrimas-de-sangre",
     name: "Lágrimas de Sangre",
     fullName: "Microbio, Neidos i Still Ill",
-    image: "/artistesHome/mushkaEditada.png",
+    image: "/artistesHome/lagrimasDeSangreEditada.jpg",
     bio:
       "Lágrimas de Sangre és un grup de rap de Barcelona format per Microbio, Neidos i Still Ill. El projecte s’ha fet un nom amb un estil que barreja hip-hop, reggae i música festiva amb lletres de crítica social i una energia de directe molt potent.",
     instagram: "@lagrimasdesangre",
@@ -174,21 +174,21 @@ export const artists: Artist[] = [
     slug: "arreak",
     name: "Arreak",
     fullName: "Arreak",
-    image: "/artistesHome/mushkaEditada.png",
+    image: "/artistesHome/arreakEditada.jpeg",
     bio:
       "Arreak és una proposta musical de l’escena urbana i festiva del festival. Com que no hem pogut verificar una fitxa pública completa, de moment la deixem amb la informació mínima i la fotografia provisional.",
     instagram: "@arreak",
     spotify: "Arreak",
   },
   {
-    slug: "briatzontifa",
-    name: "Briatzontifa",
-    fullName: "Briatzontifa",
-    image: "/artistesHome/mushkaEditada.png",
+    slug: "sen-senra",
+    name: "Sen Senra",
+    fullName: "Christian Senra",
+    image: "/artistesHome/senSenraEditada.jpg",
     bio:
-      "Briatzontifa és una proposta del cartell per a la qual encara no hem pogut verificar informació pública fiable. De moment la deixem amb fitxa provisional i la fotografia de Mushkaa com a recurs temporal.",
-    instagram: "@briatzontifa",
-    spotify: "Briatzontifa",
+      "Sen Senra és el projecte de Christian Senra, un artista gallec que ha construït una trajectòria pròpia a partir de l’autenticitat, el talent i la vanguarda. Amb una sonoritat melòdica i emocional, l’univers PO2054AZ el consolida com una de les veus més singulars de la música estatal actual.",
+    instagram: "@sensenra",
+    spotify: "Sen Senra",
   },
 ];
 

@@ -47,7 +47,7 @@ const musicProgram: ProgramDay<ProgramTextItem>[] = [
       { text: "AL·LÈRGIQUES AL POL·LEN", ruta: "/artista/allerqiques-al-pollen" },
       { text: "LA ÉLITE", ruta: "/artista/la-elite" },
       { text: "ZETAK", ruta: "/artista/zetak" },
-      { text: "BRIATZONTIFA", ruta: "/artista/briatzontifa" },
+      { text: "SEN SENRA", ruta: "/artista/sen-senra" },
     ] satisfies ProgramTextItem[],
   },
   {
@@ -169,7 +169,7 @@ const generalProgram: GeneralProgramDay[] = [
       { hora: "13:00 – 14:00", activitat: "Muska", espai: "Patio 2" },
       { hora: "15:00 – 16:15", activitat: "La Èlite", espai: "Platea" },
       { hora: "16:00 – 18:00", activitat: "Taller de música experimental", espai: "Visual Room" },
-      { hora: "17:00 – 18:00", activitat: "Briatzontifa", espai: "Patio 2" },
+      { hora: "17:00 – 18:00", activitat: "Sen Senra", espai: "Patio 2" },
       { hora: "18:00 – 19:30", activitat: "Xarrada: Disseny, art i gràfica", espai: "Sala Polivalent" },
       { hora: "19:30 – 20:45", activitat: "Fades", espai: "Platea" },
       { hora: "22:00 – 23:30", activitat: "Amaia", espai: "Patio 2" },
