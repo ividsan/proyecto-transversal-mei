@@ -47,6 +47,13 @@ const countdown = computed(() => {
 });
 
 const activeImage = computed(() => homeImages[activeSlideIndex.value]);
+const trackTitle = "Canción epica del momento eyou";
+const trackCover = "/artistesHome/amaralEditada.jpg";
+const trackSrc = "/audio/cancion-epica-del-momento-eyou.mp3";
+
+const audioElement = ref<HTMLAudioElement | null>(null);
+const isPlaying = ref(false);
+const musicPlayerBottom = ref(0);
 
 function goToNextSlide() {
   activeSlideIndex.value = (activeSlideIndex.value + 1) % homeImages.length;
@@ -93,12 +100,52 @@ function handleTouchEnd(event: TouchEvent) {
   touchStartY.value = null;
 }
 
+async function toggleTrackPlayback() {
+  const audio = audioElement.value;
+
+  if (!audio) {
+    return;
+  }
+
+  if (audio.paused) {
+    try {
+      await audio.play();
+      isPlaying.value = true;
+    } catch {
+      isPlaying.value = false;
+    }
+    return;
+  }
+
+  audio.pause();
+  isPlaying.value = false;
+}
+
+function handleTrackEnded() {
+  isPlaying.value = false;
+}
+
+function updateMusicPlayerPosition() {
+  const footer = document.querySelector("footer");
+
+  if (!footer) {
+    musicPlayerBottom.value = 0;
+    return;
+  }
+
+  const footerRect = footer.getBoundingClientRect();
+  musicPlayerBottom.value = Math.max(0, window.innerHeight - footerRect.top);
+}
+
 onMounted(() => {
   timerId = window.setInterval(() => {
     now.value = new Date();
   }, 1000);
 
   window.addEventListener("wheel", handleWindowWheel, { passive: true });
+  window.addEventListener("scroll", updateMusicPlayerPosition, { passive: true });
+  window.addEventListener("resize", updateMusicPlayerPosition);
+  updateMusicPlayerPosition();
 });
 
 onBeforeUnmount(() => {
@@ -107,6 +154,8 @@ onBeforeUnmount(() => {
   }
 
   window.removeEventListener("wheel", handleWindowWheel);
+  window.removeEventListener("scroll", updateMusicPlayerPosition);
+  window.removeEventListener("resize", updateMusicPlayerPosition);
 });
 </script>
 
@@ -155,6 +204,39 @@ onBeforeUnmount(() => {
 
     <ArtistasCarousel />
     <HomeWordsBanner />
+
+    <section
+      class="music-player-shell"
+      :style="{ bottom: `${musicPlayerBottom}px` }"
+      aria-label="Reproductor de cançó"
+    >
+      <audio
+        ref="audioElement"
+        :src="trackSrc"
+        preload="metadata"
+        @play="isPlaying = true"
+        @pause="isPlaying = false"
+        @ended="handleTrackEnded"
+      ></audio>
+
+      <div class="music-player">
+        <img class="music-cover" :src="trackCover" alt="Portada de la cançó" />
+
+        <button
+          class="music-play"
+          type="button"
+          :aria-label="isPlaying ? 'Pausa la cançó' : 'Reprodueix la cançó'"
+          @click="toggleTrackPlayback"
+        >
+          <span class="music-play-icon" aria-hidden="true">{{ isPlaying ? "❚❚" : "▶" }}</span>
+        </button>
+
+        <div class="music-copy">
+          <p class="music-title">{{ trackTitle }}</p>
+          <p class="music-subtitle">ESCLAT · AUDIO PLAYER</p>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -164,6 +246,7 @@ onBeforeUnmount(() => {
   min-height: 120vh;
   background: #000000;
   padding-top: 1120px;
+  padding-bottom: 84px;
   color: #f5f1ea;
 }
 
@@ -280,9 +363,88 @@ onBeforeUnmount(() => {
   margin-top: 24px;
 }
 
+.music-player-shell {
+  z-index: 60;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  will-change: bottom;
+}
+
+.music-player {
+  width: 100%;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: 62px 56px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: #0b0b0b;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.28);
+}
+
+.music-cover {
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  display: block;
+}
+
+.music-play {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: #ffffff;
+  color: #000000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.music-play:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.music-play-icon {
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateX(1px);
+}
+
+.music-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.music-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  line-height: 1.1;
+}
+
+.music-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 820px) {
   .home {
     padding-top: 940px;
+    padding-bottom: 72px;
   }
 
   .home-logo {
@@ -327,6 +489,23 @@ onBeforeUnmount(() => {
 
   .about-copy {
     font-size: 1.15rem;
+  }
+
+  .music-player {
+    grid-template-columns: 52px 44px 1fr;
+    gap: 10px;
+    padding: 8px 10px;
+    min-height: 60px;
+  }
+
+  .music-cover {
+    width: 52px;
+    height: 52px;
+  }
+
+  .music-play {
+    width: 38px;
+    height: 38px;
   }
 }
 </style>
