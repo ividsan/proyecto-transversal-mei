@@ -4,6 +4,7 @@ import { RouterLink, useRoute } from "vue-router";
 import {
   findProgramacioEntry,
   getWorkshopDetail,
+  getTalkDetail,
   type ProgramacioTalk,
   type ProgramacioSection,
 } from "@/data/programacio";
@@ -15,8 +16,17 @@ const slug = computed(() => String(route.params.slug ?? ""));
 
 const entry = computed(() => findProgramacioEntry(section.value, slug.value));
 const workshopDetail = computed(() => getWorkshopDetail(slug.value));
+const talkDetail = computed(() => getTalkDetail(slug.value));
 const talkEntry = computed<ProgramacioTalk | null>(() => {
   return entry.value && "left" in entry.value ? entry.value : null;
+});
+const backSection = computed(() => (section.value === "xarrades" ? "xarrades" : "tallers"));
+const talkParticipants = computed(() => {
+  if (!talkEntry.value) {
+    return [];
+  }
+
+  return [...talkEntry.value.left, ...talkEntry.value.right];
 });
 </script>
 
@@ -94,49 +104,72 @@ const talkEntry = computed<ProgramacioTalk | null>(() => {
         </article>
       </div>
 
-      <RouterLink :to="{ path: '/programacio', query: { section: 'tallers' } }" class="programacio-detall-back">
+      <RouterLink :to="{ path: '/programacio', query: { section: backSection } }" class="programacio-detall-back">
         Tornar al programa
       </RouterLink>
     </section>
 
     <section v-else-if="talkEntry" class="programacio-detall-card">
-      <p class="programacio-detall-kicker">XARRADA</p>
       <h1 class="programacio-detall-title">{{ talkEntry.title }}</h1>
 
       <p class="programacio-detall-intro">
-        Conversa dins del programa del festival amb participació de veus convidades i un format
-        obert a la reflexió.
+        {{ talkDetail?.intro ?? "Aquesta xarrada forma part de la programació del festival." }}
       </p>
 
+      <div class="programacio-detall-meta">
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Horari</span>
+          <span class="programacio-meta-value">{{ talkDetail?.when ?? "Pendent de definir" }}</span>
+        </div>
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Lloc</span>
+          <span class="programacio-meta-value">{{ talkDetail?.place ?? "Pendent de definir" }}</span>
+        </div>
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Durada</span>
+          <span class="programacio-meta-value">{{ talkDetail?.duration ?? "Pendent de definir" }}</span>
+        </div>
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Format</span>
+          <span class="programacio-meta-value">{{ talkDetail?.format ?? "Pendent de definir" }}</span>
+        </div>
+      </div>
+
       <div class="programacio-detall-grid">
+        <article class="programacio-detall-panel programacio-detall-panel--wide">
+          <p class="programacio-detall-panel-title">¿Què es parlarà?</p>
+          <p class="programacio-detall-panel-copy">
+            {{ talkDetail?.description ?? "Ben aviat compartirem més informació sobre aquesta xarrada." }}
+          </p>
+        </article>
+
         <article class="programacio-detall-panel">
-          <p class="programacio-detall-panel-title">Participants bloc A</p>
+          <p class="programacio-detall-panel-title">Participants</p>
           <ul class="programacio-detall-list">
-            <li v-for="item in talkEntry.left" :key="item" class="programacio-detall-list-item">
+            <li v-for="item in talkParticipants" :key="item" class="programacio-detall-list-item">
               {{ item }}
             </li>
           </ul>
         </article>
 
         <article class="programacio-detall-panel">
-          <p class="programacio-detall-panel-title">Participants bloc B</p>
+          <p class="programacio-detall-panel-title">Temes</p>
           <ul class="programacio-detall-list">
-            <li v-for="item in talkEntry.right" :key="item" class="programacio-detall-list-item">
+            <li v-for="item in talkDetail?.topics ?? []" :key="item" class="programacio-detall-list-item">
               {{ item }}
             </li>
           </ul>
         </article>
 
         <article class="programacio-detall-panel programacio-detall-panel--wide">
-          <p class="programacio-detall-panel-title">Context</p>
+          <p class="programacio-detall-panel-title">Nota</p>
           <p class="programacio-detall-panel-copy">
-            Aquesta xarrada forma part del recorregut temàtic del festival i està pensada per
-            activar diàleg entre referents, públic i comunitat.
+            {{ talkDetail?.note ?? "Consulta el programa general per veure l'horari complet." }}
           </p>
         </article>
       </div>
 
-      <RouterLink :to="{ path: '/programacio', query: { section: 'tallers' } }" class="programacio-detall-back">
+      <RouterLink :to="{ path: '/programacio', query: { section: 'xarrades' } }" class="programacio-detall-back">
         Tornar al programa
       </RouterLink>
     </section>
@@ -144,7 +177,7 @@ const talkEntry = computed<ProgramacioTalk | null>(() => {
     <section v-else class="programacio-detall-card programacio-detall-card--empty">
       <p class="programacio-detall-kicker">NO TROBAT</p>
       <h1 class="programacio-detall-title">Aquesta activitat no existeix</h1>
-      <RouterLink :to="{ path: '/programacio', query: { section: 'tallers' } }" class="programacio-detall-back">
+      <RouterLink :to="{ path: '/programacio', query: { section: backSection } }" class="programacio-detall-back">
         Tornar al programa
       </RouterLink>
     </section>

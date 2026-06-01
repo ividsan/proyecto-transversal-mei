@@ -18,6 +18,18 @@ export interface ProgramacioTalk {
   right: string[];
 }
 
+export interface ProgramacioTalkDetail {
+  slug: string;
+  intro: string;
+  description: string;
+  when: string;
+  place: string;
+  duration: string;
+  format: string;
+  topics: string[];
+  note: string;
+}
+
 export interface ProgramacioWorkshopDetail {
   slug: string;
   intro: string;
@@ -211,6 +223,57 @@ export const workshopDetails: ProgramacioWorkshopDetail[] = [
   },
 ];
 
+export const talkDetails: ProgramacioTalkDetail[] = [
+  {
+    slug: slugifyProgramacioTitle("Identitat de poble"),
+    intro: "Una conversa per pensar com es construeix la identitat col·lectiva des de l'experiència, la cultura i la memòria compartida.",
+    description:
+      "La xarrada obre un espai de diàleg sobre la idea de poble, els relats que la sostenen i el paper de la cultura popular en aquesta construcció. El format és una taula rodona: totes les veus participen en igualtat i la conversa avança de manera compartida.",
+    when: "23.10\n12.45-14.00",
+    place: "Sala La Factoria",
+    duration: "1 hora i 15 minuts",
+    format: "Taula redona",
+    topics: ["Identitat i territori", "Cultura popular", "Memòria compartida"],
+    note: "Pensada per a públic general i per a qui vulga escoltar, contrastar i participar.",
+  },
+  {
+    slug: slugifyProgramacioTitle("Cultura alternativa i internet"),
+    intro: "Una mirada a la relació entre cultura digital, contracultura i noves formes de comunitat en línia.",
+    description:
+      "La sessió explora com internet ha canviat la manera de produir, consumir i compartir cultura. També posa el focus en l'humor, la identitat digital i els espais alternatius que neixen al marge dels canals més convencionals. La xarrada funciona com una taula rodona, sense blocs jeràrquics entre participants.",
+    when: "23.10\n18.30-20.00",
+    place: "Sala La Factoria",
+    duration: "1 hora i 30 minuts",
+    format: "Taula redona",
+    topics: ["Cultura digital", "Humor i mems", "Comunitats en xarxa"],
+    note: "Una xarrada per a qui viu la xarxa com a espai creatiu i també com a lloc de resistència.",
+  },
+  {
+    slug: slugifyProgramacioTitle("Disseny, art i gràfica"),
+    intro: "Una trobada per posar en comú processos de disseny, llenguatges visuals i formes de comunicar des de l'art.",
+    description:
+      "Aquesta xarrada connecta pràctiques creatives diverses per parlar de composició, discurs visual i autoria. El format és de taula rodona: totes les persones convidades tenen el mateix pes dins la conversa i aporten mirades complementàries.",
+    when: "24.10\n18.00-19.30",
+    place: "Sala Polivalent",
+    duration: "1 hora i 30 minuts",
+    format: "Taula redona",
+    topics: ["Disseny gràfic", "Procés creatiu", "Comunicació visual"],
+    note: "Ideal per a persones interessades en el món visual, el disseny i les publicacions.",
+  },
+  {
+    slug: slugifyProgramacioTitle("Feminisme"),
+    intro: "Una xarrada per obrir debat sobre feminisme, cultura i representació des d'un enfocament actual i compartit.",
+    description:
+      "La sessió reuneix veus diverses per parlar de pràctiques feministes, referents culturals i la manera com el discurs travessa l'espai públic i el sector creatiu. El format és una taula redona en què totes les participants intervenen al mateix nivell i la conversa es construeix de manera col·lectiva.",
+    when: "25.10\n18.00-19.30",
+    place: "Sala La Factoria",
+    duration: "1 hora i 30 minuts",
+    format: "Taula redona",
+    topics: ["Representació", "Cultura i feminisme", "Referents contemporanis"],
+    note: "Una sessió pensada per connectar experiències i perspectives sense perdre el to proper.",
+  },
+];
+
 export function findProgramacioEntry(section: ProgramacioSection, slug: string) {
   const entries = section === "tallers"
     ? tallersProgram.flatMap((day) => day.elements)
@@ -221,4 +284,8 @@ export function findProgramacioEntry(section: ProgramacioSection, slug: string) 
 
 export function getWorkshopDetail(slug: string) {
   return workshopDetails.find((entry) => entry.slug === slug);
+}
+
+export function getTalkDetail(slug: string) {
+  return talkDetails.find((entry) => entry.slug === slug);
 }

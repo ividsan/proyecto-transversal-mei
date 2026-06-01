@@ -114,6 +114,10 @@ type XarradaDay = {
   talks: XarradaTalk[]
 }
 
+function getXarradaParticipants(talk: XarradaTalk) {
+  return [...talk.left, ...talk.right]
+}
+
 const xarradesProgram: XarradaDay[] = [
   {
     dia: "23",
@@ -292,20 +296,28 @@ const currentGeneralDay = computed<GeneralProgramDay>(
       <div v-for="day in xarradesProgram" :key="day.dia" class="programa-dia programa-dia--xarrades">
         <div class="programa-dia-numero">{{ day.dia }}</div>
         <div class="programa-xarrades">
-          <article v-for="talk in day.talks" :key="talk.tema" class="programa-xarrada">
-            <div class="programa-xarrada-col programa-xarrada-col--left">
-              <RouterLink
-                class="programa-xarrada-tema"
-                :to="{ name: 'programacio-detall', params: { section: 'xarrades', slug: slugifyProgramacioTitle(talk.tema) } }"
-              >
-                {{ talk.tema }}
-              </RouterLink>
-              <span v-for="line in talk.left" :key="line" class="programa-xarrada-line">{{ line }}</span>
-            </div>
-            <div class="programa-xarrada-col programa-xarrada-col--right">
-              <span v-for="line in talk.right" :key="line" class="programa-xarrada-line">{{ line }}</span>
-            </div>
-          </article>
+          <RouterLink
+            v-for="talk in day.talks"
+            :key="talk.tema"
+            class="programa-xarrada-link"
+            :to="{ name: 'programacio-detall', params: { section: 'xarrades', slug: slugifyProgramacioTitle(talk.tema) } }"
+          >
+            <article class="programa-xarrada">
+              <div class="programa-xarrada-body">
+                <h2 class="programa-xarrada-tema">{{ talk.tema }}</h2>
+
+                <div class="programa-xarrada-participants">
+                  <span
+                    v-for="line in getXarradaParticipants(talk)"
+                    :key="line"
+                    class="programa-xarrada-line"
+                  >
+                    {{ line }}
+                  </span>
+                </div>
+              </div>
+            </article>
+          </RouterLink>
         </div>
       </div>
     </section>
@@ -475,26 +487,34 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-xarrada {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.8fr);
-  column-gap: 44px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
   padding: 22px clamp(18px, 3vw, 42px) 22px clamp(34px, 5vw, 82px);
+}
+
+.programa-xarrada-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.programa-xarrada-link:hover .programa-xarrada {
+  background: #ffffff;
+}
+
+.programa-xarrada-link:hover .programa-xarrada-tema,
+.programa-xarrada-link:hover .programa-xarrada-line {
+  color: #000000;
 }
 
 .programa-xarrada + .programa-xarrada {
   border-top: 2px solid #ffffff;
 }
 
-.programa-xarrada-col {
+.programa-xarrada-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.programa-xarrada-col--right {
-  align-items: flex-end;
-  text-align: right;
+  gap: 10px;
 }
 
 .programa-xarrada-tema,
@@ -510,8 +530,16 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-xarrada-tema {
-  margin-bottom: 0.35em;
+  margin: 0;
   width: 100%;
+  white-space: nowrap;
+}
+
+.programa-xarrada-participants {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
 }
 
 .programa-xarrada-tema:hover {
@@ -651,8 +679,6 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   }
 
   .programa-xarrada {
-    grid-template-columns: minmax(0, 1fr) minmax(130px, 0.58fr);
-    column-gap: 18px;
     padding: 14px 12px 14px 18px;
   }
 
@@ -660,6 +686,10 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   .programa-xarrada-line {
     font-size: clamp(14px, 4.8vw, 22px);
     line-height: 1.16;
+  }
+
+  .programa-xarrada-participants {
+    gap: 4px;
   }
 
   .programa-general {
