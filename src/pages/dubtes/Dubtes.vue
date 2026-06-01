@@ -3,24 +3,74 @@ import { ref } from "vue";
 
 const faqs = [
   {
-    question: "COM ACCEDIR AL FESTIVAL?",
+    question: "Com accedisc al festival?",
     answer:
-      "Text de prova. Ací anirà la resposta definitiva sobre com arribar i entrar al festival.",
+      "L’accés al festival es farà mitjançant el codi QR que rebràs amb la confirmació de la teua entrada. En arribar al recinte, el personal validarà el teu QR i se’t col·locarà una polsera identificativa.",
   },
   {
-    question: "NORMES DEL FESTIVAL",
+    question: "Puc eixir i tornar a entrar?",
     answer:
-      "Text de prova. Ací anirà la resposta definitiva amb les normes i recomanacions del festival.",
+      "Sí. La polsera que rebràs en accedir al festival et permetrà entrar i eixir del recinte durant la jornada. És important conservar-la en bon estat i portar-la visible en tot moment.",
   },
   {
-    question: "ON ES COMPRA EL MERCH?",
+    question: "Hi ha zona d’acampada?",
     answer:
-      "Text de prova. Ací anirà la resposta definitiva sobre on i com comprar el merch.",
+      "No. El festival no disposa de zona d’acampada ni d’espais habilitats per a pernoctar.",
   },
   {
-    question: "HI HA ZONA D'ACAMPADA?",
+    question: "On puc comprar el merch oficial del festival?",
     answer:
-      "Text de prova. Ací anirà la resposta definitiva sobre una altra pregunta freqüent del festival.",
+      "El punt de venda de merch oficial es trobarà en un dels estands del pati del festival, al costat de la zona de food trucks.",
+  },
+  {
+    question: "Hi haurà menjar i beguda dins del recinte?",
+    answer:
+      "Sí. El festival comptarà amb una zona de food trucks amb diferents opcions gastronòmiques i de beguda.",
+  },
+  {
+    question: "Hi haurà opcions per a persones amb intoleràncies o dietes específiques?",
+    answer:
+      "Sí. Alguns dels punts de restauració oferiran opcions vegetarianes, veganes i adaptades a diferents necessitats alimentàries.",
+  },
+  {
+    question: "Es podrà pagar amb targeta?",
+    answer:
+      "Sí. La majoria dels estands acceptaran pagaments amb targeta, tot i que es recomana portar algun mètode de pagament alternatiu per si hi haguera incidències puntuals.",
+  },
+  {
+    question: "Què passa si perd la meua entrada?",
+    answer:
+      "Si no trobes el correu amb la teua entrada, revisa la carpeta de correu brossa. Si el problema continua, posa’t en contacte amb l’organització abans de l’esdeveniment.",
+  },
+  {
+    question: "Puc entrar amb menjar o beguda de fora?",
+    answer:
+      "No es permetrà l’entrada de menjar ni beguda de l’exterior, excepte en casos justificats per motius mèdics o necessitats especials.",
+  },
+  {
+    question: "Hi haurà servei d’assistència o punt d’informació?",
+    answer:
+      "Sí. Durant tot el festival hi haurà un punt d’informació on podràs resoldre dubtes, consultar activitats o comunicar qualsevol incidència.",
+  },
+  {
+    question: "El festival és accessible?",
+    answer:
+      "Sí. Treballem perquè el festival siga un espai accessible i inclusiu per a totes les persones. Si tens alguna necessitat específica, et recomanem contactar amb l’organització amb antelació.",
+  },
+  {
+    question: "Què he de fer si perd algun objecte?",
+    answer:
+      "Els objectes trobats es dipositaran al punt d’informació. Si has perdut alguna cosa, adreça’t allí perquè puguen ajudar-te.",
+  },
+  {
+    question: "Es poden fer fotografies i vídeos?",
+    answer:
+      "Sí. Les persones assistents poden fer fotografies i vídeos per a ús personal, sempre respectant la privacitat i el consentiment de les altres persones assistents.",
+  },
+  {
+    question: "Què passa si plou?",
+    answer:
+      "El festival es mantindrà sempre que les condicions meteorològiques ho permeten i no comprometen la seguretat de les persones assistents. Qualsevol canvi important serà comunicat pels canals oficials del festival.",
   },
 ];
 
