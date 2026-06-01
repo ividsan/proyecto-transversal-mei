@@ -47,18 +47,18 @@ const musicProgram: ProgramDay<ProgramTextItem>[] = [
       { text: "AL·LÈRGIQUES AL POL·LEN", ruta: "/artista/allerqiques-al-pollen" },
       { text: "LA ÉLITE", ruta: "/artista/la-elite" },
       { text: "ZETAK", ruta: "/artista/zetak" },
-      { text: "BRIATZONTIFA" },
+      { text: "BRIATZONTIFA", ruta: "/artista/briatzontifa" },
     ] satisfies ProgramTextItem[],
   },
   {
     dia: "25",
     elements: [
-      { text: "AMARAL" },
-      { text: "LÁGRIMAS DE SANGRE" },
+      { text: "AMARAL", ruta: "/artista/amaral" },
+      { text: "LÁGRIMAS DE SANGRE", ruta: "/artista/lagrimas-de-sangre" },
       { text: "FADES", ruta: "/artista/fades" },
       { text: "LA GOSSA SORDA", ruta: "/artista/la-gossa-sorda" },
       { text: "JIMENA AMARILLO", ruta: "/artista/jimena-amarillo" },
-      { text: "ARREAK" },
+      { text: "ARREAK", ruta: "/artista/arreak" },
     ] satisfies ProgramTextItem[],
   },
 ]
@@ -206,13 +206,15 @@ const generalDayButtons = [
   { id: "diumenge", label: "DIUMENGE 25" },
 ] as const
 
-const generalDayMap = {
-  divendres: generalProgram[0],
-  dissabte: generalProgram[1],
-  diumenge: generalProgram[2],
-} as const
+const generalDayMap: Record<GeneralDayKey, GeneralProgramDay> = {
+  divendres: generalProgram[0]!,
+  dissabte: generalProgram[1]!,
+  diumenge: generalProgram[2]!,
+}
 
-const currentGeneralDay = computed(() => generalDayMap[generalDay.value])
+const currentGeneralDay = computed<GeneralProgramDay>(
+  () => generalDayMap[generalDay.value] ?? generalDayMap.divendres,
+)
 
 </script>
 

@@ -5,6 +5,7 @@ import SiteFooter from "@/components/SiteFooter.vue"
 
 const route = useRoute()
 const isLightHeader = computed(() => route.name === "contacte" || route.name === "merch" || route.name === "artista-detalle")
+const isQueSomActive = computed(() => route.path === "/" && route.hash === "#que-som")
 </script>
 
 <template>
@@ -15,7 +16,11 @@ const isLightHeader = computed(() => route.name === "contacte" || route.name ===
       </RouterLink>
 
       <nav class="site-nav" aria-label="Navegación principal">
-        <RouterLink class="site-nav-link site-nav-link--left" :to="{ path: '/', hash: '#que-som' }" exact-active-class="is-active">
+        <RouterLink
+          class="site-nav-link site-nav-link--left"
+          :class="{ 'is-active': isQueSomActive }"
+          :to="{ path: '/', hash: '#que-som' }"
+        >
           QUÉ SOM
         </RouterLink>
         <RouterLink class="site-nav-link" to="/dubtes" exact-active-class="is-active">DUBTES</RouterLink>

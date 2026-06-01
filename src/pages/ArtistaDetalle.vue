@@ -6,10 +6,19 @@ import { getArtistBySlug } from "@/data/artists";
 const route = useRoute();
 const slug = computed(() => String(route.params.slug ?? ""));
 const artist = computed(() => getArtistBySlug(slug.value));
+const fallbackArtistImage = "/artistesHome/mushkaEditada.png";
+const artistImage = computed(() => artist.value?.image ?? fallbackArtistImage);
 
 const instagramHandle = computed(() =>
   artist.value ? artist.value.instagram.replace("@", "") : ""
 );
+
+function handleArtistImageError(event: Event) {
+  const imageElement = event.target as HTMLImageElement | null;
+  if (imageElement) {
+    imageElement.src = fallbackArtistImage;
+  }
+}
 </script>
 
 <template>
@@ -34,7 +43,12 @@ const instagramHandle = computed(() =>
           />
 
           <figure class="artist-image-wrap">
-            <img :src="artist.image" :alt="artist.name" class="artist-image" />
+            <img
+              :src="artistImage"
+              :alt="artist.name"
+              class="artist-image"
+              @error="handleArtistImageError"
+            />
           </figure>
         </div>
 

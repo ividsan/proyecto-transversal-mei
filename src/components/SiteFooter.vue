@@ -22,15 +22,15 @@ const leftLinks = [
 
 const rightLinks = [
   {
+    label: "NORMES DEL FESTIVAL",
+    to: "/normes-del-festival",
+  },
+  {
     label: "POLÍTICA DE PRIVACITAT",
     href: "/",
   },
   {
-    label: "POLÍTICA DE COOKIES",
-    href: "/",
-  },
-  {
-    label: "TOTS DELS DRETS RESERVATS",
+    label: "TOTS ELS DRETS RESERVATS",
     href: "/",
   },
   {
@@ -59,16 +59,24 @@ const rightLinks = [
         </div>
 
         <div class="space-y-3 lg:justify-self-end">
-          <a
-            v-for="item in rightLinks"
-            :key="item.label"
-            :href="item.href"
-            class="block w-fit text-[clamp(13px,1.2vw,18px)] leading-[1.35] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color,text-underline-offset] hover:underline hover:decoration-black focus-visible:underline focus-visible:decoration-black active:underline active:decoration-black lg:ml-auto"
-            :target="item.external ? '_blank' : undefined"
-            :rel="item.external ? 'noreferrer noopener' : undefined"
-          >
-            {{ item.label }}
-          </a>
+          <template v-for="item in rightLinks" :key="item.label">
+            <RouterLink
+              v-if="item.to"
+              :to="item.to"
+              class="block w-fit text-[clamp(13px,1.2vw,18px)] leading-[1.35] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color,text-underline-offset] hover:underline hover:decoration-black focus-visible:underline focus-visible:decoration-black active:underline active:decoration-black lg:ml-auto"
+            >
+              {{ item.label }}
+            </RouterLink>
+            <a
+              v-else
+              :href="item.href"
+              class="block w-fit text-[clamp(13px,1.2vw,18px)] leading-[1.35] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color,text-underline-offset] hover:underline hover:decoration-black focus-visible:underline focus-visible:decoration-black active:underline active:decoration-black lg:ml-auto"
+              :target="item.external ? '_blank' : undefined"
+              :rel="item.external ? 'noreferrer noopener' : undefined"
+            >
+              {{ item.label }}
+            </a>
+          </template>
         </div>
       </div>
 

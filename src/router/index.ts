@@ -6,6 +6,7 @@ import ProgramacioDetall from "@/pages/programacio/ProgramacioDetall.vue";
 import Contacte from "@/pages/contacte/Contacte.vue";
 import Merch from "@/pages/merch/Merch.vue";
 import Dubtes from "@/pages/dubtes/Dubtes.vue";
+import NormesFestival from "@/pages/normes-festival/NormesFestival.vue";
 import ArtistaDetalle from "@/pages/ArtistaDetalle.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -65,6 +66,11 @@ export const router = createRouter({
       path: "/dubtes",
       name: "dubtes",
       component: Dubtes,
+    },
+    {
+      path: "/normes-del-festival",
+      name: "normes-festival",
+      component: NormesFestival,
     },
     {
       path: "/merch",
