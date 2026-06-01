@@ -20,6 +20,8 @@
             <label class="label" for="missatge">Missatge</label>
             <textarea id="missatge" class="input input--message"></textarea>
           </div>
+
+          <button class="send-button" type="button">Enviar</button>
         </form>
       </div>
 
@@ -111,6 +113,7 @@
         </details>
       </div>
 
+      <img class="contact-logo" src="/imagenes/logo-esclat-blanco.png" alt="ESCLAT" />
       <img class="message-pattern" src="/iconos/tramadoArtista.svg" alt="" aria-hidden="true" />
     </section>
   </main>
@@ -122,7 +125,8 @@
   min-height: 100vh;
   background-color: #ffffff;
   padding: 36px clamp(24px, 5vw, 72px) 56px;
-  overflow: hidden;
+  overflow: visible;
+  isolation: isolate;
 }
 
 .layout {
@@ -132,7 +136,8 @@
   width: min(100%, 1320px);
   margin: 0 auto;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  min-height: 1500px;
 }
 
 .col-right {
@@ -186,17 +191,56 @@
   resize: none;
 }
 
+.send-button {
+  margin-top: -2px;
+  align-self: flex-start;
+  border: 1px solid #000000;
+  background: #ffffff;
+  color: #000000;
+  padding: 12px 18px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.send-button:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.send-button:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+.contact-logo {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  display: block;
+  width: min(72vw, 1180px);
+  max-width: 1180px;
+  height: auto;
+  z-index: 2;
+  filter: invert(1);
+  pointer-events: none;
+}
+
 .message-pattern {
   position: absolute;
   left: 50%;
-  top: -240px;
+  top: 240px;
   transform: translateX(-50%);
   display: block;
-  width: min(170vw, 2200px);
-  max-width: 2200px;
+  width: min(80vw, 980px);
+  max-width: 980px;
   height: auto;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
+  opacity: 0.95;
 }
 
 .community-title {
@@ -264,7 +308,10 @@ details[open] .community-chevron {
   gap: 22px;
   max-width: 580px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  background: #ffffff;
+  padding: 2px 0 0 22px;
+  margin-left: -22px;
 }
 
 .community :deep([data-slot="select-content"]) {
@@ -361,6 +408,17 @@ details[open] .community-chevron {
   font-weight: 400;
   letter-spacing: 0.02em;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.subscribe:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.subscribe:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
 }
 
 @media (max-width: 900px) {
@@ -371,6 +429,7 @@ details[open] .community-chevron {
   .layout {
     grid-template-columns: 1fr;
     gap: 44px;
+    min-height: 1900px;
   }
 
   .title,
@@ -384,9 +443,14 @@ details[open] .community-chevron {
   }
 
   .message-pattern {
-    top: -160px;
-    width: min(190vw, 1500px);
-    max-width: 1500px;
+    top: 190px;
+    width: min(92vw, 760px);
+    max-width: 760px;
+  }
+
+  .contact-logo {
+    bottom: 24px;
+    width: min(96vw, 940px);
   }
 }
 </style>
