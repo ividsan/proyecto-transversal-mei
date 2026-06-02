@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue"
 import { RouterLink, useRoute } from "vue-router"
 import { slugifyProgramacioTitle } from "@/data/programacio"
@@ -175,18 +175,18 @@ const generalProgram: GeneralProgramDay[] = [
     numero: "23",
     dia: "Viernes 23 de Octubre",
     items: [
-      { hora: "12:00 – 12:45", activitat: "Acte d'inauguració del festival", espai: "Patio 2" },
-      { hora: "12:45 – 14:00", activitat: "Xarrada: Identitat de poble", espai: "Sala La Factoria" },
-      { hora: "12:00 – 14:00", activitat: "Taller de Serigrafia Autogestionada", espai: "Patio 1" },
-      { hora: "13:00 – 14:00", activitat: "Sandra Monfort", espai: "Patio 2" },
-      { hora: "15:00 – 16:00", activitat: "Nerve Agent", espai: "Platea" },
-      { hora: "16:00 – 18:00", activitat: "Collage Analògic i Fanzine", espai: "Visual Room" },
-      { hora: "17:00 – 18:00", activitat: "Julieta", espai: "Patio 2" },
-      { hora: "18:30 – 20:00", activitat: "Xarrada: Cultura alternativa i internet", espai: "Sala La Factoria" },
-      { hora: "19:30 – 20:45", activitat: "Els Catarres", espai: "Platea" },
-      { hora: "22:00 – 23:15", activitat: "Judeline", espai: "Patio 2" },
-      { hora: "00:30 – 02:00", activitat: "Carolina Durante", espai: "Platea" },
-      { hora: "02:00 – 03:00", activitat: "Micro obert", espai: "Patio 2" },
+      { hora: "12.00-12.45", activitat: "Acte d'inauguració del festival", espai: "Patio 2" },
+      { hora: "12.45-14.00", activitat: "Xarrada: Identitat de poble", espai: "Sala La Factoria" },
+      { hora: "12.00-14.00", activitat: "Taller de Serigrafia Autogestionada", espai: "Patio 1" },
+      { hora: "13.00-14.00", activitat: "Sandra Monfort", espai: "Patio 2" },
+      { hora: "15.00-16.00", activitat: "Nerve Agent", espai: "Platea" },
+      { hora: "16.00-18.00", activitat: "Collage Analògic i Fanzine", espai: "Visual Room" },
+      { hora: "17.00-18.00", activitat: "Julieta", espai: "Patio 2" },
+      { hora: "18.30-20.00", activitat: "Xarrada: Cultura alternativa i internet", espai: "Sala La Factoria" },
+      { hora: "19.30-20.45", activitat: "Els Catarres", espai: "Platea" },
+      { hora: "22.00-23.15", activitat: "Judeline", espai: "Patio 2" },
+      { hora: "00.30-02.00", activitat: "Carolina Durante", espai: "Platea" },
+      { hora: "02.00-03.00", activitat: "Micro obert", espai: "Patio 2" },
     ],
   },
   {
@@ -194,16 +194,16 @@ const generalProgram: GeneralProgramDay[] = [
     numero: "24",
     dia: "Dissabte 24 d'Octubre",
     items: [
-      { hora: "12:00 – 14:00", activitat: "Mercat de segona mà", espai: "Patio 1" },
-      { hora: "13:00 – 14:00", activitat: "Muska", espai: "Patio 2" },
-      { hora: "15:00 – 16:15", activitat: "La Èlite", espai: "Platea" },
-      { hora: "16:00 – 18:00", activitat: "Taller de música experimental", espai: "Visual Room" },
-      { hora: "17:00 – 18:00", activitat: "Sen Senra", espai: "Patio 2" },
-      { hora: "18:00 – 19:30", activitat: "Xarrada: Disseny, art i gràfica", espai: "Sala Polivalent" },
-      { hora: "19:30 – 20:45", activitat: "Fades", espai: "Platea" },
-      { hora: "22:00 – 23:30", activitat: "Amaia", espai: "Patio 2" },
-      { hora: "00:30 – 02:00", activitat: "Zetak", espai: "Platea" },
-      { hora: "02:00 – 03:00", activitat: "Micro obert", espai: "Patio 2" },
+      { hora: "12.00-14.00", activitat: "Mercat de segona mà", espai: "Patio 1" },
+      { hora: "13.00-14.00", activitat: "Muska", espai: "Patio 2" },
+      { hora: "15.00-16.15", activitat: "La Èlite", espai: "Platea" },
+      { hora: "16.00-18.00", activitat: "Taller de música experimental", espai: "Visual Room" },
+      { hora: "17.00-18.00", activitat: "Sen Senra", espai: "Patio 2" },
+      { hora: "18.00-19.30", activitat: "Xarrada: Disseny, art i gràfica", espai: "Sala Polivalent" },
+      { hora: "19.30-20.45", activitat: "Fades", espai: "Platea" },
+      { hora: "22.00-23.30", activitat: "Amaia", espai: "Patio 2" },
+      { hora: "00.30-02.00", activitat: "Zetak", espai: "Platea" },
+      { hora: "02.00-03.00", activitat: "Micro obert", espai: "Patio 2" },
     ],
   },
   {
@@ -211,16 +211,16 @@ const generalProgram: GeneralProgramDay[] = [
     numero: "25",
     dia: "Diumenge 25 d'Octubre",
     items: [
-      { hora: "12:00 – 14:00", activitat: "Taller de joies reciclades", espai: "Patio 1" },
-      { hora: "13:00 – 14:00", activitat: "Al·lèrgiques al Pol·len", espai: "Patio 2" },
-      { hora: "15:00 – 16:15", activitat: "Arreak", espai: "Platea" },
-      { hora: "16:00 – 18:00", activitat: "Taller de feminisme", espai: "Visual Room" },
-      { hora: "17:00 – 18:00", activitat: "Jimena Amarillo", espai: "Patio 2" },
-      { hora: "18:00 – 19:30", activitat: "Xarrada: Feminisme", espai: "Sala La Factoria" },
-      { hora: "19:30 – 20:45", activitat: "La Gossa Sorda", espai: "Platea" },
-      { hora: "22:00 – 23:30", activitat: "Amaral", espai: "Patio 2" },
-      { hora: "00:30 – 02:00", activitat: "Làgrimes de Sang", espai: "Platea" },
-      { hora: "02:00 – 03:00", activitat: "Micro obert", espai: "Patio 2" },
+      { hora: "12.00-14.00", activitat: "Taller de joies reciclades", espai: "Patio 1" },
+      { hora: "13.00-14.00", activitat: "Al·lèrgiques al Pol·len", espai: "Patio 2" },
+      { hora: "15.00-16.15", activitat: "Arreak", espai: "Platea" },
+      { hora: "16.00-18.00", activitat: "Taller de feminisme", espai: "Visual Room" },
+      { hora: "17.00-18.00", activitat: "Jimena Amarillo", espai: "Patio 2" },
+      { hora: "18.00-19.30", activitat: "Xarrada: Feminisme", espai: "Sala La Factoria" },
+      { hora: "19.30-20.45", activitat: "La Gossa Sorda", espai: "Platea" },
+      { hora: "22.00-23.30", activitat: "Amaral", espai: "Patio 2" },
+      { hora: "00.30-02.00", activitat: "Làgrimes de Sang", espai: "Platea" },
+      { hora: "02.00-03.00", activitat: "Micro obert", espai: "Patio 2" },
     ],
   },
 ]
@@ -341,7 +341,9 @@ const currentGeneralDay = computed<GeneralProgramDay>(
         <div class="programa-general-content">
           <div v-if="currentGeneralDay.items.length" class="programa-general-table" role="table" :aria-label="currentGeneralDay.dia">
             <div class="programa-general-head" role="row">
-              <div class="programa-general-cell programa-general-cell--head" role="columnheader">Hora</div>
+              <div class="programa-general-cell programa-general-cell--head programa-general-cell--hour" role="columnheader">
+                Hora
+              </div>
               <div class="programa-general-cell programa-general-cell--head" role="columnheader">Activitat</div>
               <div class="programa-general-cell programa-general-cell--head" role="columnheader">Espai</div>
             </div>
@@ -352,8 +354,8 @@ const currentGeneralDay = computed<GeneralProgramDay>(
               class="programa-general-row"
               role="row"
             >
-              <div class="programa-general-cell" role="cell">{{ item.hora }}</div>
-              <div class="programa-general-cell" role="cell">
+              <div class="programa-general-cell programa-general-cell--hour" role="cell">{{ item.hora }}</div>
+              <div class="programa-general-cell programa-general-cell--activity" role="cell">
                 <span v-if="item.activitat.startsWith('Xarrada: ')">
                   Xarrada: <em>{{ item.activitat.slice(9) }}</em>
                 </span>
@@ -421,11 +423,26 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   display: grid;
   grid-template-columns: minmax(170px, 0.48fr) minmax(0, 1fr);
   min-height: 250px;
-  border-top: 2px solid #ffffff;
+  position: relative;
 }
 
 .programa-dia:last-child {
   border-bottom: 2px solid #ffffff;
+}
+
+.programa-dia.programa-dia--general {
+  border-bottom: 0;
+}
+
+.programa-dia::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -180px;
+  height: 1px;
+  background: #ffffff;
+  pointer-events: none;
 }
 
 .programa-dia-numero {
@@ -548,7 +565,7 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-general {
-  width: min(100%, 1180px);
+  width: min(100%, 1280px);
   margin: 48px auto 0;
   color: #ffffff;
 }
@@ -577,26 +594,22 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-general-table {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  position: relative;
 }
 
 .programa-general-head,
 .programa-general-row {
   display: grid;
-  grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1.6fr) minmax(160px, 0.7fr);
+  grid-template-columns: minmax(130px, 0.65fr) minmax(0, 2.1fr) minmax(130px, 0.65fr);
+  column-gap: 112px;
 }
 
 .programa-general-head {
-  border-bottom: 2px solid #ffffff;
+  position: relative;
 }
 
 .programa-general-row {
-  border-bottom: 2px solid #ffffff;
-}
-
-.programa-general-row:last-child {
-  border-bottom: 0;
+  position: relative;
 }
 
 .programa-general-cell {
@@ -619,6 +632,14 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   text-transform: uppercase;
 }
 
+.programa-general-cell--hour {
+  white-space: nowrap;
+}
+
+.programa-general-cell--activity {
+  white-space: nowrap;
+}
+
 .programa-general-cell em {
   font-style: italic;
 }
@@ -628,12 +649,37 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-general-empty {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
+  position: relative;
   padding: 22px clamp(18px, 3vw, 42px) 22px clamp(34px, 5vw, 82px);
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   font-size: clamp(16px, 1.8vw, 28px);
   color: #ffffff;
+}
+
+.programa-general-head::after,
+.programa-general-row::after,
+.programa-general-empty::before,
+.programa-general-empty::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -180px;
+  height: 1px;
+  background: #ffffff;
+  pointer-events: none;
+}
+
+.programa-general-empty::before {
+  top: 0;
+}
+
+.programa-general-empty::after {
+  bottom: 0;
+}
+
+.programa-general-head::after,
+.programa-general-row::after {
+  bottom: 0;
 }
 
 @media (max-width: 720px) {
@@ -707,7 +753,8 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 
   .programa-general-head,
   .programa-general-row {
-    grid-template-columns: 84px minmax(0, 1fr) 92px;
+    grid-template-columns: 78px minmax(0, 1.85fr) 78px;
+    column-gap: 34px;
   }
 
   .programa-general-cell {
