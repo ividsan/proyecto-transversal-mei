@@ -7,6 +7,10 @@ const faqs = [
     question: "COM ARRIBAR AL FESTIVAL?",
   },
   {
+    kind: "space",
+    question: "EL NOSTRE ESPAI",
+  },
+  {
     question: "Com accedisc al festival?",
     answer:
       "L'accés al festival es farà mitjançant el codi QR que rebràs amb la confirmació de la teua entrada. En arribar al recinte, el personal validarà el teu QR i se't col·locarà una polsera identificativa.",
@@ -138,6 +142,24 @@ function toggleFaq(index: number) {
                 </div>
               </div>
             </template>
+            <template v-else-if="faq.kind === 'space'">
+              <div class="space-panel">
+                <figure class="space-image-wrap">
+                  <img class="space-image" src="/espai.png" alt="Plànol de l'espai del festival" />
+                </figure>
+
+                <div class="space-list-wrap">
+                  <ul class="space-list" aria-label="Espais del festival">
+                    <li>01_LA POLIVALENT</li>
+                    <li>03_FACTORÍA</li>
+                    <li>04_VISUAL ROOM</li>
+                    <li>05_SALA DE EXPOSICIONS</li>
+                    <li>06_PATI 1</li>
+                    <li>07_PATI 2</li>
+                  </ul>
+                </div>
+              </div>
+            </template>
             <template v-else>
               <p class="faq-answer">{{ faq.answer }}</p>
             </template>
@@ -246,18 +268,6 @@ function toggleFaq(index: number) {
   height: 100%;
 }
 
-.arrival-title {
-  margin: 0;
-  color: #ffffff;
-  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(1.2rem, 1.9vw, 1.8rem);
-  font-weight: 400;
-  font-stretch: semi-expanded;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 .arrival-text {
   margin: 0;
   color: #f4efe8;
@@ -317,6 +327,50 @@ function toggleFaq(index: number) {
   border: 0;
 }
 
+.space-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.9fr);
+  gap: 0.1px;
+  align-items: start;
+}
+
+.space-image-wrap {
+  margin: 0;
+  min-width: 0;
+  grid-column: 2;
+}
+
+.space-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.space-list-wrap {
+  display: flex;
+  align-items: flex-start;
+  margin-top: -340px;
+  margin-left: 16px;
+  justify-content: flex-start;
+  grid-column: 1;
+}
+
+.space-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #f4efe8;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 640px) {
   .page {
     padding: 42px 20px 72px;
@@ -341,6 +395,15 @@ function toggleFaq(index: number) {
   .arrival-map,
   .arrival-map iframe {
     min-height: 260px;
+  }
+
+  .space-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .space-image-wrap,
+  .space-list-wrap {
+    grid-column: auto;
   }
 }
 </style>
