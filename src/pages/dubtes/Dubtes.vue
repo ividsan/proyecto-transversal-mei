@@ -3,9 +3,13 @@ import { ref } from "vue";
 
 const faqs = [
   {
+    kind: "arrival",
+    question: "COM ARRIBAR AL FESTIVAL?",
+  },
+  {
     question: "Com accedisc al festival?",
     answer:
-      "L’accés al festival es farà mitjançant el codi QR que rebràs amb la confirmació de la teua entrada. En arribar al recinte, el personal validarà el teu QR i se’t col·locarà una polsera identificativa.",
+      "L'accés al festival es farà mitjançant el codi QR que rebràs amb la confirmació de la teua entrada. En arribar al recinte, el personal validarà el teu QR i se't col·locarà una polsera identificativa.",
   },
   {
     question: "Puc eixir i tornar a entrar?",
@@ -13,9 +17,9 @@ const faqs = [
       "Sí. La polsera que rebràs en accedir al festival et permetrà entrar i eixir del recinte durant la jornada. És important conservar-la en bon estat i portar-la visible en tot moment.",
   },
   {
-    question: "Hi ha zona d’acampada?",
+    question: "Hi ha zona d'acampada?",
     answer:
-      "No. El festival no disposa de zona d’acampada ni d’espais habilitats per a pernoctar.",
+      "No. El festival no disposa de zona d'acampada ni d'espais habilitats per a pernoctar.",
   },
   {
     question: "On puc comprar el merch oficial del festival?",
@@ -40,27 +44,27 @@ const faqs = [
   {
     question: "Què passa si perd la meua entrada?",
     answer:
-      "Si no trobes el correu amb la teua entrada, revisa la carpeta de correu brossa. Si el problema continua, posa’t en contacte amb l’organització abans de l’esdeveniment.",
+      "Si no trobes el correu amb la teua entrada, revisa la carpeta de correu brossa. Si el problema continua, posa't en contacte amb l'organització abans de l'esdeveniment.",
   },
   {
     question: "Puc entrar amb menjar o beguda de fora?",
     answer:
-      "No es permetrà l’entrada de menjar ni beguda de l’exterior, excepte en casos justificats per motius mèdics o necessitats especials.",
+      "No es permetrà l'entrada de menjar ni beguda de l'exterior, excepte en casos justificats per motius mèdics o necessitats especials.",
   },
   {
-    question: "Hi haurà servei d’assistència o punt d’informació?",
+    question: "Hi haurà servei d'assistència o punt d'informació?",
     answer:
-      "Sí. Durant tot el festival hi haurà un punt d’informació on podràs resoldre dubtes, consultar activitats o comunicar qualsevol incidència.",
+      "Sí. Durant tot el festival hi haurà un punt d'informació on podràs resoldre dubtes, consultar activitats o comunicar qualsevol incidència.",
   },
   {
     question: "El festival és accessible?",
     answer:
-      "Sí. Treballem perquè el festival siga un espai accessible i inclusiu per a totes les persones. Si tens alguna necessitat específica, et recomanem contactar amb l’organització amb antelació.",
+      "Sí. Treballem perquè el festival siga un espai accessible i inclusiu per a totes les persones. Si tens alguna necessitat específica, et recomanem contactar amb l'organització amb antelació.",
   },
   {
     question: "Què he de fer si perd algun objecte?",
     answer:
-      "Els objectes trobats es dipositaran al punt d’informació. Si has perdut alguna cosa, adreça’t allí perquè puguen ajudar-te.",
+      "Els objectes trobats es dipositaran al punt d'informació. Si has perdut alguna cosa, adreça't allí perquè puguen ajudar-te.",
   },
   {
     question: "Es poden fer fotografies i vídeos?",
@@ -99,7 +103,44 @@ function toggleFaq(index: number) {
           </button>
 
           <div v-show="openIndex === index" class="faq-panel">
-            <p class="faq-answer">{{ faq.answer }}</p>
+            <template v-if="faq.kind === 'arrival'">
+              <div class="arrival-panel">
+                <div class="arrival-copy">
+                  <p class="arrival-text">
+                    El festival se celebra a Las Naves, al barri de Poblats Marítims de València. La ubicació exacta és
+                    Carrer de Joan Verdeguer, 16, 46024 València.
+                  </p>
+
+                  <ul class="arrival-list">
+                    <li><strong>ADREÇA:</strong> Carrer de Joan Verdeguer, 16, 46024 València</li>
+                    <li><strong>RECOMANACIÓ:</strong> Arriba amb antelació per evitar cues i facilitar l'accés.</li>
+                    <li><strong>TRANSPORT:</strong> Prioritza transport públic o desplaçament compartit sempre que pugues.</li>
+                    <li><strong>ABANS DE VINDRE:</strong> Revisa el trajecte i l'estat del trànsit el mateix dia.</li>
+                  </ul>
+
+                  <a
+                    class="arrival-link"
+                    href="https://www.google.com/maps/search/?api=1&query=Carrer%20de%20Joan%20Verdeguer%2C%2016%2C%2046024%20Val%C3%A8ncia"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Obrir a Google Maps
+                  </a>
+                </div>
+
+                <div class="arrival-map" aria-label="Mapa de Las Naves, València">
+                  <iframe
+                    title="Mapa de Las Naves, València"
+                    src="https://www.google.com/maps?q=Carrer%20de%20Joan%20Verdeguer%2C%2016%2C%2046024%20Val%C3%A8ncia&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <p class="faq-answer">{{ faq.answer }}</p>
+            </template>
           </div>
         </article>
       </div>
@@ -191,6 +232,91 @@ function toggleFaq(index: number) {
   line-height: 1.5;
 }
 
+.arrival-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.arrival-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.arrival-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(1.2rem, 1.9vw, 1.8rem);
+  font-weight: 400;
+  font-stretch: semi-expanded;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.arrival-text {
+  margin: 0;
+  color: #f4efe8;
+  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.arrival-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  color: #f4efe8;
+  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.arrival-list li {
+  text-align: left;
+}
+
+.arrival-link {
+  align-self: flex-start;
+  margin-top: auto;
+  border: 1px solid #f7f3eb;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 14px;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.arrival-link:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.arrival-map {
+  min-height: 320px;
+  border: 1px solid #f7f3eb;
+  background: #111111;
+  overflow: hidden;
+}
+
+.arrival-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
 @media (max-width: 640px) {
   .page {
     padding: 42px 20px 72px;
@@ -206,6 +332,15 @@ function toggleFaq(index: number) {
 
   .faq-panel {
     padding: 0 16px 18px;
+  }
+
+  .arrival-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .arrival-map,
+  .arrival-map iframe {
+    min-height: 260px;
   }
 }
 </style>
