@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 import {
   findProgramacioEntry,
+  getGeneralDetail,
   getWorkshopDetail,
   getTalkDetail,
   type ProgramacioTalk,
@@ -17,10 +18,13 @@ const slug = computed(() => String(route.params.slug ?? ""));
 const entry = computed(() => findProgramacioEntry(section.value, slug.value));
 const workshopDetail = computed(() => getWorkshopDetail(slug.value));
 const talkDetail = computed(() => getTalkDetail(slug.value));
+const generalDetail = computed(() => getGeneralDetail(slug.value));
 const talkEntry = computed<ProgramacioTalk | null>(() => {
   return entry.value && "left" in entry.value ? entry.value : null;
 });
-const backSection = computed(() => (section.value === "xarrades" ? "xarrades" : "tallers"));
+const backSection = computed(() =>
+  section.value === "general" ? "general" : section.value === "xarrades" ? "xarrades" : "tallers",
+);
 const talkParticipants = computed(() => {
   if (!talkEntry.value) {
     return [];
@@ -64,7 +68,7 @@ const talkParticipants = computed(() => {
 
       <div class="programacio-detall-grid">
         <article class="programacio-detall-panel programacio-detall-panel--wide">
-          <p class="programacio-detall-panel-title">Què farem</p>
+          <p class="programacio-detall-panel-title">Què farem?</p>
           <p class="programacio-detall-panel-copy">
             {{ workshopDetail?.description ?? "Ben aviat compartirem més informació sobre aquest taller." }}
           </p>
@@ -109,6 +113,49 @@ const talkParticipants = computed(() => {
       </RouterLink>
     </section>
 
+    <section v-else-if="section === 'general' && generalDetail" class="programacio-detall-card">
+      <h1 class="programacio-detall-title">{{ generalDetail.title }}</h1>
+
+      <p class="programacio-detall-intro">
+        {{ generalDetail.intro }}
+      </p>
+
+      <div class="programacio-detall-meta">
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Horari</span>
+          <span class="programacio-meta-value">{{ generalDetail.when }}</span>
+        </div>
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Lloc</span>
+          <span class="programacio-meta-value">{{ generalDetail.place }}</span>
+        </div>
+        <div class="programacio-meta-item">
+          <span class="programacio-meta-label">Tipus</span>
+          <span class="programacio-meta-value">{{ generalDetail.type }}</span>
+        </div>
+      </div>
+
+      <div class="programacio-detall-grid">
+        <article class="programacio-detall-panel programacio-detall-panel--wide">
+          <p class="programacio-detall-panel-title">Descripció</p>
+          <p class="programacio-detall-panel-copy">
+            {{ generalDetail.description }}
+          </p>
+        </article>
+
+        <article class="programacio-detall-panel programacio-detall-panel--wide">
+          <p class="programacio-detall-panel-title">Nota</p>
+          <p class="programacio-detall-panel-copy">
+            {{ generalDetail.note }}
+          </p>
+        </article>
+      </div>
+
+      <RouterLink :to="{ path: '/programacio', query: { section: 'general' } }" class="programacio-detall-back">
+        Tornar al programa
+      </RouterLink>
+    </section>
+
     <section v-else-if="talkEntry" class="programacio-detall-card">
       <h1 class="programacio-detall-title">{{ talkEntry.title }}</h1>
 
@@ -137,7 +184,7 @@ const talkParticipants = computed(() => {
 
       <div class="programacio-detall-grid">
         <article class="programacio-detall-panel programacio-detall-panel--wide">
-          <p class="programacio-detall-panel-title">¿Què es parlarà?</p>
+          <p class="programacio-detall-panel-title">Què es parlarà?</p>
           <p class="programacio-detall-panel-copy">
             {{ talkDetail?.description ?? "Ben aviat compartirem més informació sobre aquesta xarrada." }}
           </p>

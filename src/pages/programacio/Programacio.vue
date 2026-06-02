@@ -61,7 +61,7 @@ const musicProgram: ProgramDay<ProgramTextItem>[] = [
       { text: "ELS CATARRES", ruta: "/artista/els-catarres" },
       { text: "JULIETA", ruta: "/artista/julieta" },
       { text: "SANDRA MONFORT", ruta: "/artista/sandra-monfort" },
-      { text: "MALA GESTIÓ", ruta: "/artista/mala-gestion" },
+      { text: "MALA GESTIÓN", ruta: "/artista/mala-gestion" },
     ] satisfies ProgramTextItem[],
   },
   {
@@ -179,7 +179,7 @@ const generalProgram: GeneralProgramDay[] = [
       { hora: "12.45-14.00", activitat: "Xarrada: Identitat de poble", espai: "Sala La Factoria" },
       { hora: "12.00-14.00", activitat: "Taller de Serigrafia Autogestionada", espai: "Patio 1" },
       { hora: "13.00-14.00", activitat: "Sandra Monfort", espai: "Patio 2" },
-      { hora: "15.00-16.00", activitat: "Nerve Agent", espai: "Platea" },
+      { hora: "15.00-16.00", activitat: "Mala Gestión", espai: "Platea" },
       { hora: "16.00-18.00", activitat: "Collage Analògic i Fanzine", espai: "Visual Room" },
       { hora: "17.00-18.00", activitat: "Julieta", espai: "Patio 2" },
       { hora: "18.30-20.00", activitat: "Xarrada: Cultura alternativa i internet", espai: "Sala La Factoria" },
@@ -245,6 +245,86 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   () => generalDayMap[generalDay.value] ?? generalDayMap.divendres,
 )
 
+type GeneralRouteTarget =
+  | { name: "programacio-detall"; params: { section: "general" | "tallers" | "xarrades"; slug: string } }
+  | { name: "artista-detalle"; params: { slug: string } }
+
+const artistSlugByTitle: Record<string, string> = {
+  "AMAIA": "amaia",
+  "MUSHKAA": "mushkaa",
+  MUSKA: "mushkaa",
+  JUDELINE: "judeline",
+  "ELS CATARRES": "els-catarres",
+  "CAROLINA DURANTE": "carolina-durante",
+  JULIETA: "julieta",
+  "LA ÉLITE": "la-elite",
+  "LA ELITE": "la-elite",
+  ZETAK: "zetak",
+  FADES: "fades",
+  "SANDRA MONFORT": "sandra-monfort",
+  "AL·LÈRGIQUES AL POL·LEN": "allerqiques-al-pollen",
+  "AL.LÈRGIQUES AL POL·LEN": "allerqiques-al-pollen",
+  ARREAK: "arreak",
+  "SEN SENRA": "sen-senra",
+  AMARAL: "amaral",
+  "MALA GESTIÓN": "mala-gestion",
+  "LÁGRIMAS DE SANGRE": "lagrimas-de-sangre",
+  "LAGRIMAS DE SANGRE": "lagrimas-de-sangre",
+}
+
+const generalDetailSlugByTitle: Record<string, string> = {
+  "ACTE D'INAUGURACIÓ DEL FESTIVAL": slugifyProgramacioTitle("Acte d'inauguració del festival"),
+  "MALA GESTIÓN": "mala-gestion",
+  "MERCAT DE SEGONA MÀ": slugifyProgramacioTitle("Mercat de segona mà"),
+}
+
+function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarget {
+  const title = item.activitat.trim()
+  const upperTitle = title.toUpperCase()
+
+  if (upperTitle === "MICRO OBERT") {
+    return {
+      name: "programacio-detall",
+      params: { section: "tallers", slug: slugifyProgramacioTitle("Micro obert") },
+    }
+  }
+
+  if (upperTitle.startsWith("XARRADA: ")) {
+    return {
+      name: "programacio-detall",
+      params: { section: "xarrades", slug: slugifyProgramacioTitle(title.slice(9)) },
+    }
+  }
+
+  if (upperTitle.startsWith("TALLER DE ")) {
+    return {
+      name: "programacio-detall",
+      params: { section: "tallers", slug: slugifyProgramacioTitle(title.slice(10)) },
+    }
+  }
+
+  const artistSlug = artistSlugByTitle[upperTitle]
+  if (artistSlug) {
+    return {
+      name: "artista-detalle",
+      params: { slug: artistSlug },
+    }
+  }
+
+  const generalSlug = generalDetailSlugByTitle[upperTitle]
+  if (generalSlug) {
+    return {
+      name: "programacio-detall",
+      params: { section: "general", slug: generalSlug },
+    }
+  }
+
+  return {
+    name: "programacio-detall",
+    params: { section: "general", slug: slugifyProgramacioTitle(title) },
+  }
+}
+
 </script>
 
 <template>
@@ -295,7 +375,10 @@ const currentGeneralDay = computed<GeneralProgramDay>(
     <section v-else-if="activeSection === 'xarrades'" class="programa-graella" aria-label="Programació de xarrades">
       <div v-for="day in xarradesProgram" :key="day.dia" class="programa-dia programa-dia--xarrades">
         <div class="programa-dia-numero">{{ day.dia }}</div>
-        <div class="programa-xarrades">
+        <div
+          class="programa-xarrades"
+          :class="{ 'programa-xarrades--single': day.talks.length === 1 }"
+        >
           <RouterLink
             v-for="talk in day.talks"
             :key="talk.tema"
@@ -354,19 +437,33 @@ const currentGeneralDay = computed<GeneralProgramDay>(
               class="programa-general-row"
               role="row"
             >
-              <div class="programa-general-cell programa-general-cell--hour" role="cell">{{ item.hora }}</div>
-              <div class="programa-general-cell programa-general-cell--activity" role="cell">
+              <RouterLink
+                class="programa-general-cell programa-general-cell--hour programa-general-link"
+                role="cell"
+                :to="resolveGeneralActivityRoute(item)"
+              >
+                {{ item.hora }}
+              </RouterLink>
+              <RouterLink
+                class="programa-general-cell programa-general-cell--activity programa-general-link"
+                role="cell"
+                :to="resolveGeneralActivityRoute(item)"
+              >
                 <span v-if="item.activitat.startsWith('Xarrada: ')">
                   Xarrada: <em>{{ item.activitat.slice(9) }}</em>
                 </span>
                 <span v-else>{{ item.activitat }}</span>
-              </div>
-              <div class="programa-general-cell programa-general-cell--space" role="cell">
+              </RouterLink>
+              <RouterLink
+                class="programa-general-cell programa-general-cell--space programa-general-link"
+                role="cell"
+                :to="resolveGeneralActivityRoute(item)"
+              >
                 <span v-if="item.espai.startsWith('Patio ')">
                   Pati&nbsp;{{ item.espai.slice(6) }}
                 </span>
                 <span v-else>{{ item.espai }}</span>
-              </div>
+              </RouterLink>
             </div>
           </div>
 
@@ -493,14 +590,27 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 }
 
 .programa-dia--xarrades {
-  min-height: 360px;
+  min-height: 320px;
 }
 
 .programa-xarrades {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  justify-content: space-evenly;
   border-left: 2px solid #ffffff;
+}
+
+.programa-xarrades--single {
+  justify-content: center;
+}
+
+.programa-xarrades--single .programa-xarrada + .programa-xarrada {
+  border-top: 2px solid #ffffff;
+}
+
+.programa-xarrades--single .programa-xarrada {
+  padding-top: 22px;
+  padding-bottom: 22px;
 }
 
 .programa-xarrada {
@@ -640,6 +750,54 @@ const currentGeneralDay = computed<GeneralProgramDay>(
   white-space: nowrap;
 }
 
+.programa-general-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.programa-general-link:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.programa-general-link:hover em {
+  color: #000000;
+}
+
+.programa-general-row:hover .programa-general-link {
+  background: #ffffff;
+  color: #000000;
+}
+
+.programa-general-row:hover .programa-general-cell {
+  position: relative;
+  z-index: 1;
+  color: #000000;
+}
+
+.programa-general-row:hover .programa-general-link em {
+  color: #000000;
+}
+
+.programa-general-row:hover {
+  background: #ffffff;
+}
+
+.programa-general-row:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0 -180px 0 0;
+  background: #ffffff;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .programa-general-cell em {
   font-style: italic;
 }
@@ -680,6 +838,11 @@ const currentGeneralDay = computed<GeneralProgramDay>(
 .programa-general-head::after,
 .programa-general-row::after {
   bottom: 0;
+}
+
+.programa-general-row:last-child::after {
+  left: -415px;
+  right: -180px;
 }
 
 @media (max-width: 720px) {

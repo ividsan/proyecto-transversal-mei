@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { getArtistBySlug } from "@/data/artists";
 
 const route = useRoute();
+const router = useRouter();
 const slug = computed(() => String(route.params.slug ?? ""));
 const artist = computed(() => getArtistBySlug(slug.value));
 const fallbackArtistImage = "/artistesHome/mushkaEditada.png";
@@ -18,6 +19,15 @@ function handleArtistImageError(event: Event) {
   if (imageElement) {
     imageElement.src = fallbackArtistImage;
   }
+}
+
+function goBack() {
+  if (window.history.length > 1) {
+    router.back();
+    return;
+  }
+
+  router.push("/");
 }
 </script>
 
@@ -82,7 +92,7 @@ function handleArtistImageError(event: Event) {
             </a>
           </div>
 
-          <RouterLink to="/" class="back-button">Tornar</RouterLink>
+          <button type="button" class="back-button" @click="goBack">Tornar</button>
         </div>
       </section>
     </section>
@@ -90,7 +100,7 @@ function handleArtistImageError(event: Event) {
     <section v-else class="artist-sheet artist-sheet--empty">
       <p class="empty-label">Artista no disponible</p>
       <p class="empty-title">Aquesta pàgina no existeix.</p>
-      <RouterLink to="/" class="back-button">Tornar a l'inici</RouterLink>
+      <button type="button" class="back-button" @click="goBack">Tornar a l'inici</button>
     </section>
   </main>
 </template>

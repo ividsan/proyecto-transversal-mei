@@ -1,4 +1,4 @@
-export type ProgramacioSection = "tallers" | "xarrades";
+export type ProgramacioSection = "tallers" | "xarrades" | "general";
 
 export interface ProgramacioEntry {
   section: ProgramacioSection;
@@ -27,6 +27,17 @@ export interface ProgramacioTalkDetail {
   duration: string;
   format: string;
   topics: string[];
+  note: string;
+}
+
+export interface ProgramacioGeneralDetail {
+  slug: string;
+  title: string;
+  intro: string;
+  description: string;
+  when: string;
+  place: string;
+  type: string;
   note: string;
 }
 
@@ -274,10 +285,38 @@ export const talkDetails: ProgramacioTalkDetail[] = [
   },
 ];
 
+export const generalDetails: ProgramacioGeneralDetail[] = [
+  {
+    slug: slugifyProgramacioTitle("Acte d'inauguració del festival"),
+    title: "ACTE D'INAUGURACIÓ DEL FESTIVAL",
+    intro: "Benvinguda oficial al festival i punt de partida de la primera jornada.",
+    description:
+      "L'acte inaugural obre la programació amb una presentació de l'edició i una benvinguda a les persones assistents. És el moment d'encetar el cap de setmana i situar els diferents espais del festival abans que comencen les activitats següents.",
+    when: "23.10\n12.00-12.45",
+    place: "Pati 2",
+    type: "Acte inaugural",
+    note: "Després de l'obertura, la jornada continua amb la xarrada Identitat de poble i el taller de serigrafia.",
+  },
+  {
+    slug: slugifyProgramacioTitle("Mercat de segona mà"),
+    title: "MERCAT DE SEGONA MÀ",
+    intro: "Espai de reutilització i intercanvi dins la programació del segon dia.",
+    description:
+      "El mercat convida a donar una segona vida a objectes i peces diverses. És un espai obert per tafanejar, intercanviar i descobrir petites troballes amb una mirada més sostenible i comunitària.",
+    when: "24.10\n12.00-14.00",
+    place: "Pati 1",
+    type: "Mercat",
+    note: "Si tens alguna cosa per vendre o intercanviar, revisa abans les indicacions de l'organització.",
+  },
+];
+
 export function findProgramacioEntry(section: ProgramacioSection, slug: string) {
-  const entries = section === "tallers"
-    ? tallersProgram.flatMap((day) => day.elements)
-    : xarradesProgram.flatMap((day) => day.elements);
+  const entries =
+    section === "tallers"
+      ? tallersProgram.flatMap((day) => day.elements)
+      : section === "xarrades"
+        ? xarradesProgram.flatMap((day) => day.elements)
+        : [];
 
   return entries.find((entry) => entry.slug === slug);
 }
@@ -288,4 +327,8 @@ export function getWorkshopDetail(slug: string) {
 
 export function getTalkDetail(slug: string) {
   return talkDetails.find((entry) => entry.slug === slug);
+}
+
+export function getGeneralDetail(slug: string) {
+  return generalDetails.find((entry) => entry.slug === slug);
 }
