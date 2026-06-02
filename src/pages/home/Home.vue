@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+﻿<script lang="ts" setup>
 import LogoEsclat from "@/components/logoEsclat.vue";
 import ArtistasCarousel from "@/components/ArtistasCarousel.vue";
 import HomeWordsBanner from "@/components/HomeWordsBanner.vue";
@@ -47,9 +47,9 @@ const countdown = computed(() => {
 });
 
 const activeImage = computed(() => homeImages[activeSlideIndex.value]);
-const trackTitle = "Canción epica del momento eyou";
-const trackCover = "/artistesHome/amaralEditada.jpg";
-const trackSrc = "/audio/cancion-epica-del-momento-eyou.mp3";
+const trackTitle = "Tomé Café · Carolina Durante";
+const trackCover = "/artistesHome/carolinaduranteEditada.png";
+const trackSrc = "/audio/tome-cafe-carolina-durante.mp3";
 
 const audioElement = ref<HTMLAudioElement | null>(null);
 const isPlaying = ref(false);
@@ -233,7 +233,7 @@ onBeforeUnmount(() => {
 
         <div class="music-copy">
           <p class="music-title">{{ trackTitle }}</p>
-          <p class="music-subtitle">ESCLAT · AUDIO PLAYER</p>
+          <p class="music-subtitle">ALBUM · ELIGE TU PROPIA AVENTURA</p>
         </div>
       </div>
     </section>
@@ -509,3 +509,5 @@ onBeforeUnmount(() => {
   }
 }
 </style>
+
+
