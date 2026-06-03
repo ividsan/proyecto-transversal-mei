@@ -371,6 +371,22 @@ function toggleFaq(index: number) {
   text-transform: uppercase;
 }
 
+@media (max-width: 900px) {
+  .space-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .space-image-wrap,
+  .space-list-wrap {
+    grid-column: auto;
+  }
+
+  .space-list-wrap {
+    margin-top: 18px;
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .page {
     padding: 42px 20px 72px;
@@ -395,15 +411,6 @@ function toggleFaq(index: number) {
   .arrival-map,
   .arrival-map iframe {
     min-height: 260px;
-  }
-
-  .space-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .space-image-wrap,
-  .space-list-wrap {
-    grid-column: auto;
   }
 }
 </style>

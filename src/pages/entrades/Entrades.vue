@@ -285,6 +285,13 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 }
 
 @media (max-width: 1050px) {
+  .entrades-title {
+    width: 100%;
+    white-space: normal;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
   .entrades-cards {
     grid-template-columns: 1fr;
     max-width: 620px;
@@ -298,6 +305,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
   .entrades-title {
     font-size: 34px;
+    max-width: 14ch;
   }
 
   .entrades-card {
