@@ -207,11 +207,11 @@ function navigateToDetail(slug: string) {
 
 @media (max-width: 768px) {
   .artists-carousel-section {
-    padding: 44px 16px;
+    padding: 30px 14px 0;
   }
 
   .artists-carousel-header {
-    margin-bottom: 28px;
+    margin-bottom: 10px;
   }
 
   .carousel-wrapper {
@@ -241,7 +241,7 @@ function navigateToDetail(slug: string) {
 
 @media (max-width: 480px) {
   .artists-carousel-section {
-    padding: 28px 12px;
+    padding: 22px 12px 0;
   }
 
   .carousel-wrapper {

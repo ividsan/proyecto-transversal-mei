@@ -75,6 +75,7 @@ onBeforeUnmount(() => {
   height: 110vh;
   background: #000000;
   overflow: hidden;
+  overflow-x: clip;
 }
 
 .home-words-sticky {
@@ -126,12 +127,18 @@ onBeforeUnmount(() => {
 
 @media (max-width: 820px) {
   .home-words-section {
-    height: 95vh;
+    height: 62vh;
+  }
+
+  .home-words-sticky {
+    gap: clamp(0.03rem, 0.25vw, 0.12rem);
+    padding: 0;
+    transform: translateY(-24vh);
   }
 
   .word-line {
-    font-size: clamp(4.4rem, 24vw, 8.8rem);
-    letter-spacing: -0.04em;
+    font-size: clamp(3rem, 16vw, 5.6rem);
+    letter-spacing: -0.035em;
   }
 
   .word-line--diversitat {

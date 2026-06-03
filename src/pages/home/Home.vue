@@ -248,6 +248,7 @@ onBeforeUnmount(() => {
   padding-top: 1120px;
   padding-bottom: 84px;
   color: #f5f1ea;
+  overflow-x: clip;
 }
 
 .home-logo {
@@ -280,18 +281,20 @@ onBeforeUnmount(() => {
 
 .countdown-strip {
   width: 100%;
-  height: 112px;
+  min-height: clamp(88px, 8vw, 112px);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  align-content: center;
   justify-content: center;
-  gap: clamp(1rem, 3vw, 3rem);
-  padding: 0 clamp(24px, 5vw, 72px);
+  gap: clamp(0.45rem, 1.4vw, 3rem);
+  padding: clamp(0.6rem, 1.25vw, 0.9rem) clamp(16px, 4vw, 72px);
   background: #ffffff;
   color: #000000;
   overflow: hidden;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(38px, 3vw, 52px);
+  font-size: clamp(14px, 3vw, 52px);
   font-weight: 400;
   font-stretch: semi-expanded;
   letter-spacing: 0.04em;
@@ -300,22 +303,23 @@ onBeforeUnmount(() => {
 
 .countdown-label,
 .countdown-value {
+  flex: 0 0 auto;
   white-space: nowrap;
   line-height: 1;
 }
 
 .about-section {
-  width: min(100%, 1320px);
+  width: min(calc(100% - clamp(24px, 4vw, 72px) * 2), 1320px);
   margin-left: auto;
   margin-right: auto;
-  padding: 112px 0 56px;
+  padding: clamp(64px, 8vw, 112px) 0 clamp(32px, 4vw, 56px);
   box-sizing: border-box;
 }
 
 .about-heading-row {
   display: flex;
   align-items: baseline;
-  gap: 14px;
+  gap: clamp(10px, 1.4vw, 14px);
   width: fit-content;
 }
 
@@ -443,52 +447,33 @@ onBeforeUnmount(() => {
 
 @media (max-width: 820px) {
   .home {
-    padding-top: 940px;
-    padding-bottom: 72px;
+    padding-top: 500px;
+    padding-bottom: 56px;
   }
 
   .home-logo {
-    top: -300px;
+    top: -340px;
     width: min(42rem, 150vw);
   }
 
   .home-carousel {
-    top: 260px;
-    width: min(20rem, 84vw);
-    gap: 0.75rem;
-  }
-
-  .countdown-strip {
-    justify-content: flex-start;
-    gap: 1rem;
-    padding-inline: 0.85rem;
-    font-size: 16px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
-  }
-
-  .countdown-strip::-webkit-scrollbar {
-    display: none;
-  }
-
-  .about-section {
-    width: 100%;
-    padding: 40px 24px 24px;
+    top: 190px;
+    width: min(28rem, 92vw);
+    gap: 0.5rem;
   }
 
   .about-title {
-    font-size: 1.4rem;
+    font-size: clamp(1.25rem, 2.4vw, 1.4rem);
   }
 
   .about-title-bar {
-    width: min(34vw, 140px);
-    height: 18px;
+    width: clamp(92px, 20vw, 140px);
+    height: clamp(14px, 1.8vw, 18px);
     margin-top: 2px;
   }
 
   .about-copy {
-    font-size: 1.15rem;
+    font-size: clamp(0.95rem, 1.6vw, 1rem);
   }
 
   .music-player {
