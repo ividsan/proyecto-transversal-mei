@@ -520,7 +520,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-graella--musica {
-  --programa-separator-overhang: 180px;
+  --programa-separator-overhang: 0px;
   --programa-separator-thickness: 2px;
 }
 
@@ -635,7 +635,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-graella--musica .programa-element:hover::before {
   content: "";
   position: absolute;
-  inset: 0 -180px 0 0;
+  inset: 0 0 0 0;
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -761,7 +761,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   width: min(100%, 1360px);
   margin: 48px auto 0;
   color: #ffffff;
-  --programa-general-overhang: 180px;
+  --programa-general-overhang: 0px;
 }
 
 .programa-dia--general {
@@ -770,6 +770,17 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
 .programa-dia--general::before {
   right: calc(var(--programa-general-overhang) * -1);
+}
+
+.programa-dia--general::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ffffff;
+  pointer-events: none;
 }
 
 .programa-general-content {
@@ -881,7 +892,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-row:hover::before {
   content: "";
   position: absolute;
-  inset: 0 -180px 0 0;
+  inset: 0 0 0 0;
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -915,7 +926,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   content: "";
   position: absolute;
   left: 0;
-  right: -180px;
+  right: 0;
   height: 1px;
   background: #ffffff;
   pointer-events: none;
@@ -935,8 +946,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general-row:last-child::after {
-  left: -415px;
-  right: -180px;
+  left: 0;
+  right: 0;
 }
 
 @media (max-width: 720px) {
@@ -1046,6 +1057,29 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   .programa-general-empty {
     padding: 16px 10px 16px 18px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 721px) {
+  .programa-general-head,
+  .programa-general-row {
+    grid-template-columns: minmax(94px, 0.8fr) minmax(0, 1.75fr) minmax(94px, 0.8fr);
+    column-gap: 10px;
+  }
+
+  .programa-general-cell {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .programa-general-cell--hour {
+    padding-left: 14px;
+    min-width: 94px;
+  }
+
+  .programa-general-cell--head {
+    font-size: 13px;
   }
 }
 </style>
