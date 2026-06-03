@@ -1,11 +1,22 @@
 <script setup lang="ts">
-const products = [
+import { onBeforeUnmount, ref } from "vue";
+
+type MerchProduct = {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  image?: string;
+  images?: string[];
+};
+
+const products: MerchProduct[] = [
   {
     id: 1,
     image: "/merch/totebag.png",
     name: "BOSSA TELA ESCLAT",
     description:
-      "Bossa de tela reutilitzable amb la imatge del festival. Perfecta per a portar el dia a dia amb tu i recordar l’experiència més enllà del recinte.",
+      "Bossa de tela reutilitzable amb la imatge del festival. Perfecta per a portar el dia a dia amb tu i recordar l'experiència més enllà del recinte.",
     price: "20€",
   },
   {
@@ -13,7 +24,7 @@ const products = [
     image: "/merch/tops.png",
     name: "TOP ESCLAT",
     description:
-      "Top exclusiu amb detalls brillants inspirats en l’estètica del festival. Una peça pensada per a destacar i expressar-te amb llibertat.",
+      "Top exclusiu amb detalls brillants inspirats en l'estètica del festival. Una peça pensada per a destacar i expressar-te amb llibertat.",
     price: "12€",
   },
   {
@@ -21,7 +32,7 @@ const products = [
     image: "/merch/tanga.png",
     name: "TANGA ESCLAT",
     description:
-      "Pack de dues tangues amb dissenys exclusius del festival. Comoditat i estil per a portar l’esperit del festival a qualsevol lloc.",
+      "Pack de dues tangues amb dissenys exclusius del festival. Comoditat i estil per a portar l'esperit del festival a qualsevol lloc.",
     price: "6€",
   },
   {
@@ -29,7 +40,7 @@ const products = [
     image: "/merch/llavero.png",
     name: "CLAUER ESCLAT",
     description:
-      "Clauer personalitzable amb charms inspirats en l’univers visual del festival. Un record únic per a emportar-te un trosset de l’experiència.",
+      "Clauer personalitzable amb charms inspirats en l'univers visual del festival. Un record únic per a emportar-te un trosset de l'experiència.",
     price: "4€",
   },
   {
@@ -49,19 +60,19 @@ const products = [
   },
   {
     id: 7,
-    image: "/merch/camiseta-detras.png",
-    name: "CAMISETA ESCLAT 1",
+    images: ["/merch/camiseta-detras.png", "/merch/camiseta-delante.png"],
+    name: "CAMISETA DEL FESTIVAL",
     description:
       "Camiseta de cotó amb el logo del festival i gràfics de gran format. Una peça icònica per a qui vulga portar el festival ben visible.",
     price: "15€",
   },
   {
     id: 8,
-    image: "/merch/camiseta-delante.png",
-    name: "CAMISETA ESCLAT 2",
+    image: "/merch/pegatinas.png",
+    name: "PEGATINES ESCLAT",
     description:
-      "Camiseta de cotó amb una versió més discreta del disseny gràfic del festival. Senzilla, versàtil i fàcil de combinar.",
-    price: "15€",
+      "Col·lecció de pegatines exclusives amb dissenys inspirats en la identitat visual del festival. Perfectes per a personalitzar llibretes, portàtils, fundes o qualsevol objecte i portar l’esperit del festival allà on vages.",
+    price: "4€",
   },
   {
     id: 9,
@@ -72,6 +83,60 @@ const products = [
     price: "6€",
   },
 ];
+
+const activeImageIndexes = ref<Record<number, number>>({});
+const hoverTimers = new Map<number, number>();
+
+function getProductImage(product: MerchProduct) {
+  if (product.images && product.images.length > 0) {
+    const activeImageIndex = activeImageIndexes.value[product.id] ?? 0;
+    return product.images[activeImageIndex] ?? product.images[0];
+  }
+
+  return product.image ?? "";
+}
+
+function startImageCarousel(product: MerchProduct) {
+  if (!product.images || product.images.length < 2) {
+    return;
+  }
+
+  stopImageCarousel(product.id);
+
+  activeImageIndexes.value = {
+    ...activeImageIndexes.value,
+    [product.id]: 0,
+  };
+
+  const timerId = window.setInterval(() => {
+    const currentIndex = activeImageIndexes.value[product.id] ?? 0;
+    activeImageIndexes.value = {
+      ...activeImageIndexes.value,
+      [product.id]: (currentIndex + 1) % product.images!.length,
+    };
+  }, 1100);
+
+  hoverTimers.set(product.id, timerId);
+}
+
+function stopImageCarousel(productId: number) {
+  const timerId = hoverTimers.get(productId);
+
+  if (timerId !== undefined) {
+    window.clearInterval(timerId);
+    hoverTimers.delete(productId);
+  }
+
+  activeImageIndexes.value = {
+    ...activeImageIndexes.value,
+    [productId]: 0,
+  };
+}
+
+onBeforeUnmount(() => {
+  hoverTimers.forEach((timerId) => window.clearInterval(timerId));
+  hoverTimers.clear();
+});
 </script>
 
 <template>
@@ -86,8 +151,12 @@ const products = [
 
     <section class="products-grid" aria-label="Productes de merch">
       <article v-for="product in products" :key="product.id" class="product-card">
-        <figure class="product-image-slot">
-          <img class="product-image" :src="product.image" :alt="product.name" />
+        <figure
+          class="product-image-slot"
+          @mouseenter="startImageCarousel(product)"
+          @mouseleave="stopImageCarousel(product.id)"
+        >
+          <img class="product-image" :src="getProductImage(product)" :alt="product.name" />
         </figure>
         <div class="product-info">
           <div class="product-text">
@@ -173,7 +242,7 @@ const products = [
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.22s ease;
+  transition: transform 0.22s ease, opacity 0.22s ease;
 }
 
 .product-info {
@@ -292,12 +361,16 @@ const products = [
     margin-top: 84px;
     grid-template-columns: 1fr;
     gap: 72px;
-    justify-items: stretch;
+    justify-items: center;
   }
 
   .product-info {
     padding-inline: 0;
     min-height: auto;
+  }
+
+  .product-card {
+    width: min(100%, 340px);
   }
 
   .product-text {

@@ -18,7 +18,7 @@ const leftLinks = [
     label: "NÚMERO DE TELÈFON_ +34 696 696 696",
     href: "tel:+34696696696",
   },
-]
+];
 
 const rightLinks = [
   {
@@ -38,7 +38,7 @@ const rightLinks = [
     href: "https://open.spotify.com/search/esclat",
     external: true,
   },
-]
+];
 </script>
 
 <template>
@@ -82,16 +82,16 @@ const rightLinks = [
 
       <div class="my-10 h-px w-full bg-black/90" aria-hidden="true"></div>
 
-      <div class="grid gap-4 lg:grid-cols-2 lg:items-start">
+      <div class="footer-sponsor-row grid grid-cols-2 gap-4 items-start">
         <p class="text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded]">
           ORGANITZA_
         </p>
-        <p class="text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] lg:justify-self-end">
+        <p class="text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] justify-self-end">
           COL·LABORA_
         </p>
 
         <img
-          class="mt-1 w-full max-w-[1280px] select-none object-contain lg:col-span-2"
+          class="mt-1 w-full max-w-[1280px] select-none object-contain col-span-2"
           src="/iconos/Logos_footer.png"
           alt="Logos de organitza i col·labora"
           loading="lazy"
@@ -100,3 +100,22 @@ const rightLinks = [
     </div>
   </footer>
 </template>
+
+<style scoped>
+@media (max-width: 640px) {
+  .footer-sponsor-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 12px;
+    row-gap: 10px;
+  }
+
+  .footer-sponsor-row p {
+    margin: 0;
+  }
+
+  .footer-sponsor-row p:last-of-type {
+    justify-self: end;
+    text-align: right;
+  }
+}
+</style>

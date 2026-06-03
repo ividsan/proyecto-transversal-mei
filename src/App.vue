@@ -75,7 +75,11 @@ const isQueSomActive = computed(() => route.path === "/" && route.hash === "#que
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: clamp(12px, 2vw, 28px);
   width: 100%;
+  min-width: 0;
+  flex-wrap: wrap;
+  row-gap: 8px;
 }
 
 .site-nav-link {
@@ -83,9 +87,10 @@ const isQueSomActive = computed(() => route.path === "/" && route.hash === "#que
   text-decoration: none;
   letter-spacing: 0.02em;
   white-space: nowrap;
-  font-size: 14px;
+  font-size: clamp(12px, 1vw, 14px);
   font-weight: 400;
   flex: 0 0 auto;
+  line-height: 1.1;
 }
 
 .site-nav-link:hover {
@@ -106,6 +111,39 @@ const isQueSomActive = computed(() => route.path === "/" && route.hash === "#que
 
 .site-header.site-header--light .site-logo-img {
   filter: invert(1);
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 12px;
+    padding: 14px 16px 12px;
+  }
+
+  .site-nav {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    padding: 12px 12px 10px;
+  }
+
+  .site-logo-img {
+    height: 32px;
+  }
+
+  .site-nav {
+    gap: 8px 14px;
+  }
+
+  .site-nav-link {
+    font-size: 11px;
+    letter-spacing: 0.01em;
+  }
 }
 
 .app-main {
