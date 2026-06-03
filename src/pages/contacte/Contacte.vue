@@ -423,18 +423,19 @@ details[open] .community-chevron {
 
 @media (max-width: 900px) {
   .page {
-    padding: 28px 24px 48px;
+    padding: 24px 18px 12px;
   }
 
   .layout {
     grid-template-columns: 1fr;
-    gap: 44px;
-    min-height: 1900px;
+    gap: 34px;
+    min-height: auto;
+    padding-bottom: 0;
   }
 
   .title,
   .community-title {
-    font-size: 38px;
+    font-size: clamp(30px, 8vw, 38px);
   }
 
   .contact-form,
@@ -442,15 +443,112 @@ details[open] .community-chevron {
     max-width: none;
   }
 
+  .contact-form {
+    gap: 18px;
+    margin-top: 26px;
+    margin-bottom: 42px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+    padding: 12px 13px;
+  }
+
+  .input--message {
+    height: 150px;
+  }
+
+  .send-button,
+  .subscribe {
+    font-size: 16px;
+    padding: 11px 16px;
+  }
+
   .message-pattern {
-    top: 190px;
-    width: min(92vw, 760px);
-    max-width: 760px;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: min(100%, 760px);
+    margin: -170px auto -10px;
+    order: 1;
   }
 
   .contact-logo {
-    bottom: 24px;
-    width: min(96vw, 940px);
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: min(100%, 940px);
+    margin: -220px auto 0;
+    order: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 20px 14px 8px;
+  }
+
+  .layout {
+    gap: 30px;
+  }
+
+  .contact-form {
+    margin-bottom: 48px;
+  }
+
+  .col-right {
+    padding-top: 0;
+  }
+
+  .email {
+    font-size: 16px;
+  }
+
+  .community {
+    margin-top: 14px;
+  }
+
+  .community-box {
+    padding: 16px 16px 24px;
+  }
+
+  .community-box-text {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .community-chevron {
+    right: 14px;
+    bottom: 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .community-body {
+    padding: 0;
+    margin-left: 0;
+    gap: 14px;
+  }
+
+  .pronouns {
+    gap: 10px;
+  }
+
+  .pronoun-btn {
+    min-width: 72px;
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  .check,
+  .terms {
+    font-size: 13px;
   }
 }
 </style>
