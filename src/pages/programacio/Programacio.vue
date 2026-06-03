@@ -481,6 +481,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   min-height: 100vh;
   background: #000000;
   padding: 38px 20px 90px;
+  overflow-x: clip;
 }
 
 .programacio-botons {
@@ -757,7 +758,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general {
-  width: min(100%, 1280px);
+  width: min(100%, 1360px);
   margin: 48px auto 0;
   color: #ffffff;
   --programa-general-overhang: 180px;
@@ -797,8 +798,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head,
 .programa-general-row {
   display: grid;
-  grid-template-columns: minmax(130px, 0.65fr) minmax(0, 2.1fr) minmax(130px, 0.65fr);
-  column-gap: 112px;
+  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(160px, 1fr);
+  column-gap: 18px;
 }
 
 .programa-general-head {
@@ -810,27 +811,28 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general-cell {
-  padding: 16px clamp(18px, 3vw, 42px) 16px clamp(34px, 5vw, 82px);
+  padding: 20px 0;
   color: #ffffff;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(16px, 1.8vw, 28px);
+  font-size: clamp(15px, 1.5vw, 24px);
   line-height: 1.12;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .programa-general-cell--head {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(15px, 1.4vw, 22px);
+  font-size: clamp(13px, 1.1vw, 18px);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .programa-general-cell--hour {
   white-space: nowrap;
+  padding-left: clamp(18px, 2.3vw, 40px);
 }
 
 .programa-general-cell--activity {
@@ -891,6 +893,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
 .programa-general-cell--space {
   white-space: nowrap;
+}
+
+.programa-general-head > .programa-general-cell:nth-child(3),
+.programa-general-row > .programa-general-cell:nth-child(3) {
+  padding-left: 0;
 }
 
 .programa-general-empty {
@@ -964,6 +971,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
     font-size: clamp(14px, 4.8vw, 22px);
     padding: 12px 12px 12px 18px;
     letter-spacing: -0.02em;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-dia--xarrades {
@@ -982,6 +991,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   .programa-xarrada-line {
     font-size: clamp(14px, 4.8vw, 22px);
     line-height: 1.16;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-xarrada-participants {
@@ -1003,19 +1014,33 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
   .programa-general-head,
   .programa-general-row {
-    grid-template-columns: 78px minmax(0, 1.85fr) 78px;
-    column-gap: 34px;
+    grid-template-columns: minmax(100px, 0.95fr) minmax(0, 1.9fr) minmax(100px, 0.95fr);
+    column-gap: 14px;
   }
 
   .programa-general-cell {
-    padding: 12px 10px 12px 18px;
-    font-size: 14px;
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  .programa-general-cell--hour {
+    padding-left: 16px;
   }
 
   .programa-general-cell--head {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-size: 13px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 14px;
+  }
+
+  .programa-general-cell--hour {
+    min-width: 92px;
+  }
+
+  .programa-general-cell--activity,
+  .programa-general-cell--space {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-general-empty {
