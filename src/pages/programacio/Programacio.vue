@@ -342,15 +342,17 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
       </button>
     </div>
 
-    <section v-if="activeSection === 'musica'" class="programa-graella" aria-label="Programació de musica">
+    <section v-if="activeSection === 'musica'" class="programa-graella programa-graella--musica" aria-label="Programació de musica">
       <div v-for="day in musicProgram" :key="day.dia" class="programa-dia">
         <div class="programa-dia-numero">{{ day.dia }}</div>
         <div class="programa-elements">
           <template v-for="element in day.elements" :key="element.text">
             <RouterLink v-if="hasRoute(element)" class="programa-element" :to="element.ruta">
-              {{ element.text }}
+              <span class="programa-element-label">{{ element.text }}</span>
             </RouterLink>
-            <span v-else class="programa-element">{{ element.text }}</span>
+            <span v-else class="programa-element">
+              <span class="programa-element-label">{{ element.text }}</span>
+            </span>
           </template>
         </div>
       </div>
@@ -516,6 +518,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   flex-direction: column;
 }
 
+.programa-graella--musica {
+  --programa-separator-overhang: 180px;
+  --programa-separator-thickness: 2px;
+}
+
 .programa-dia {
   display: grid;
   grid-template-columns: minmax(170px, 0.48fr) minmax(0, 1fr);
@@ -536,8 +543,27 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   position: absolute;
   top: 0;
   left: 0;
-  right: -180px;
+  right: calc(var(--programa-separator-overhang, 0px) * -1);
   height: 1px;
+  background: #ffffff;
+  pointer-events: none;
+}
+
+.programa-graella--musica .programa-dia::before {
+  height: var(--programa-separator-thickness);
+}
+
+.programa-graella--musica .programa-dia:last-child {
+  border-bottom: 0;
+}
+
+.programa-graella--musica .programa-dia:last-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: calc(var(--programa-separator-overhang) * -1);
+  bottom: 0;
+  height: var(--programa-separator-thickness);
   background: #ffffff;
   pointer-events: none;
 }
@@ -569,6 +595,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   width: 100%;
   min-height: 0;
   box-sizing: border-box;
+  position: relative;
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
@@ -584,24 +611,64 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   border-bottom: 0;
 }
 
+.programa-graella--musica .programa-element {
+  border-bottom: 0;
+}
+
+.programa-graella--musica .programa-element:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: calc(var(--programa-separator-overhang) * -1);
+  bottom: 0;
+  height: var(--programa-separator-thickness);
+  background: #ffffff;
+  pointer-events: none;
+}
+
+.programa-graella--musica .programa-element:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.programa-graella--musica .programa-element:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0 -180px 0 0;
+  background: #ffffff;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.programa-graella--musica .programa-element {
+  isolation: isolate;
+}
+
+.programa-graella--musica .programa-element-label {
+  position: relative;
+  z-index: 1;
+}
+
 .programa-element:hover {
   background: #ffffff;
   color: #000000;
 }
 
 .programa-dia--xarrades {
-  min-height: 320px;
+  min-height: 0;
 }
 
 .programa-xarrades {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  width: 100%;
+  align-self: stretch;
   border-left: 2px solid #ffffff;
 }
 
 .programa-xarrades--single {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .programa-xarrades--single .programa-xarrada + .programa-xarrada {
@@ -613,25 +680,45 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   padding-bottom: 22px;
 }
 
-.programa-xarrada {
-  display: flex;
-  flex-direction: column;
-  padding: 22px clamp(18px, 3vw, 42px) 22px clamp(34px, 5vw, 82px);
-}
-
 .programa-xarrada-link {
-  display: block;
+  display: flex;
+  width: 100%;
+  align-self: stretch;
+  position: relative;
+  isolation: isolate;
   color: inherit;
   text-decoration: none;
 }
 
-.programa-xarrada-link:hover .programa-xarrada {
+.programa-xarrada-link:hover {
+  background: #ffffff;
+}
+
+.programa-xarrada-link::before {
+  content: "";
+  position: absolute;
+  inset: 0 -180px 0 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.programa-xarrada-link:hover::before {
   background: #ffffff;
 }
 
 .programa-xarrada-link:hover .programa-xarrada-tema,
 .programa-xarrada-link:hover .programa-xarrada-line {
   color: #000000;
+}
+
+.programa-xarrada {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 22px clamp(18px, 3vw, 42px) 22px clamp(34px, 5vw, 82px);
 }
 
 .programa-xarrada + .programa-xarrada {
@@ -669,19 +756,19 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   align-items: flex-start;
 }
 
-.programa-xarrada-tema:hover {
-  background: #ffffff;
-  color: #000000;
-}
-
 .programa-general {
   width: min(100%, 1280px);
   margin: 48px auto 0;
   color: #ffffff;
+  --programa-general-overhang: 180px;
 }
 
 .programa-dia--general {
   min-height: auto;
+}
+
+.programa-dia--general::before {
+  right: calc(var(--programa-general-overhang) * -1);
 }
 
 .programa-general-content {
@@ -880,7 +967,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   }
 
   .programa-dia--xarrades {
-    min-height: 280px;
+    min-height: 0;
   }
 
   .programa-xarrades {
