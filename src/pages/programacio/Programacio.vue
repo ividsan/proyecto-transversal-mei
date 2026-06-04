@@ -519,12 +519,9 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   flex-direction: column;
 }
 
+<style scoped>
 .programa-graella--musica {
-<<<<<<< HEAD
   --programa-separator-overhang: clamp(12px, 5vw, 20px);
-=======
-  --programa-separator-overhang: 0px;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   --programa-separator-thickness: 2px;
 }
 
@@ -639,11 +636,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-graella--musica .programa-element:hover::before {
   content: "";
   position: absolute;
-<<<<<<< HEAD
   inset: 0 calc(var(--programa-separator-overhang) * -1) 0 0;
-=======
-  inset: 0 0 0 0;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -769,11 +762,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   width: min(100%, 1360px);
   margin: 48px auto 0;
   color: #ffffff;
-<<<<<<< HEAD
   --programa-general-overhang: clamp(12px, 5vw, 20px);
-=======
-  --programa-general-overhang: 0px;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 .programa-dia--general {
@@ -821,13 +810,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head,
 .programa-general-row {
   display: grid;
-<<<<<<< HEAD
   grid-template-columns: minmax(100px, 0.55fr) minmax(0, 1.5fr) minmax(100px, 1.2fr);
   column-gap: clamp(10px, 3vw, 50px);
-=======
-  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(160px, 1fr);
-  column-gap: 18px;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 .programa-general-head {
@@ -851,37 +835,21 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general-cell {
-<<<<<<< HEAD
   padding: 10px clamp(6px, 1vw, 24px) 10px clamp(8px, 1.8vw, 48px);
   color: #ffffff;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   font-size: clamp(13px, 1.5vw, 24px);
   line-height: 1.1;
-=======
-  padding: 20px 0;
-  color: #ffffff;
-  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(15px, 1.5vw, 24px);
-  line-height: 1.12;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .programa-general-cell--head {
-<<<<<<< HEAD
   padding-top: 10px;
   padding-bottom: 10px;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   font-size: clamp(12px, 1.1vw, 18px);
-=======
-  padding-top: 16px;
-  padding-bottom: 16px;
-  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(13px, 1.1vw, 18px);
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -937,11 +905,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-row:hover::before {
   content: "";
   position: absolute;
-<<<<<<< HEAD
   inset: 0 calc(var(--programa-general-overhang) * -1) 0 0;
-=======
-  inset: 0 0 0 0;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -976,11 +940,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   content: "";
   position: absolute;
   left: 0;
-<<<<<<< HEAD
   right: calc(var(--programa-general-overhang) * -1);
-=======
-  right: 0;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   height: 1px;
   background: #ffffff;
   pointer-events: none;
@@ -997,17 +957,6 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head::after,
 .programa-general-row::after {
   bottom: 0;
-}
-
-<<<<<<< HEAD
-.programa-general-head::after,
-.programa-general-row::after {
-  bottom: 0;
-=======
-.programa-general-row:last-child::after {
-  left: 0;
-  right: 0;
->>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 @media (max-width: 720px) {
