@@ -8,6 +8,7 @@ import Merch from "@/pages/merch/Merch.vue";
 import Dubtes from "@/pages/dubtes/Dubtes.vue";
 import NormesFestival from "@/pages/normes-festival/NormesFestival.vue";
 import ArtistaDetalle from "@/pages/ArtistaDetalle.vue";
+import MainLayout from "@/layouts/MainLayout.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 export const router = createRouter({
@@ -27,55 +28,61 @@ export const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home,
-    },
-    {
-      path: "/que-som",
-      name: "que-som",
-      component: QueSom,
-    },
-    {
-      path: "/programacio",
-      name: "programacio",
-      component: Programacio,
-    },
-    {
-      path: "/programacio/:section/:slug",
-      name: "programacio-detall",
-      component: ProgramacioDetall,
-      props: true,
-    },
-    {
-      path: "/artista/:slug",
-      name: "artista-detalle",
-      component: ArtistaDetalle,
-      props: true,
-    },
-    {
-      path: "/entrades",
-      name: "entrades",
-      component: Entrades,
-    },
-    {
-      path: "/contacte",
-      name: "contacte",
-      component: Contacte,
-    },
-    {
-      path: "/dubtes",
-      name: "dubtes",
-      component: Dubtes,
-    },
-    {
-      path: "/normes-del-festival",
-      name: "normes-festival",
-      component: NormesFestival,
-    },
-    {
-      path: "/merch",
-      name: "merch",
-      component: Merch,
+      component: MainLayout,
+      children: [
+        {
+          path: "",
+          name: "home",
+          component: Home,
+        },
+        {
+          path: "que-som",
+          name: "que-som",
+          component: QueSom,
+        },
+        {
+          path: "programacio",
+          name: "programacio",
+          component: Programacio,
+        },
+        {
+          path: "programacio/:section/:slug",
+          name: "programacio-detall",
+          component: ProgramacioDetall,
+          props: true,
+        },
+        {
+          path: "artista/:slug",
+          name: "artista-detalle",
+          component: ArtistaDetalle,
+          props: true,
+        },
+        {
+          path: "entrades",
+          name: "entrades",
+          component: Entrades,
+        },
+        {
+          path: "contacte",
+          name: "contacte",
+          component: Contacte,
+        },
+        {
+          path: "dubtes",
+          name: "dubtes",
+          component: Dubtes,
+        },
+        {
+          path: "normes-del-festival",
+          name: "normes-festival",
+          component: NormesFestival,
+        },
+        {
+          path: "merch",
+          name: "merch",
+          component: Merch,
+        },
+      ],
     },
     {
       path: "/:patchMatch(.*)",

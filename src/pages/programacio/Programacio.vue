@@ -328,13 +328,13 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 </script>
 
 <template>
-  <main class="programacio">
-    <div class="programacio-botons">
+  <main class="programacio min-h-screen bg-black px-5 pb-[90px] pt-[38px] overflow-x-clip max-[720px]:pt-7">
+    <div class="programacio-botons flex flex-wrap items-center justify-center gap-[46px] max-[720px]:gap-6">
       <button
         v-for="section in sections"
         :key="section.id"
-        class="programacio-boto"
-        :class="{ actiu: activeSection === section.id }"
+        class="programacio-boto cursor-pointer border border-[#5b5b5b] bg-transparent px-3 py-[7px] font-[inherit] text-[24px] font-normal leading-none tracking-[0.06em] text-white max-[720px]:px-[9px] max-[720px]:py-[6px] max-[720px]:text-[17px]"
+        :class="activeSection === section.id ? 'actiu bg-white text-[#1b1b1b]' : ''"
         type="button"
         @click="activeSection = section.id"
       >
@@ -408,12 +408,12 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
     </section>
 
     <section v-else-if="activeSection === 'general'" class="programa-general" aria-label="Programació general">
-      <div class="programa-general-subnav" aria-label="Dies de general">
+      <div class="programa-general-subnav flex flex-wrap justify-center gap-[18px] mb-7 max-[720px]:gap-3 max-[720px]:mb-[18px]" aria-label="Dies de general">
         <button
           v-for="button in generalDayButtons"
           :key="button.id"
-          class="programacio-boto programacio-boto--sub"
-          :class="{ actiu: generalDay === button.id }"
+          class="programacio-boto programacio-boto--sub cursor-pointer border border-[#5b5b5b] bg-transparent px-[10px] py-[6px] font-[inherit] text-[18px] font-normal leading-none tracking-[0.06em] text-white max-[720px]:text-[14px]"
+          :class="generalDay === button.id ? 'actiu bg-white text-[#1b1b1b]' : ''"
           type="button"
           @click="generalDay = button.id"
         >
@@ -421,11 +421,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
         </button>
       </div>
 
-      <article class="programa-dia programa-dia--general">
+      <article class="programa-dia programa-dia--general relative min-h-0">
         <div class="programa-dia-numero">{{ currentGeneralDay.numero }}</div>
-        <div class="programa-general-content">
-          <div v-if="currentGeneralDay.items.length" class="programa-general-table" role="table" :aria-label="currentGeneralDay.dia">
-            <div class="programa-general-head" role="row">
+        <div class="programa-general-content flex flex-col border-l-2 border-white">
+          <div v-if="currentGeneralDay.items.length" class="programa-general-table relative" role="table" :aria-label="currentGeneralDay.dia">
+            <div class="programa-general-head relative" role="row">
               <div class="programa-general-cell programa-general-cell--head programa-general-cell--hour" role="columnheader">
                 Hora
               </div>
@@ -436,7 +436,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
             <div
               v-for="item in currentGeneralDay.items"
               :key="`${item.hora}-${item.activitat}`"
-              class="programa-general-row"
+              class="programa-general-row relative"
               role="row"
             >
               <RouterLink

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { onBeforeUnmount, ref } from "vue";
+import { onBeforeUnmount, ref } from "vue"
 
 type MerchProduct = {
-  id: number;
-  name: string;
-  description: string;
-  price: string;
-  image?: string;
-  images?: string[];
-};
+  id: number
+  name: string
+  description: string
+  price: string
+  image?: string
+  images?: string[]
+}
 
 const products: MerchProduct[] = [
   {
@@ -71,7 +71,7 @@ const products: MerchProduct[] = [
     image: "/merch/pegatinas.png",
     name: "PEGATINES ESCLAT",
     description:
-      "Col·lecció de pegatines exclusives amb dissenys inspirats en la identitat visual del festival. Perfectes per a personalitzar llibretes, portàtils, fundes o qualsevol objecte i portar l’esperit del festival allà on vages.",
+      "Col·lecció de pegatines exclusives amb dissenys inspirats en la identitat visual del festival. Perfectes per a personalitzar llibretes, portàtils, fundes o qualsevol objecte i portar l'esperit del festival allà on vages.",
     price: "4€",
   },
   {
@@ -82,313 +82,127 @@ const products: MerchProduct[] = [
       "Pack de dos calçotets amb dissenys exclusius del festival. Comoditat i originalitat en una peça imprescindible.",
     price: "6€",
   },
-];
+]
 
-const activeImageIndexes = ref<Record<number, number>>({});
-const hoverTimers = new Map<number, number>();
+const activeImageIndexes = ref<Record<number, number>>({})
+const hoverTimers = new Map<number, number>()
 
 function getProductImage(product: MerchProduct) {
   if (product.images && product.images.length > 0) {
-    const activeImageIndex = activeImageIndexes.value[product.id] ?? 0;
-    return product.images[activeImageIndex] ?? product.images[0];
+    const activeImageIndex = activeImageIndexes.value[product.id] ?? 0
+    return product.images[activeImageIndex] ?? product.images[0]
   }
 
-  return product.image ?? "";
+  return product.image ?? ""
 }
 
 function startImageCarousel(product: MerchProduct) {
   if (!product.images || product.images.length < 2) {
-    return;
+    return
   }
 
-  stopImageCarousel(product.id);
+  stopImageCarousel(product.id)
 
   activeImageIndexes.value = {
     ...activeImageIndexes.value,
     [product.id]: 0,
-  };
+  }
 
   const timerId = window.setInterval(() => {
-    const currentIndex = activeImageIndexes.value[product.id] ?? 0;
+    const currentIndex = activeImageIndexes.value[product.id] ?? 0
     activeImageIndexes.value = {
       ...activeImageIndexes.value,
       [product.id]: (currentIndex + 1) % product.images!.length,
-    };
-  }, 1100);
+    }
+  }, 1100)
 
-  hoverTimers.set(product.id, timerId);
+  hoverTimers.set(product.id, timerId)
 }
 
 function stopImageCarousel(productId: number) {
-  const timerId = hoverTimers.get(productId);
+  const timerId = hoverTimers.get(productId)
 
   if (timerId !== undefined) {
-    window.clearInterval(timerId);
-    hoverTimers.delete(productId);
+    window.clearInterval(timerId)
+    hoverTimers.delete(productId)
   }
 
   activeImageIndexes.value = {
     ...activeImageIndexes.value,
     [productId]: 0,
-  };
+  }
 }
 
 onBeforeUnmount(() => {
-  hoverTimers.forEach((timerId) => window.clearInterval(timerId));
-  hoverTimers.clear();
-});
+  hoverTimers.forEach((timerId) => window.clearInterval(timerId))
+  hoverTimers.clear()
+})
 </script>
 
 <template>
-  <main class="merch-page" aria-label="Merch Esclat">
-    <section class="merch-hero" aria-labelledby="merch-title">
-      <h1 id="merch-title" class="merch-title">MERCH ESCLAT 2026</h1>
-      <p class="merch-intro">
+  <main
+    class="min-h-screen bg-white px-[clamp(28px,7vw,92px)] pb-[240px] pt-[116px] text-black max-[900px]:min-h-[120vh] max-[900px]:px-6 max-[900px]:pb-[180px] max-[900px]:pt-20"
+    aria-label="Merch Esclat"
+  >
+    <section class="mx-auto w-full max-w-[1120px] text-center" aria-labelledby="merch-title">
+      <h1
+        id="merch-title"
+        class="m-0 whitespace-nowrap text-center text-[clamp(54px,5.8vw,96px)] font-normal leading-none tracking-[0.08em] max-[900px]:whitespace-normal max-[900px]:text-[clamp(36px,9vw,56px)]"
+      >
+        MERCH ESCLAT 2026
+      </h1>
+      <p
+        class="mx-auto mt-12 w-full max-w-[760px] text-center font-['PP_Neue_Montreal',system-ui,-apple-system,Segoe_UI,Roboto,Helvetica,Arial,sans-serif] text-[15px] leading-[1.15] max-[900px]:mt-8 max-[900px]:text-[14px]"
+      >
         Uneix-te a la comunitat del festival i sigues el primer a descobrir totes les novetats. Rep descomptes
         exclusius, accés a promocions especials, notícies, anuncis d'artistes i moltes sorpreses més. No et perdes res!
       </p>
     </section>
 
-    <section class="products-grid" aria-label="Productes de merch">
-      <article v-for="product in products" :key="product.id" class="product-card">
+    <section
+      class="mx-auto mt-[140px] grid w-full max-w-[1120px] grid-cols-3 justify-items-center gap-x-7 gap-y-[120px] max-[900px]:mt-[84px] max-[900px]:grid-cols-1 max-[900px]:gap-y-[72px]"
+      aria-label="Productes de merch"
+    >
+      <article
+        v-for="product in products"
+        :key="product.id"
+        class="group relative flex w-full max-w-[340px] flex-col items-stretch transition-transform duration-200 ease-out max-[900px]:w-full max-[900px]:max-w-[340px]"
+      >
         <figure
-          class="product-image-slot"
+          class="relative z-[2] m-0 aspect-[1/1.42] w-full overflow-hidden bg-white transition-transform duration-200 ease-out group-hover:scale-[1.03] group-focus-within:scale-[1.03]"
           @mouseenter="startImageCarousel(product)"
           @mouseleave="stopImageCarousel(product.id)"
         >
-          <img class="product-image" :src="getProductImage(product)" :alt="product.name" />
+          <img
+            class="block h-full w-full object-cover object-center transition-transform duration-200 ease-out group-hover:scale-[1.03] group-focus-within:scale-[1.03]"
+            :src="getProductImage(product)"
+            :alt="product.name"
+          />
         </figure>
-        <div class="product-info">
-          <div class="product-text">
-            <h2 class="product-name">{{ product.name }}</h2>
-            <p class="product-description">{{ product.description }}</p>
+
+        <div
+          class="relative z-[1] grid min-h-[96px] grid-cols-[minmax(0,1fr)_auto] items-start gap-4 bg-white px-3 pb-3 pt-3 text-black transition-[background-color,color,padding,min-height,transform] duration-200 ease-out group-hover:min-h-[134px] group-hover:-translate-y-[3px] group-hover:scale-x-[1.017] group-hover:bg-black group-hover:px-[14px] group-hover:pt-4 group-focus-within:min-h-[134px] group-focus-within:-translate-y-[3px] group-focus-within:scale-x-[1.017] group-focus-within:bg-black group-focus-within:px-[14px] group-focus-within:pt-4 max-[900px]:min-h-auto max-[900px]:px-0"
+        >
+          <div class="min-w-0">
+            <h2
+              class="m-0 max-w-none break-words text-[clamp(14px,1.2vw,18px)] font-normal uppercase leading-[1.1] tracking-[0.02em] group-hover:text-white group-focus-within:text-white max-[900px]:text-[14px]"
+            >
+              {{ product.name }}
+            </h2>
+            <p
+              class="m-0 overflow-hidden text-[13px] leading-[1.2] opacity-0 transition-[max-height,opacity,transform,margin] duration-200 ease-out group-hover:mt-1 group-hover:max-h-[110px] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:mt-1 group-focus-within:max-h-[110px] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:text-white group-focus-within:text-white max-[900px]:text-[12px]"
+            >
+              {{ product.description }}
+            </p>
           </div>
-          <p class="product-price">{{ product.price }}</p>
+
+          <p
+            class="m-0 self-start whitespace-nowrap text-[clamp(14px,1.2vw,18px)] font-normal leading-[1.1] tracking-[0.02em] group-hover:text-white group-focus-within:text-white max-[900px]:text-[14px]"
+          >
+            {{ product.price }}
+          </p>
         </div>
       </article>
     </section>
   </main>
 </template>
-
-<style scoped>
-.merch-page {
-  min-height: 100vh;
-  background: #ffffff;
-  color: #000000;
-  padding: 116px clamp(28px, 7vw, 92px) 240px;
-}
-
-.merch-hero {
-  width: min(100%, 1120px);
-  margin: 0 auto;
-  text-align: center;
-}
-
-.merch-title {
-  margin: 0;
-  font-size: clamp(54px, 5.8vw, 96px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.merch-intro {
-  width: min(100%, 760px);
-  margin: 48px auto 0;
-  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.15;
-  letter-spacing: 0;
-  text-align: center;
-}
-
-.products-grid {
-  width: min(100%, 1120px);
-  margin: 140px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 120px 28px;
-  justify-items: center;
-}
-
-.product-card {
-  min-width: 0;
-  width: 100%;
-  max-width: 340px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  transition: transform 0.22s ease, filter 0.22s ease;
-  transform-origin: center top;
-  position: relative;
-}
-
-.product-image-slot {
-  width: 100%;
-  aspect-ratio: 1 / 1.42;
-  margin: 0;
-  overflow: hidden;
-  background: #ffffff;
-  transition: transform 0.22s ease;
-  position: relative;
-  z-index: 2;
-}
-
-.product-image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.22s ease, opacity 0.22s ease;
-}
-
-.product-info {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 16px;
-  align-items: start;
-  padding: 14px 12px 12px;
-  min-height: 96px;
-  background: #ffffff;
-  color: #000000;
-  transition: background-color 0.22s ease, color 0.22s ease, padding 0.22s ease, min-height 0.22s ease,
-    transform 0.22s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.product-text {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.product-name,
-.product-price {
-  margin: 0;
-  font-size: clamp(14px, 1.2vw, 18px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-}
-
-.product-name {
-  max-width: none;
-  text-transform: uppercase;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
-
-.product-description {
-  margin: 0;
-  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.2;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transform: translateY(-4px);
-  transition: max-height 0.22s ease, opacity 0.22s ease, transform 0.22s ease, margin 0.22s ease;
-}
-
-.product-price {
-  white-space: nowrap;
-  align-self: start;
-}
-
-.product-card:hover,
-.product-card:focus-within {
-  transform: translateY(-3px);
-}
-
-.product-card:hover .product-image-slot,
-.product-card:focus-within .product-image-slot {
-  transform: scale(1.03);
-}
-
-.product-card:hover .product-image,
-.product-card:focus-within .product-image {
-  transform: scale(1.03);
-}
-
-.product-card:hover .product-info,
-.product-card:focus-within .product-info {
-  background: #000000;
-  color: #ffffff;
-  min-height: 134px;
-  padding: 16px 14px 12px;
-  transform: translateY(3px) scaleX(1.017);
-  transform-origin: center top;
-  margin-left: -2px;
-  margin-right: -2px;
-}
-
-.product-card:hover .product-description,
-.product-card:focus-within .product-description {
-  max-height: 110px;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.product-card:hover .product-name,
-.product-card:hover .product-price,
-.product-card:focus-within .product-name,
-.product-card:focus-within .product-price {
-  color: #ffffff;
-}
-
-@media (max-width: 900px) {
-  .merch-page {
-    min-height: 120vh;
-    padding: 80px 24px 180px;
-  }
-
-  .merch-title {
-    font-size: clamp(36px, 9vw, 56px);
-    white-space: normal;
-  }
-
-  .merch-intro {
-    margin-top: 32px;
-    font-size: 14px;
-  }
-
-  .products-grid {
-    margin-top: 84px;
-    grid-template-columns: 1fr;
-    gap: 72px;
-    justify-items: center;
-  }
-
-  .product-info {
-    padding-inline: 0;
-    min-height: auto;
-  }
-
-  .product-card {
-    width: min(100%, 340px);
-  }
-
-  .product-text {
-    min-height: auto;
-  }
-
-  .product-name,
-  .product-price {
-    font-size: 14px;
-  }
-
-  .product-description {
-    font-size: 12px;
-  }
-
-  .product-card:hover,
-  .product-card:focus-within {
-    transform: none;
-  }
-}
-</style>
