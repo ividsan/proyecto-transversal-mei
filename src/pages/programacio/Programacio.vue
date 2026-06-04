@@ -729,7 +729,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 1px;
   background: #ffffff;
   pointer-events: none;
 }
@@ -1012,6 +1012,22 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   .programa-general-empty {
     padding: 16px 10px 16px 18px;
     font-size: 14px;
+  }
+
+  .programa-general-head::after,
+  .programa-general-row::after,
+  .programa-general-empty::before,
+  .programa-general-empty::after,
+  .programa-general-row:last-child::after {
+    right: 14px;
+  }
+
+  .programa-general-head::before {
+    right: 14px;
+  }
+
+  .programa-general-row:hover::before {
+    inset: 0 14px 0 0;
   }
 }
 

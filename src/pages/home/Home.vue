@@ -463,12 +463,12 @@ onBeforeUnmount(() => {
   }
 
   .about-title {
-    font-size: clamp(1.25rem, 2.4vw, 1.4rem);
+    font-size: clamp(1.9rem, 2.4vw, 2.25rem);
   }
 
   .about-title-bar {
-    width: clamp(92px, 20vw, 140px);
-    height: clamp(14px, 1.8vw, 18px);
+    width: clamp(130px, 18vw, 220px);
+    height: 1.75em;
     margin-top: 2px;
   }
 
