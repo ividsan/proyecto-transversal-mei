@@ -1,24 +1,30 @@
 <script setup lang="ts">
+import { Instagram, Mail, MapPin, Phone } from "lucide-vue-next"
+
 const leftLinks = [
   {
     label: "INSTAGRAM_ @festival.esclat",
     href: "https://www.instagram.com/festival.esclat/",
     external: true,
+    icon: Instagram,
   },
   {
     label: "CORREU ELECTRÒNIC_ FESTIVAL.ESCLAT@GMAIL.COM",
     href: "mailto:festival.esclat@gmail.com",
+    icon: Mail,
   },
   {
     label: "DIRECCIÓ_ JOAN VERDAGUER, PORTA 16, 46024 VALÈNCIA",
     href: "https://www.google.com/maps/search/?api=1&query=Joan+Verdaguer,+Porta+16,+46024+Val%C3%A8ncia",
     external: true,
+    icon: MapPin,
   },
   {
     label: "NÚMERO DE TELÈFON_ +34 696 696 696",
     href: "tel:+34696696696",
+    icon: Phone,
   },
-];
+]
 
 const rightLinks = [
   {
@@ -38,7 +44,7 @@ const rightLinks = [
     href: "https://open.spotify.com/search/esclat",
     external: true,
   },
-];
+]
 </script>
 
 <template>
@@ -50,11 +56,17 @@ const rightLinks = [
             v-for="item in leftLinks"
             :key="item.label"
             :href="item.href"
-            class="block w-fit text-[clamp(13px,1.2vw,18px)] leading-[1.35] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color,text-underline-offset] hover:underline hover:decoration-black focus-visible:underline focus-visible:decoration-black active:underline active:decoration-black"
+            class="block w-fit text-[clamp(13px,1.2vw,18px)] leading-[1.35] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] decoration-transparent decoration-1 underline-offset-4 transition-[text-decoration-color,text-underline-offset] hover:underline hover:decoration-black focus-visible:underline focus-visible:decoration-black active:underline active:decoration-black max-[640px]:inline-flex max-[640px]:h-11 max-[640px]:w-11 max-[640px]:items-center max-[640px]:justify-center"
             :target="item.external ? '_blank' : undefined"
             :rel="item.external ? 'noreferrer noopener' : undefined"
           >
-            {{ item.label }}
+            <component
+              :is="item.icon"
+              class="hidden h-5 w-5 stroke-[1.9] max-[640px]:block"
+              aria-hidden="true"
+            />
+            <span class="hidden sm:inline">{{ item.label }}</span>
+            <span class="sr-only">{{ item.label }}</span>
           </a>
         </div>
 
@@ -82,16 +94,16 @@ const rightLinks = [
 
       <div class="my-10 h-px w-full bg-black/90" aria-hidden="true"></div>
 
-      <div class="footer-sponsor-row grid grid-cols-2 gap-4 items-start">
-        <p class="text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded]">
+      <div class="grid grid-cols-2 items-start gap-4 max-[640px]:gap-x-3 max-[640px]:gap-y-2">
+        <p class="m-0 text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded]">
           ORGANITZA_
         </p>
-        <p class="text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded] justify-self-end">
+        <p class="m-0 justify-self-end text-right text-[clamp(13px,1.2vw,18px)] font-normal uppercase tracking-[0.015em] [font-stretch:semi-expanded]">
           COL·LABORA_
         </p>
 
         <img
-          class="mt-1 w-full max-w-[1280px] select-none object-contain col-span-2"
+          class="col-span-2 mt-1 w-full max-w-[1280px] select-none object-contain"
           src="/iconos/Logos_footer.png"
           alt="Logos de organitza i col·labora"
           loading="lazy"
@@ -100,22 +112,3 @@ const rightLinks = [
     </div>
   </footer>
 </template>
-
-<style scoped>
-@media (max-width: 640px) {
-  .footer-sponsor-row {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    column-gap: 12px;
-    row-gap: 10px;
-  }
-
-  .footer-sponsor-row p {
-    margin: 0;
-  }
-
-  .footer-sponsor-row p:last-of-type {
-    justify-self: end;
-    text-align: right;
-  }
-}
-</style>

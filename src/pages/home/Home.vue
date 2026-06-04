@@ -1,4 +1,4 @@
-﻿<script lang="ts" setup>
+<script lang="ts" setup>
 import LogoEsclat from "@/components/logoEsclat.vue";
 import ArtistasCarousel from "@/components/ArtistasCarousel.vue";
 import HomeWordsBanner from "@/components/HomeWordsBanner.vue";
@@ -494,5 +494,3 @@ onBeforeUnmount(() => {
   }
 }
 </style>
-
-

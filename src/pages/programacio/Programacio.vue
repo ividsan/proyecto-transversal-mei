@@ -328,13 +328,13 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 </script>
 
 <template>
-  <main class="programacio">
-    <div class="programacio-botons">
+  <main class="programacio min-h-screen bg-black px-5 pb-[90px] pt-[38px] overflow-x-clip max-[720px]:pt-7">
+    <div class="programacio-botons flex flex-wrap items-center justify-center gap-[46px] max-[720px]:gap-6">
       <button
         v-for="section in sections"
         :key="section.id"
-        class="programacio-boto"
-        :class="{ actiu: activeSection === section.id }"
+        class="programacio-boto cursor-pointer border border-[#5b5b5b] bg-transparent px-3 py-[7px] font-[inherit] text-[24px] font-normal leading-none tracking-[0.06em] text-white max-[720px]:px-[9px] max-[720px]:py-[6px] max-[720px]:text-[17px]"
+        :class="activeSection === section.id ? 'actiu bg-white text-[#1b1b1b]' : ''"
         type="button"
         @click="activeSection = section.id"
       >
@@ -408,12 +408,12 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
     </section>
 
     <section v-else-if="activeSection === 'general'" class="programa-general" aria-label="Programació general">
-      <div class="programa-general-subnav" aria-label="Dies de general">
+      <div class="programa-general-subnav flex flex-wrap justify-center gap-[18px] mb-7 max-[720px]:gap-3 max-[720px]:mb-[18px]" aria-label="Dies de general">
         <button
           v-for="button in generalDayButtons"
           :key="button.id"
-          class="programacio-boto programacio-boto--sub"
-          :class="{ actiu: generalDay === button.id }"
+          class="programacio-boto programacio-boto--sub cursor-pointer border border-[#5b5b5b] bg-transparent px-[10px] py-[6px] font-[inherit] text-[18px] font-normal leading-none tracking-[0.06em] text-white max-[720px]:text-[14px]"
+          :class="generalDay === button.id ? 'actiu bg-white text-[#1b1b1b]' : ''"
           type="button"
           @click="generalDay = button.id"
         >
@@ -421,11 +421,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
         </button>
       </div>
 
-      <article class="programa-dia programa-dia--general">
+      <article class="programa-dia programa-dia--general relative min-h-0">
         <div class="programa-dia-numero">{{ currentGeneralDay.numero }}</div>
-        <div class="programa-general-content">
-          <div v-if="currentGeneralDay.items.length" class="programa-general-table" role="table" :aria-label="currentGeneralDay.dia">
-            <div class="programa-general-head" role="row">
+        <div class="programa-general-content flex flex-col border-l-2 border-white">
+          <div v-if="currentGeneralDay.items.length" class="programa-general-table relative" role="table" :aria-label="currentGeneralDay.dia">
+            <div class="programa-general-head relative" role="row">
               <div class="programa-general-cell programa-general-cell--head programa-general-cell--hour" role="columnheader">
                 Hora
               </div>
@@ -436,7 +436,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
             <div
               v-for="item in currentGeneralDay.items"
               :key="`${item.hora}-${item.activitat}`"
-              class="programa-general-row"
+              class="programa-general-row relative"
               role="row"
             >
               <RouterLink
@@ -481,6 +481,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   min-height: 100vh;
   background: #000000;
   padding: 38px 20px 90px;
+  overflow-x: clip;
 }
 
 .programacio-botons {
@@ -519,7 +520,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-graella--musica {
+<<<<<<< HEAD
   --programa-separator-overhang: clamp(12px, 5vw, 20px);
+=======
+  --programa-separator-overhang: 0px;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   --programa-separator-thickness: 2px;
 }
 
@@ -634,7 +639,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-graella--musica .programa-element:hover::before {
   content: "";
   position: absolute;
+<<<<<<< HEAD
   inset: 0 calc(var(--programa-separator-overhang) * -1) 0 0;
+=======
+  inset: 0 0 0 0;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -757,10 +766,14 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general {
-  width: min(100%, 1280px);
+  width: min(100%, 1360px);
   margin: 48px auto 0;
   color: #ffffff;
+<<<<<<< HEAD
   --programa-general-overhang: clamp(12px, 5vw, 20px);
+=======
+  --programa-general-overhang: 0px;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 .programa-dia--general {
@@ -769,6 +782,17 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
 .programa-dia--general::before {
   right: 0;
+}
+
+.programa-dia--general::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ffffff;
+  pointer-events: none;
 }
 
 .programa-general-content {
@@ -797,8 +821,13 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head,
 .programa-general-row {
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: minmax(100px, 0.55fr) minmax(0, 1.5fr) minmax(100px, 1.2fr);
   column-gap: clamp(10px, 3vw, 50px);
+=======
+  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(160px, 1fr);
+  column-gap: 18px;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 .programa-general-head {
@@ -822,27 +851,44 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general-cell {
+<<<<<<< HEAD
   padding: 10px clamp(6px, 1vw, 24px) 10px clamp(8px, 1.8vw, 48px);
   color: #ffffff;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   font-size: clamp(13px, 1.5vw, 24px);
   line-height: 1.1;
+=======
+  padding: 20px 0;
+  color: #ffffff;
+  font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(15px, 1.5vw, 24px);
+  line-height: 1.12;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .programa-general-cell--head {
+<<<<<<< HEAD
   padding-top: 10px;
   padding-bottom: 10px;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
   font-size: clamp(12px, 1.1vw, 18px);
+=======
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: clamp(13px, 1.1vw, 18px);
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .programa-general-cell--hour {
   white-space: nowrap;
+  padding-left: clamp(18px, 2.3vw, 40px);
 }
 
 .programa-general-cell--activity {
@@ -891,7 +937,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-row:hover::before {
   content: "";
   position: absolute;
+<<<<<<< HEAD
   inset: 0 calc(var(--programa-general-overhang) * -1) 0 0;
+=======
+  inset: 0 0 0 0;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -903,6 +953,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
 .programa-general-cell--space {
   white-space: nowrap;
+}
+
+.programa-general-head > .programa-general-cell:nth-child(3),
+.programa-general-row > .programa-general-cell:nth-child(3) {
+  padding-left: 0;
 }
 
 .programa-general-empty {
@@ -921,7 +976,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   content: "";
   position: absolute;
   left: 0;
+<<<<<<< HEAD
   right: calc(var(--programa-general-overhang) * -1);
+=======
+  right: 0;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
   height: 1px;
   background: #ffffff;
   pointer-events: none;
@@ -940,9 +999,15 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   bottom: 0;
 }
 
+<<<<<<< HEAD
 .programa-general-head::after,
 .programa-general-row::after {
   bottom: 0;
+=======
+.programa-general-row:last-child::after {
+  left: 0;
+  right: 0;
+>>>>>>> b6c6c608c72255043011419a953c9ee024b002d6
 }
 
 @media (max-width: 720px) {
@@ -972,6 +1037,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
     font-size: clamp(11px, 3.5vw, 22px);
     padding: 10px 10px 10px 14px;
     letter-spacing: -0.02em;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-dia--xarrades {
@@ -990,6 +1057,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   .programa-xarrada-line {
     font-size: clamp(14px, 4.8vw, 22px);
     line-height: 1.16;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-xarrada-participants {
@@ -1012,24 +1081,61 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 
   .programa-general-head,
   .programa-general-row {
-    grid-template-columns: 78px minmax(0, 1.85fr) 78px;
-    column-gap: 34px;
+    grid-template-columns: minmax(100px, 0.95fr) minmax(0, 1.9fr) minmax(100px, 0.95fr);
+    column-gap: 14px;
   }
 
   .programa-general-cell {
-    padding: 12px 10px 12px 18px;
-    font-size: 14px;
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  .programa-general-cell--hour {
+    padding-left: 16px;
   }
 
   .programa-general-cell--head {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-size: 13px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 14px;
+  }
+
+  .programa-general-cell--hour {
+    min-width: 92px;
+  }
+
+  .programa-general-cell--activity,
+  .programa-general-cell--space {
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .programa-general-empty {
     padding: 16px 10px 16px 18px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 721px) {
+  .programa-general-head,
+  .programa-general-row {
+    grid-template-columns: minmax(94px, 0.8fr) minmax(0, 1.75fr) minmax(94px, 0.8fr);
+    column-gap: 10px;
+  }
+
+  .programa-general-cell {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .programa-general-cell--hour {
+    padding-left: 14px;
+    min-width: 94px;
+  }
+
+  .programa-general-cell--head {
+    font-size: 13px;
   }
 }
 </style>
