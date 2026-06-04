@@ -342,7 +342,11 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
       </button>
     </div>
 
-    <section v-if="activeSection === 'musica'" class="programa-graella programa-graella--musica" aria-label="Programació de musica">
+    <section
+      v-if="activeSection === 'musica'"
+      class="programa-graella programa-graella--musica"
+      aria-label="Programació de musica"
+    >
       <div v-for="day in musicProgram" :key="day.dia" class="programa-dia">
         <div class="programa-dia-numero">{{ day.dia }}</div>
         <div class="programa-elements">
@@ -517,12 +521,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   color: #ffffff;
   display: flex;
   flex-direction: column;
-}
-
-<style scoped>
-.programa-graella--musica {
   --programa-separator-overhang: clamp(12px, 5vw, 20px);
-  --programa-separator-thickness: 2px;
 }
 
 .programa-dia {
@@ -545,27 +544,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   position: absolute;
   top: 0;
   left: 0;
-  right: calc(var(--programa-separator-overhang, 0px) * -1);
+  right: 0;
   height: 1px;
-  background: #ffffff;
-  pointer-events: none;
-}
-
-.programa-graella--musica .programa-dia::before {
-  height: var(--programa-separator-thickness);
-}
-
-.programa-graella--musica .programa-dia:last-child {
-  border-bottom: 0;
-}
-
-.programa-graella--musica .programa-dia:last-child::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: calc(var(--programa-separator-overhang) * -1);
-  bottom: 0;
-  height: var(--programa-separator-thickness);
   background: #ffffff;
   pointer-events: none;
 }
@@ -613,47 +593,17 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   border-bottom: 0;
 }
 
-.programa-graella--musica .programa-element {
-  border-bottom: 0;
-}
-
-.programa-graella--musica .programa-element:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: calc(var(--programa-separator-overhang) * -1);
-  bottom: 0;
-  height: var(--programa-separator-thickness);
-  background: #ffffff;
-  pointer-events: none;
-}
-
-.programa-graella--musica .programa-element:hover {
-  background: #ffffff;
-  color: #000000;
-}
-
-.programa-graella--musica .programa-element:hover::before {
-  content: "";
-  position: absolute;
-  inset: 0 calc(var(--programa-separator-overhang) * -1) 0 0;
-  background: #ffffff;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.programa-graella--musica .programa-element {
-  isolation: isolate;
-}
-
-.programa-graella--musica .programa-element-label {
-  position: relative;
-  z-index: 1;
-}
-
 .programa-element:hover {
   background: #ffffff;
   color: #000000;
+}
+
+.programa-graella--musica .programa-dia {
+  min-height: clamp(420px, 40vw, 560px);
+}
+
+.programa-graella--musica .programa-elements {
+  grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
 .programa-dia--xarrades {
