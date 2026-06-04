@@ -7,7 +7,6 @@ const route = useRoute();
 const router = useRouter();
 const slug = computed(() => String(route.params.slug ?? ""));
 const artist = computed(() => getArtistBySlug(slug.value));
-const isAlergiques = computed(() => slug.value === "allerqiques-al-pollen");
 const fallbackArtistImage = "/artistesHome/mushkaEditada.png";
 const artistImage = computed(() => artist.value?.image ?? fallbackArtistImage);
 
@@ -33,7 +32,7 @@ function goBack() {
 </script>
 
 <template>
-  <main :class="['artist-page', { 'artist-page--alergiques': isAlergiques }]">
+  <main class="artist-page">
     <section v-if="artist" class="artist-sheet">
       <header class="artist-hero">
         <h1 class="artist-title">{{ artist.name }}</h1>
@@ -116,7 +115,7 @@ function goBack() {
 .artist-sheet {
   max-width: 1280px;
   margin: 0 auto;
-  padding: clamp(28px, 4vw, 54px) clamp(20px, 4vw, 56px) clamp(36px, 5vw, 64px);
+  padding: clamp(20px, 4vw, 54px) clamp(16px, 4vw, 56px) clamp(24px, 5vw, 64px);
   box-sizing: border-box;
 }
 
@@ -124,16 +123,16 @@ function goBack() {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
-  column-gap: clamp(18px, 3.2vw, 42px);
-  margin-bottom: clamp(28px, 5vw, 72px);
+  column-gap: clamp(14px, 3.2vw, 42px);
+  margin-bottom: clamp(18px, 4vw, 72px);
 }
 
 .artist-title {
   margin: 0;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(2.5rem, 5vw, 5.2rem);
-  line-height: 0.9;
+  font-size: clamp(1.9rem, 4.8vw, 5.2rem);
+  line-height: 0.92;
   font-weight: 400;
   letter-spacing: -0.08em;
   text-transform: uppercase;
@@ -142,7 +141,7 @@ function goBack() {
 .artist-title-bar {
   display: block;
   width: 100%;
-  height: clamp(1.95rem, 4.5vw, 4.68rem);
+  height: clamp(1.5rem, 4.2vw, 4.68rem);
   background: #000000;
   justify-self: stretch;
 }
@@ -150,8 +149,8 @@ function goBack() {
 .artist-intro {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  column-gap: clamp(18px, 3.2vw, 42px);
-  margin-bottom: clamp(28px, 5vw, 72px);
+  column-gap: clamp(14px, 3.2vw, 42px);
+  margin-bottom: clamp(18px, 4vw, 72px);
 }
 
 .artist-intro p {
@@ -159,7 +158,7 @@ function goBack() {
   margin: 0;
   max-width: min(39rem, 100%);
   font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(1rem, 1.18vw, 1.35rem);
+  font-size: clamp(0.92rem, 1.18vw, 1.35rem);
   line-height: 1.34;
   font-weight: 400;
 }
@@ -167,7 +166,7 @@ function goBack() {
 .artist-body {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  column-gap: clamp(18px, 3.2vw, 42px);
+  column-gap: clamp(14px, 3.2vw, 42px);
   align-items: start;
 }
 
@@ -180,18 +179,18 @@ function goBack() {
 
 .artist-image-wrap {
   margin: 0;
-  width: min(100%, clamp(280px, 33vw, 428px));
+  width: min(100%, clamp(220px, 31vw, 428px));
   max-width: 100%;
   align-self: start;
   aspect-ratio: 1 / 1;
-  transform: translateY(clamp(-600px, -36vw, -460px));
+  transform: translateY(clamp(-430px, -32vw, -300px));
 }
 
 .artist-tramado {
   display: block;
-  width: min(100%, clamp(280px, 33vw, 428px));
+  width: min(100%, clamp(220px, 31vw, 428px));
   height: auto;
-  transform: translateY(clamp(-450px, -28vw, -320px));
+  transform: translateY(clamp(-320px, -24vw, -220px));
 }
 
 .artist-image {
@@ -205,7 +204,7 @@ function goBack() {
 .artist-meta {
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 5vw, 72px);
+  gap: clamp(20px, 4vw, 72px);
   padding-top: 0;
   grid-column: 2;
 }
@@ -220,7 +219,7 @@ function goBack() {
   margin: 0;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(1rem, 1.45vw, 1.8rem);
+  font-size: clamp(0.95rem, 1.35vw, 1.8rem);
   line-height: 1;
   font-weight: 400;
   letter-spacing: -0.07em;
@@ -230,7 +229,7 @@ function goBack() {
 .meta-value {
   margin: 0;
   font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
-  font-size: clamp(0.95rem, 1.2vw, 1.3rem);
+  font-size: clamp(0.9rem, 1.1vw, 1.3rem);
   line-height: 1.2;
   font-weight: 400;
   color: #111111;
@@ -248,7 +247,7 @@ function goBack() {
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  width: clamp(148px, 15vw, 176px);
+  width: clamp(120px, 15vw, 176px);
   height: clamp(34px, 3.2vw, 40px);
   border: 1px solid #bdbdbd;
   background: #ffffff;
@@ -256,7 +255,7 @@ function goBack() {
   text-decoration: none;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(0.95rem, 1.08vw, 1.08rem);
+  font-size: clamp(0.9rem, 0.98vw, 1.08rem);
   line-height: 1;
   margin-top: clamp(-6px, -0.5vw, -2px);
   padding-left: clamp(8px, 0.8vw, 10px);
@@ -288,65 +287,5 @@ function goBack() {
   margin: 0;
   font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
   font-size: 1.5rem;
-}
-
-.artist-page--alergiques .artist-sheet {
-  padding: clamp(18px, 4vw, 54px) clamp(16px, 4vw, 56px) clamp(24px, 5vw, 64px);
-}
-
-.artist-page--alergiques .artist-hero {
-  column-gap: clamp(14px, 3.2vw, 42px);
-  margin-bottom: clamp(20px, 4vw, 72px);
-}
-
-.artist-page--alergiques .artist-title {
-  font-size: clamp(1.65rem, 4.5vw, 4.9rem);
-  line-height: 1.08;
-}
-
-.artist-page--alergiques .artist-title-bar {
-  height: clamp(1.5rem, 4.5vw, 4.68rem);
-}
-
-.artist-page--alergiques .artist-intro {
-  column-gap: clamp(14px, 3.2vw, 42px);
-  margin-bottom: clamp(20px, 4vw, 72px);
-}
-
-.artist-page--alergiques .artist-intro p {
-  font-size: clamp(0.9rem, 1.18vw, 1.35rem);
-}
-
-.artist-page--alergiques .artist-body {
-  column-gap: clamp(14px, 3.2vw, 42px);
-}
-
-.artist-page--alergiques .artist-image-wrap {
-  width: min(100%, clamp(180px, 33vw, 428px));
-  transform: translateY(clamp(-420px, -33vw, -300px));
-}
-
-.artist-page--alergiques .artist-tramado {
-  width: min(100%, clamp(180px, 33vw, 428px));
-  transform: translateY(clamp(-320px, -26vw, -220px));
-}
-
-.artist-page--alergiques .artist-meta {
-  gap: clamp(20px, 4vw, 72px);
-}
-
-.artist-page--alergiques .meta-label {
-  font-size: clamp(0.95rem, 1.45vw, 1.8rem);
-}
-
-.artist-page--alergiques .meta-value {
-  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-.artist-page--alergiques .back-button {
-  width: clamp(110px, 15vw, 176px);
-  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 </style>
