@@ -7,6 +7,7 @@ const route = useRoute();
 const router = useRouter();
 const slug = computed(() => String(route.params.slug ?? ""));
 const artist = computed(() => getArtistBySlug(slug.value));
+const isAlergiques = computed(() => slug.value === "allerqiques-al-pollen");
 const fallbackArtistImage = "/artistesHome/mushkaEditada.png";
 const artistImage = computed(() => artist.value?.image ?? fallbackArtistImage);
 
@@ -32,7 +33,7 @@ function goBack() {
 </script>
 
 <template>
-  <main class="artist-page">
+  <main :class="['artist-page', { 'artist-page--alergiques': isAlergiques }]">
     <section v-if="artist" class="artist-sheet">
       <header class="artist-hero">
         <h1 class="artist-title">{{ artist.name }}</h1>
@@ -289,44 +290,63 @@ function goBack() {
   font-size: 1.5rem;
 }
 
-@media (max-width: 900px) {
-  .artist-sheet {
-    padding-top: clamp(24px, 4vw, 28px);
-  }
+.artist-page--alergiques .artist-sheet {
+  padding: clamp(18px, 4vw, 54px) clamp(16px, 4vw, 56px) clamp(24px, 5vw, 64px);
+}
 
-  .artist-hero,
-  .artist-intro,
-  .artist-body {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-  }
+.artist-page--alergiques .artist-hero {
+  column-gap: clamp(14px, 3.2vw, 42px);
+  margin-bottom: clamp(20px, 4vw, 72px);
+}
 
-  .artist-hero {
-    row-gap: clamp(12px, 2.8vw, 18px);
-    margin-bottom: clamp(18px, 4vw, 28px);
-  }
+.artist-page--alergiques .artist-title {
+  font-size: clamp(1.65rem, 4.5vw, 4.9rem);
+  line-height: 1.08;
+}
 
-  .artist-intro {
-    margin-bottom: clamp(18px, 4vw, 28px);
-  }
+.artist-page--alergiques .artist-title-bar {
+  height: clamp(1.5rem, 4.5vw, 4.68rem);
+}
 
-  .artist-intro p {
-    grid-column: auto;
-    max-width: none;
-  }
+.artist-page--alergiques .artist-intro {
+  column-gap: clamp(14px, 3.2vw, 42px);
+  margin-bottom: clamp(20px, 4vw, 72px);
+}
 
-  .artist-visuals {
-    grid-column: auto;
-  }
+.artist-page--alergiques .artist-intro p {
+  font-size: clamp(0.9rem, 1.18vw, 1.35rem);
+}
 
-  .artist-meta {
-    gap: clamp(18px, 4vw, 28px);
-    padding-top: clamp(8px, 2vw, 18px);
-    grid-column: auto;
-  }
+.artist-page--alergiques .artist-body {
+  column-gap: clamp(14px, 3.2vw, 42px);
+}
 
-  .back-button {
-    width: clamp(148px, 44vw, 180px);
-  }
+.artist-page--alergiques .artist-image-wrap {
+  width: min(100%, clamp(180px, 33vw, 428px));
+  transform: translateY(clamp(-420px, -33vw, -300px));
+}
+
+.artist-page--alergiques .artist-tramado {
+  width: min(100%, clamp(180px, 33vw, 428px));
+  transform: translateY(clamp(-320px, -26vw, -220px));
+}
+
+.artist-page--alergiques .artist-meta {
+  gap: clamp(20px, 4vw, 72px);
+}
+
+.artist-page--alergiques .meta-label {
+  font-size: clamp(0.95rem, 1.45vw, 1.8rem);
+}
+
+.artist-page--alergiques .meta-value {
+  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.artist-page--alergiques .back-button {
+  width: clamp(110px, 15vw, 176px);
+  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 </style>
