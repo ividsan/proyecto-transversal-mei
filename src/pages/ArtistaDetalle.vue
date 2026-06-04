@@ -123,7 +123,7 @@ function goBack() {
 
 .artist-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   align-items: center;
   column-gap: clamp(22px, 4vw, 46px);
   margin-bottom: var(--artist-visual-gap);
