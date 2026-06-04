@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
       <div class="about-copy">
         <p>
           Esclat naix del desig de recuperar el sentiment de comunitat i de pertinença a
-          través del soroll compartit. Més que un festival de música, és un open espai on
+          través del soroll compartit. Més que un festival de música, és un espai obert on
           concerts, tallers, xarrades i activitats conviuen per crear connexions reals entre
           persones i compartir emocions, idees i experiències.
         </p>

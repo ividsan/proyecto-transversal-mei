@@ -495,9 +495,9 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   border: 1px solid #5b5b5b;
   background: transparent;
   color: #ffffff;
-  padding: 7px 12px;
+  padding: clamp(4px, 0.8vw, 7px) clamp(5px, 1.2vw, 12px);
   font: inherit;
-  font-size: 24px;
+  font-size: clamp(10px, 2.2vw, 24px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.06em;
@@ -519,7 +519,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-graella--musica {
-  --programa-separator-overhang: 180px;
+  --programa-separator-overhang: clamp(12px, 5vw, 20px);
   --programa-separator-thickness: 2px;
 }
 
@@ -634,7 +634,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-graella--musica .programa-element:hover::before {
   content: "";
   position: absolute;
-  inset: 0 -180px 0 0;
+  inset: 0 calc(var(--programa-separator-overhang) * -1) 0 0;
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -697,7 +697,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-xarrada-link::before {
   content: "";
   position: absolute;
-  inset: 0 -180px 0 0;
+  inset: 0 calc(var(--programa-separator-overhang) * -1) 0 0;
   background: transparent;
   pointer-events: none;
   z-index: -1;
@@ -760,7 +760,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   width: min(100%, 1280px);
   margin: 48px auto 0;
   color: #ffffff;
-  --programa-general-overhang: 180px;
+  --programa-general-overhang: clamp(12px, 5vw, 20px);
 }
 
 .programa-dia--general {
@@ -768,7 +768,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-dia--general::before {
-  right: calc(var(--programa-general-overhang) * -1);
+  right: 0;
 }
 
 .programa-general-content {
@@ -797,12 +797,24 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head,
 .programa-general-row {
   display: grid;
-  grid-template-columns: minmax(130px, 0.65fr) minmax(0, 2.1fr) minmax(130px, 0.65fr);
-  column-gap: 112px;
+  grid-template-columns: minmax(100px, 0.55fr) minmax(0, 1.5fr) minmax(100px, 1.2fr);
+  column-gap: clamp(10px, 3vw, 50px);
 }
 
 .programa-general-head {
   position: relative;
+  margin-left: 0;
+}
+
+.programa-general-head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -20px;
+  height: 1px;
+  background: #ffffff;
+  pointer-events: none;
 }
 
 .programa-general-row {
@@ -810,21 +822,21 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 }
 
 .programa-general-cell {
-  padding: 16px clamp(18px, 3vw, 42px) 16px clamp(34px, 5vw, 82px);
+  padding: 10px clamp(6px, 1vw, 24px) 10px clamp(8px, 1.8vw, 48px);
   color: #ffffff;
   font-family: "PP Neue Montreal", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(16px, 1.8vw, 28px);
-  line-height: 1.12;
+  font-size: clamp(13px, 1.5vw, 24px);
+  line-height: 1.1;
   font-weight: 400;
   letter-spacing: -0.01em;
 }
 
 .programa-general-cell--head {
-  padding-top: 14px;
-  padding-bottom: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-family: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  font-size: clamp(15px, 1.4vw, 22px);
+  font-size: clamp(12px, 1.1vw, 18px);
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
@@ -879,7 +891,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-row:hover::before {
   content: "";
   position: absolute;
-  inset: 0 -180px 0 0;
+  inset: 0 calc(var(--programa-general-overhang) * -1) 0 0;
   background: #ffffff;
   z-index: 0;
   pointer-events: none;
@@ -904,11 +916,12 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
 .programa-general-head::after,
 .programa-general-row::after,
 .programa-general-empty::before,
-.programa-general-empty::after {
+.programa-general-empty::after,
+.programa-general-row:last-child::after {
   content: "";
   position: absolute;
   left: 0;
-  right: -180px;
+  right: calc(var(--programa-general-overhang) * -1);
   height: 1px;
   background: #ffffff;
   pointer-events: none;
@@ -927,9 +940,9 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   bottom: 0;
 }
 
-.programa-general-row:last-child::after {
-  left: -415px;
-  right: -180px;
+.programa-general-head::after,
+.programa-general-row::after {
+  bottom: 0;
 }
 
 @media (max-width: 720px) {
@@ -938,12 +951,7 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   }
 
   .programacio-botons {
-    gap: 24px;
-  }
-
-  .programacio-boto {
-    padding: 6px 9px;
-    font-size: 17px;
+    gap: clamp(6px, 2vw, 24px);
   }
 
   .programa-graella {
@@ -961,8 +969,8 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   }
 
   .programa-element {
-    font-size: clamp(14px, 4.8vw, 22px);
-    padding: 12px 12px 12px 18px;
+    font-size: clamp(11px, 3.5vw, 22px);
+    padding: 10px 10px 10px 14px;
     letter-spacing: -0.02em;
   }
 
@@ -993,12 +1001,13 @@ function resolveGeneralActivityRoute(item: GeneralProgramItem): GeneralRouteTarg
   }
 
   .programa-general-subnav {
-    gap: 12px;
+    gap: clamp(6px, 2vw, 12px);
     margin-bottom: 18px;
   }
 
   .programacio-boto--sub {
-    font-size: 14px;
+    padding: clamp(4px, 0.8vw, 6px) clamp(5px, 1vw, 9px);
+    font-size: clamp(10px, 2vw, 14px);
   }
 
   .programa-general-head,

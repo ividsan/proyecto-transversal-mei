@@ -13,7 +13,7 @@ type MerchProduct = {
 const products: MerchProduct[] = [
   {
     id: 1,
-    image: "/merch/totebag.png",
+    image: "/merch/totebag.jpg",
     name: "BOSSA TELA ESCLAT",
     description:
       "Bossa de tela reutilitzable amb la imatge del festival. Perfecta per a portar el dia a dia amb tu i recordar l'experiència més enllà del recinte.",
@@ -21,7 +21,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 2,
-    image: "/merch/tops.png",
+    image: "/merch/tops.jpg",
     name: "TOP ESCLAT",
     description:
       "Top exclusiu amb detalls brillants inspirats en l'estètica del festival. Una peça pensada per a destacar i expressar-te amb llibertat.",
@@ -29,7 +29,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 3,
-    image: "/merch/tanga.png",
+    image: "/merch/tanga.jpg",
     name: "TANGA ESCLAT",
     description:
       "Pack de dues tangues amb dissenys exclusius del festival. Comoditat i estil per a portar l'esperit del festival a qualsevol lloc.",
@@ -37,7 +37,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 4,
-    image: "/merch/llavero.png",
+    image: "/merch/llavero.jpg",
     name: "CLAUER ESCLAT",
     description:
       "Clauer personalitzable amb charms inspirats en l'univers visual del festival. Un record únic per a emportar-te un trosset de l'experiència.",
@@ -45,14 +45,14 @@ const products: MerchProduct[] = [
   },
   {
     id: 5,
-    image: "/merch/gorra.png",
+    image: "/merch/gorra.jpg",
     name: "GORRA ESCLAT",
     description: "Gorra oficial del festival amb brodat exclusiu. Ideal per a protegir-te del sol i completar qualsevol look.",
     price: "8€",
   },
   {
     id: 6,
-    image: "/merch/funda.png",
+    image: "/merch/funda.jpg",
     name: "FUNDA ESCLAT",
     description:
       "Funda de mòbil amb disseny exclusiu del festival. Protecció i personalitat en una peça pensada per a acompanyar-te cada dia.",
@@ -60,7 +60,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 7,
-    images: ["/merch/camiseta-detras.png", "/merch/camiseta-delante.png"],
+    images: ["/merch/camiseta-detras.jpg", "/merch/camiseta-delante.jpg"],
     name: "CAMISETA DEL FESTIVAL",
     description:
       "Camiseta de cotó amb el logo del festival i gràfics de gran format. Una peça icònica per a qui vulga portar el festival ben visible.",
@@ -68,7 +68,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 8,
-    image: "/merch/pegatinas.png",
+    image: "/merch/pegatinas.jpg",
     name: "PEGATINES ESCLAT",
     description:
       "Col·lecció de pegatines exclusives amb dissenys inspirats en la identitat visual del festival. Perfectes per a personalitzar llibretes, portàtils, fundes o qualsevol objecte i portar l’esperit del festival allà on vages.",
@@ -76,7 +76,7 @@ const products: MerchProduct[] = [
   },
   {
     id: 9,
-    image: "/merch/calzoncillos.png",
+    image: "/merch/calzoncillos.jpg",
     name: "CALÇOTETS ESCLAT",
     description:
       "Pack de dos calçotets amb dissenys exclusius del festival. Comoditat i originalitat en una peça imprescindible.",
