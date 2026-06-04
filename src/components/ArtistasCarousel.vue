@@ -220,7 +220,7 @@ function navigateToDetail(slug: string) {
 
   .carousel-item {
     width: 200px;
-    height: 200px;
+    height: auto;
     gap: 8px;
   }
 
@@ -236,6 +236,10 @@ function navigateToDetail(slug: string) {
 
   .artist-name {
     width: 200px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.1;
   }
 }
 
@@ -254,7 +258,7 @@ function navigateToDetail(slug: string) {
 
   .carousel-item {
     width: 140px;
-    height: 140px;
+    height: auto;
     gap: 6px;
   }
 
@@ -271,6 +275,10 @@ function navigateToDetail(slug: string) {
   .artist-name {
     width: 140px;
     font-size: 0.7rem;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.1;
   }
 
   .artists-carousel-title {

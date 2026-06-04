@@ -190,7 +190,7 @@ onBeforeUnmount(() => {
               {{ product.name }}
             </h2>
             <p
-              class="m-0 overflow-hidden text-[13px] leading-[1.2] opacity-0 transition-[max-height,opacity,transform,margin] duration-200 ease-out group-hover:mt-1 group-hover:max-h-[110px] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:mt-1 group-focus-within:max-h-[110px] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:text-white group-focus-within:text-white max-[900px]:text-[12px]"
+              class="m-0 overflow-hidden font-['PP_Neue_Montreal',system-ui,-apple-system,Segoe_UI,Roboto,Helvetica,Arial,sans-serif] text-[13px] leading-[1.2] opacity-0 transition-[max-height,opacity,transform,margin] duration-200 ease-out group-hover:mt-1 group-hover:max-h-[110px] group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:mt-1 group-focus-within:max-h-[110px] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:text-white group-focus-within:text-white max-[900px]:text-[12px]"
             >
               {{ product.description }}
             </p>

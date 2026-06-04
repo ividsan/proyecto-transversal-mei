@@ -223,12 +223,13 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 .entrades-merch-link {
   width: fit-content;
-  margin: 44px 0 0;
+  margin: 44px 0 0 max(0px, calc((100% - 1320px) / 2));
   color: #ffffff;
   border: 1px solid #ffffff;
   padding: 20px 28px;
   text-decoration: none;
   text-align: center;
+  display: block;
   font-size: 20px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
