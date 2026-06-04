@@ -493,4 +493,16 @@ onBeforeUnmount(() => {
     height: 38px;
   }
 }
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.7rem;
+    line-height: 1;
+  }
+
+  .about-title-bar {
+    width: 112px;
+    height: 16px;
+  }
+}
 </style>

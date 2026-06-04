@@ -156,7 +156,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   bottom: 0;
   width: auto;
   background-color: transparent;
-  min-width: 220px;
+  min-width: clamp(96px, 11vw, 150px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,16 +164,16 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 
 .entrades-qty-trigger {
   height: auto !important;
-  width: 220px !important;
+  width: clamp(96px, 11vw, 150px) !important;
   justify-content: center;
-  gap: 8px !important;
-  font-size: 56px;
+  gap: 4px !important;
+  font-size: clamp(2.2rem, 3vw, 3rem);
   line-height: 0.9;
   color: #ffffff;
   border: 0 !important;
   box-shadow: none !important;
   background: #000000 !important;
-  padding: 18px 20px !important;
+  padding: 14px 16px !important;
   box-sizing: border-box;
   border-radius: 0 !important;
 }
@@ -181,14 +181,14 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
 .entrades-qty-trigger :deep(svg) {
   color: currentColor;
   opacity: 1 !important;
-  width: 30px !important;
-  height: 30px !important;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 .entrades :deep(.entrades-select-content) {
   border-radius: 0 !important;
-  width: 220px !important;
-  min-width: 220px !important;
+  width: clamp(96px, 11vw, 150px) !important;
+  min-width: clamp(96px, 11vw, 150px) !important;
 }
 
 .entrades :deep(.entrades-select-item) {
@@ -216,7 +216,7 @@ const totalLabel = computed(() => `${totalEuros.value.toFixed(2)}€`)
   margin-top: auto;
   padding-top: 18px;
   color: #000000;
-  font-size: 56px;
+  font-size: clamp(3rem, 4.2vw, 3.5rem);
   line-height: 0.9;
   letter-spacing: -0.04em;
 }

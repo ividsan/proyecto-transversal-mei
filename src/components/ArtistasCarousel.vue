@@ -272,5 +272,15 @@ function navigateToDetail(slug: string) {
     width: 140px;
     font-size: 0.7rem;
   }
+
+  .artists-carousel-title {
+    font-size: 1.7rem;
+    line-height: 1;
+  }
+
+  .artists-title-bar {
+    width: 112px;
+    height: 16px;
+  }
 }
 </style>
