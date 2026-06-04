@@ -196,15 +196,19 @@ function goBack() {
 
 .artist-description {
   margin-bottom: clamp(6px, 0.8vw, 12px);
+  width: 100%;
 }
 
 .artist-description p {
   margin: 0;
-  max-width: 31ch;
+  width: 100%;
+  max-width: none;
   font-family: "PP Neue Montreal", "Helvetica Neue", Arial, sans-serif;
   font-size: clamp(0.95rem, 1.15vw, 1.12rem);
   line-height: 1.26;
   font-weight: 400;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .meta-block {
@@ -325,6 +329,7 @@ function goBack() {
   .artist-description p {
     font-size: 0.9rem;
     line-height: 1.25;
+    text-align: justify;
   }
 
   .artist-meta {
